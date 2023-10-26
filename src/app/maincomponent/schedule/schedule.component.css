@@ -65,7 +65,7 @@ table td,table th{
     transform: translateY(-50%);
     margin: 0rem 2.5rem;
     color: white;
-    font-size: 40px;
+    font-size: 40px!important;
     font-weight: 500;
     z-index: 1;
 }

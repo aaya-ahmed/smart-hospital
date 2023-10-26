@@ -1,7 +1,7 @@
 .mat-datepicker-toggle{
     color:rgb(18, 32, 27);
     width:100%;
-    font-size: 40px;
+    font-size: 40px!important;
 }
 .mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
     width: 2em!important;
@@ -75,7 +75,7 @@ input[type="file"] {
     margin: 3px 0;
     color: white;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 20px!important;
     text-align: center;
 }
 .xmark_btn{
@@ -85,7 +85,7 @@ input[type="file"] {
     top: 0;
     left: 0;
     color: red;
-    font-size: 20px;
+    font-size: 20px!important;
     width: fit-content;
     padding: 0;
     margin: 5px 20px;

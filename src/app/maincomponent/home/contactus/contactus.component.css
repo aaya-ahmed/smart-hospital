@@ -1,7 +1,7 @@
 h4{
     padding: 1rem 0;
     color: #4a4f46;
-    font-size: 25px;
+    font-size: 25px!important;
     font-weight: 500;
 }
 form,h4{

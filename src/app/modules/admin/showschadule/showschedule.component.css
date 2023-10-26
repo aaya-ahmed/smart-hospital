@@ -39,7 +39,7 @@
 .col1 {
     width: 150px;
     min-width: 150px;
-    font-size: 18px;
+    font-size: 18px!important;
     color: rgba(66, 143, 89, 0.89);
     font-weight: bold;
 }
@@ -138,7 +138,7 @@ select[disabled] {
     width: 100%;
 }
 .department-list label{
-    font-size: 20px;
+    font-size: 20px!important;
     padding: 0.5rem 1rem;
 }
 .department-list select{

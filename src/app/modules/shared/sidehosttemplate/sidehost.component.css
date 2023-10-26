@@ -42,7 +42,7 @@ button{
     outline: none;
     background-color: rgba(128, 128, 128, 0.271);
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 15px!important;
     display: flex;
     justify-content: center;
     align-items: center;

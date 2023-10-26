@@ -41,7 +41,7 @@ button{
     outline: none;
     background-color: rgba(128, 128, 128, 0.271);
     border-radius: 50%;
-    font-size: 15px;
+    font-size: 15px!important;
 }
 .btn{
     width: 100px;
@@ -50,7 +50,7 @@ button{
     outline: none;
     background-color: #445182;
     border-radius: 20px;
-    font-size: 15px;
+    font-size: 15px!important;
     color:white;
 }
 label{

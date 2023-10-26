@@ -54,7 +54,7 @@
     border-radius: 5px;
 }
 .col2{
-    font-size: 20px;
+    font-size: 20px!important;
     font-weight: 600;
 }
 .col3{
@@ -170,7 +170,7 @@ i{
         border-radius: 10px;
         }
     .col-md-3 h3,.col-md-3 span{
-        font-size: 12px;
+        font-size: 12px!important;
     }
 
 }

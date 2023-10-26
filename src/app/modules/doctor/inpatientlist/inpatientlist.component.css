@@ -48,7 +48,7 @@ table thead .table-header th{
 .table-title{
     text-align: right;
     padding: 2rem 0.4rem;
-    font-size: 15px;
+    font-size: 15px!important;
     color: rgb(55, 158, 184);
 }
 .table-date{

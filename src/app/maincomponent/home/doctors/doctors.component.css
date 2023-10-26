@@ -10,7 +10,7 @@ section{
 .doctors h4:nth-child(1){
     padding: 1rem 0;
     color: #4a4f46;
-    font-size: 25px;
+    font-size: 25px!important;
     font-weight: 500;
 }
 .doctor-items{
@@ -43,7 +43,7 @@ section{
     margin: 0.5rem 0;
 }
 .doctoritem h4{
-    font-size: 1.3em;
+    font-size: 1.3em!important;
     color:#aeb4b7;
     padding-left: 0.5rem;
 }

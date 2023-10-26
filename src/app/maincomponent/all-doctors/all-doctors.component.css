@@ -54,7 +54,7 @@ input[type="checkbox"]{
     margin: 0.5rem 0;
 }
 .doctoritem h4{
-    font-size: 1.3em;
+    font-size: 1.3em!important;
     color:#aeb4b7;
     padding-left: 0.5rem;
 }

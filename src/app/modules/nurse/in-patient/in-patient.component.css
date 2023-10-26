@@ -18,7 +18,7 @@ header h3{
     color: #666;
     border-radius: 50%;
     transition: all 0.3s;
-    font-size: 0.9rem;
+    font-size: 0.9rem!important;
 }
 
 .social-link:hover, .social-link:focus {

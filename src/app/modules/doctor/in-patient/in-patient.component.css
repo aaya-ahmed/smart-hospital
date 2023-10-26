@@ -93,7 +93,7 @@ table tr th{
     background-color: rgb(180, 241, 238)
 }
 .fa-chevron-down{
-    font-size: 12px;
+    font-size: 12px!important;
     float: right;
     margin:0 1rem;
 }

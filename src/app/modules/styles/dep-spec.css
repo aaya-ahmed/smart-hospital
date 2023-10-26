@@ -27,13 +27,13 @@ input:checked~div.adding-form {
     padding: 0 10px;
     margin: 5px 2.5rem;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 20px!important;
     font-weight: 700;
 }
 
 .adding-form form label {
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 20px!important;
 }
 
 .adding-label label {
@@ -124,7 +124,7 @@ input[type=checkbox] {
     display: block;
     width: 100%;
     margin-top: 0.25rem;
-    font-size: 0.875em;
+    font-size: 0.875em!important;
     color: #dc3545;
   }
 .container1{

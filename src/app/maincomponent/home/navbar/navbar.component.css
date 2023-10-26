@@ -107,7 +107,7 @@ header .navigation .links-list nav ul li:hover{
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
     header .navigation .logo a strong{
-        font-size: 10px;
+        font-size: 10px!important;
     }
 }
 .hide{

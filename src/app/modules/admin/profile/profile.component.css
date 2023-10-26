@@ -9,7 +9,7 @@
 .icon{
     width: 70%;
     height: 70px;
-    font-size: 60px;
+    font-size: 60px!important;
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -65,12 +65,12 @@
     .icon{
         width: 60px;
         height: 60px;
-        font-size: 50px;
+        font-size: 50px!important;
         color: transparent;
         -webkit-background-clip: text;
     }
     .col-md-3 h3,.col-md-3 span{
-        font-size: 12px;
+        font-size: 12px!important;
     }
 
 }
