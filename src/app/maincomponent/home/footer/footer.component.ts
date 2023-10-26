@@ -28,12 +28,11 @@ export class FooterComponent implements OnInit,AfterViewInit {
         })
       ],
       zoom: 17,
-      center: [29.3213102,30.8340012]
+      center: [29.3213102,30.8340012],
+      zoomControl: false ,
+      dragging:false
     }
     this.leafletmap=new Map(this.map.nativeElement,this.options)
-    this.leafletmap.getMap().then((mapres:any)=>{
-      mapres.invalidateSize();
-  });
   }
 
   ngOnInit(): void {
