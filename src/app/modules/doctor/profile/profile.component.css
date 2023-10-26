@@ -1,0 +1,281 @@
+.fluid-container{
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    display: flex;
+
+
+}
+.sec-info{
+    width:350px;
+    margin-top: 2vh;
+}
+.main{
+    width: calc(100% - 350px);
+    margin-top: 2vh;
+
+}
+.icon{
+    width: 60px;
+    height: 60px;
+}
+.statistics,.inpatient{
+    width: 100%;
+}
+.row{
+    width: 95%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.row .col-md-3,.row .col-md-4{
+    width:30%;
+    background-color: white;
+    border-radius: 3px;
+    text-align: center;
+    padding: 1rem 0;
+}
+.photo,.main-info{
+    width:300px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1rem;
+}
+.main-info{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.photo table{
+    width: 100%;
+    text-align: center;
+}
+.photo img{
+width: 150px;
+height: 150px;
+border-radius: 10px;
+}
+#actual-btn{
+    padding: 0.4rem;;
+    background-color: #85bda8;
+    color: white;
+    border-radius: 5px;
+}
+.col4 button{
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 1rem;
+}
+.col2{
+    font-size: 20px;
+    font-weight: 600;
+}
+.col3{
+    color: rgba(128, 128, 128, 0.753);
+}
+.col3-title{
+    padding: 0 0.3rem;
+  
+}
+.main-info table{
+    width: 100%;
+    text-align: left;
+}
+.main-info table tr td,.main-info table tr th{
+    padding: 0.5rem 0.3rem;
+}
+.inpatient{
+    width: 95%;
+    height: 72vh;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+
+}
+.table-responsive{
+    display: block;
+    overflow: auto;
+}
+.inpatient-title td{
+    border-bottom: none;
+    border-bottom-width:0px ;
+    font-weight: 600;
+}
+.table thead tr th{
+    background-color: rgb(59, 152, 206);
+    color: white;
+    padding: 0.5rem 0;
+}
+.form-control,.form-select{
+    padding: .375rem .75rem;
+
+}
+.form-control:focus,.form-select:focus{
+    box-shadow: none;
+}
+.noInpatientImg{
+
+    width:100px;
+    height:100px;
+    margin-top: 20px;
+}
+.info-col1{
+    float: right;
+    cursor: pointer;
+    color: green;
+}
+
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(182, 63, 63);
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5; }
+  
+  button .close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
+
+  a.close.disabled {
+    pointer-events: none; }
+   
+    .show{
+        display: block;
+    }
+    .col-md-3 h3,.col-md-3 span{
+        font-size: 17px;
+    }
+@media(max-width:970px){
+    .sec-info{
+        width:300px;
+    } 
+    .main{
+        width: calc(100% - 300px);
+    }
+    .photo,.main-info{
+        width:250px;
+    }
+    .photo{
+        padding: 0.5rem;
+    }
+    .inpatient{
+        height: 61.5vh;
+    margin-bottom: 1rem;}
+    .main-info{
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    .noInpatientImg{
+
+        width:50px;
+        height:50px;
+    }
+    .icon{
+        width: 50px;
+        height: 50px;
+    }
+    .photo img{
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        }
+    .col-md-3 h3,.col-md-3 span{
+        font-size: 12px;
+    }
+
+}
+
+@media(max-width:795px){
+    .fluid-container{
+        display: block;
+    }
+    .sec-info{
+        width: 100%;
+        display: flex;
+        padding: 0 1rem;
+    }
+    .photo{
+        width: 40%;
+    }
+    .photo table{
+        margin: 4rem 0;
+    }
+    .main-info{
+        width: 60%;
+        margin: 0 0 0rem 1rem;
+    }
+    .main-info table tr td,.main-info table tr th{
+        padding: 0.5rem 0.3rem;
+    }
+    .main{
+        width: 100%;
+    }
+
+}
+@media(max-width:645px){
+    .sec-info{
+        width: 100%;
+        display: block;
+    }
+    .photo{
+        width: 100%;
+    }
+    .photo table{
+        margin: 0;
+    }
+    .main-info{
+        width: 100%;
+        margin: 1rem 0 0 0;
+    }   
+    .row .col-md-3{
+        width:100%;
+    margin: 1rem 0;}
+
+}
+.alert-dismissible{
+    position: fixed;
+    width: 25%;
+    padding: 0.8rem 1rem;
+    top: 13rem;
+    left: 39%;
+    z-index: 900;
+    display: none;
+}
+.successmes,.errormes{
+    display: none;
+    position: fixed;
+    top: 50%;
+}
+.successshow,.errorshow{
+    display: block;
+}
+.appoint {
+    width:95%;
+    height: 80vh;
+    background-color: white;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    text-align: center;
+    padding: 1rem 0;
+}
+.appoint img{
+    width:100px;
+    height: 100px;
+
+}
+@media (max-width:970px) {
+.appoint{
+    height: 67vh;
+}    
+}

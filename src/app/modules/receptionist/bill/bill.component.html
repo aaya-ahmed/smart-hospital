@@ -1,0 +1,67 @@
+    <div class="container">
+        <div class="row">
+            <div class="col-12 justify-content-start header">
+                <p>bill</p>
+            </div>
+        </div>
+        <form class="row" #form="ngForm" (ngSubmit)="getpatient(form)">
+            <div class="col-md-10 col-12">
+                <input class="form-control" type="text" placeholder="patient national id"  #patientid="ngModel" ngModel  name="nationalId"/>
+            </div>
+            <div class="col-2">
+                <input class="btn" type="submit" value="git bill"/>
+            </div>
+        </form>
+    <div *ngIf="billflag">
+            <div class="image">
+                <img src="assets/logo.png"/>
+            </div>
+            <div class="row">
+                <div class="col-4"><br>
+                    <label>Patient Name</label>
+                    <p class="data">{{patient.firstName}}&nbsp;{{patient.lastName}}</p>
+                </div>
+                <div class="col-4"><br>
+                    <label>Gender</label>
+                    <p class="data">{{patient.gender}}</p>
+                </div>
+                <div class="col-4"><br>
+                    <label>Date</label>
+                    <p class="data">{{today|date:'longDate'}}</p>
+                </div>
+                <hr>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <th>Service</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>Room Charge</td>
+                        <td class="billData">{{billpatient.roomCharges}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Test Charges</td>
+                        <td class="billData">{{billpatient.testCharges}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Scan Charges</td>
+                        <td class="billData">{{billpatient.scansCharges}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Price</td>
+                        <td class="billData">{{totalPrice}}</td>
+                    </tr>
+                </table>
+                <div class="row justify-content-end">
+                    <button class="btn print-btn" (click)="print()">Print</button>
+                </div>
+                <br/>
+            </div>
+    </div>
+   <div *ngIf="!billflag" class="w-100" style="text-align:center;color:red;margin-top:1rem">
+    <p>No Bill</p>
+   </div>

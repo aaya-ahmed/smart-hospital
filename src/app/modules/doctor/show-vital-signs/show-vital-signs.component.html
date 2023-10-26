@@ -1,0 +1,85 @@
+<div class="fluid-container">
+    <header>
+        <h3>
+           Vital Signs
+        </h3>
+    </header>
+    <main>
+        <div class="table-responsive" id="no-more-tables">
+        <table class="table">
+            <tbody>
+            <tr >
+                <th><strong>Patient Name: </strong> </th>
+                <td data-title="Patient Name:"> <input type="text" class="form-control"  value="{{patient.patientName}}" disabled/></td>
+                <th><strong>Age: </strong> </th>
+                <td data-title="Age:"> <input type="text" class="form-control" value="{{patient.age}}"  disabled/></td>
+            </tr>
+            <tr class="end-table">
+                <th><label for="startdate">Start Time</label></th>
+                <td data-title="Start Time"> 
+                    <input type="date" class="form-control" [max]="today" id="startdate" #start (change)="onchange()"
+
+                    [ngClass]="{'is-invalid':startflag}"
+                    />
+                <div class="invalid-feedback">
+                    {{startflag?"start time is required":''}}
+                </div>
+                </td>
+                <th> <label for="enddate">End Time</label></th>
+                <td data-title="End Time"> <input type="date" [max]="today" class="form-control" id="enddate" #end required (change)="onchange()"
+                    [ngClass]="{'is-invalid':endflag}"
+                    />
+                <div class="invalid-feedback">
+                    {{endflag?"end time is required":''}}
+                </div>
+                </td>
+                <th></th>
+                <td ><button id="btn" (click)="getvitals(start.value,end.value)">Get Vital</button></td>
+            </tr>
+            <tr *ngIf="st_end_flag">
+                <td colspan="2" style="color:red;text-align: center">Start time must less than end time or equal</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+ <div *ngIf="toggle;then data;else noitem"></div>
+    
+</main>
+ <ng-template #noitem>
+    <p>No Items</p>
+</ng-template>
+<ng-template #data>
+    <div class="table-responsive">
+        <table id="vital-table" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Blood Pressure</th>
+                    <th>Pulse Rate</th>
+                    <th>Temperature</th>
+                    <th>Respiratory Rate</th>
+                    <!--<th>ECG</th>-->
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of vital|paginate: { itemsPerPage: 10, currentPage: p ,totalItems:totallength}">
+                    <td>{{i.vitalsignId}}</td>
+                    <td>{{i.vitals_date.slice(0,10)}}</td>
+                    <td>{{i.vitals_date.slice(11,16)}}</td>
+                    <td>{{i.pressure}}</td>
+                    <td>{{i.pulseRate}}</td>
+                    <td>{{i.temperature}}</td>
+                    <td>{{i.respirationRate}}</td>
+                    <!--<td>{{i.ecg}}</td>-->
+                    <td>{{i.noteDto.subject}}<br>{{i.noteDto.body}}</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>    
+
+    </div>
+</ng-template> 

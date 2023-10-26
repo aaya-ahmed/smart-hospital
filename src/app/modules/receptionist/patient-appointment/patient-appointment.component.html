@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 justify-content-start header">
+            <p>Rereverstions</p>
+        </div>
+    </div>
+    <form class="row">
+        <div class="col-12 ">
+            <input type="text" class="form-control" list="patientnames" (change)="getappoint($event)"/>
+            <datalist  id="patientnames">
+                <option disabled selected>patient name</option>
+                <option *ngFor="let i of patients let j=index" value="{{i.firstName}}{{i.lastName}}"></option>
+            </datalist>
+        </div>
+    </form>
+    <div *ngIf="loading" class="fluid-container text-center"><img src="assets/Spinner.svg" /></div>
+    <div *ngIf="!loading&&appointflag"  class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Doctor Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of appointment;let j =index">
+                        <td>{{j+1}}</td>
+                        <td>{{i.doctorName}}</td>
+                        <td>{{i.gender}}</td>
+                        <td>{{i.age}}</td>
+                        <td>{{i.slotTime}}</td>
+                        <td>{{i.appointmentDate.substring(0,10)}}</td>
+                    </tr>
+                </tbody>
+        
+            </table>
+        </div>
+    </div>
+    <div *ngIf="!loading&&!appointflag" class="noappoint-sec"><p>No Appointments</p></div>
+</div>

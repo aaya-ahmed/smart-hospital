@@ -1,0 +1,109 @@
+section{
+    padding-top:6rem;
+}
+.department-div{
+    background-color: #495583;
+    height: fit-content;
+}
+.btn{
+    background-color: #e7ede2!important;
+    color: black!important;
+
+}
+.Service{
+    overflow: hidden;
+    white-space: nowrap;
+}
+.controls{
+    display: flex;
+    justify-content: end;
+    margin: 0.5rem 0;
+}
+.controls button{
+    padding: 0.7rem;
+    background-color: #fbfbfb;
+    border: none;
+    outline: none;
+}
+.Service h4{
+    padding: 1rem 0 0 1rem;
+    font-size: 25px;
+    color: #4a4f46;
+    font-weight: 500;
+}
+.Service-items{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 95%;
+    margin: 0.5rem 1rem;
+
+}
+.Serviceitem:hover img{
+    aspect-ratio: 1 / 0.4;
+
+}
+.Serviceitem:hover p{
+    color: black;
+}
+.Serviceitem{
+    width: 16.25rem;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    display: inline-block;
+    margin: auto 1.5rem;
+    white-space: normal;
+    transition: display;
+    transition-duration: 10s;
+    transition-timing-function: ease-out;
+}
+.Serviceitem img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 0.6;
+}
+.Serviceitem h2{
+    margin: 0.5rem 0;
+    color: #495583;
+}
+.Serviceitem p{
+    color: #6c757d9e;
+}
+.Serviceitem i{
+    font-size: 3.125em;
+}
+
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+    .Service h4{
+        font-size: 25px;
+    }
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    section{
+        flex-direction: column-reverse;
+    }
+    .Service h4{
+        font-size: 30px;
+    }
+    .controls{margin: 0.5rem 1rem;}
+    .department-div{
+        padding: 3rem!important;
+        margin: 2rem 0;
+    }
+    .Serviceitem{
+        width: 14rem;
+        aspect-ratio: 1/1;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .Serviceitem{
+        width: 31.8rem;
+        margin: 0px 2.5%;
+    }
+}

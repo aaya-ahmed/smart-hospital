@@ -1,0 +1,35 @@
+<div class="navbar-side" [ngClass]="{'show':sideState,'hide':!sideState}">
+    <nav>
+      <div class="text-center py-4">
+        <a [routerLink]="'/home'">
+          <img src="./assets/logo.png" class="w-25 d-block m-auto">
+          <span>University Hospital</span>
+        </a>
+      </div>
+      <button (click)="close()">
+        <i class="fa-solid fa-close"></i>
+      </button>
+      <ul>
+        <li *ngFor="let item of linksList" [ngClass]="{'focus':currentlink==item.link}">
+          <a class="d-flex" (click)="goToPage(item.link)" >
+              <div class="px-1 text-center icon">
+                  <i class="fa-solid {{item.icon}} fa-xl"></i>
+              </div>
+              <div class="link">
+                  <span>{{item.title}}</span>
+              </div>
+          </a>
+      </li>
+        <li>
+          <a class="d-flex"  (click)="logoutadmin()"  > 
+            <div class="px-1 text-center icon">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+            </div>
+            <div class="link">
+                <span>Log Out</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+</div>

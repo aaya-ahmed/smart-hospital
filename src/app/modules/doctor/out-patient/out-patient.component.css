@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+.container{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2.5vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.container section:nth-child(1){
+    width: 70%;
+}
+.options{
+    width: 30%;
+}
+.options>div{
+    margin: 1rem;
+}
+.patientinformation{
+    border-radius: 0.5rem;
+    background-color: #ffffffb8;
+    padding:.3rem;
+    margin: 1rem;
+}
+.selectedoption{
+    margin: 0 1rem;
+}
+table{
+    width: 100%;
+    margin: 0 auto;
+    padding:1rem ;
+}
+table tr th{
+    padding: 0.3rem 0;
+    width: 150px;
+}
+.container{
+    width: 100%;
+    margin: 0rem auto 2rem auto;
+  }
+.container ul{
+    width: 100%;
+    list-style: none;
+}
+.container ul li{
+    width: 90%;
+    margin: 0.5rem;
+}
+.container ul li .link i{
+    color:#445182;
+}
+.container ul li .link{
+    width: 95%;
+    padding: 1rem;
+    cursor: pointer;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 1px -1px 0px 0px #00000059;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0.1rem auto;
+}
+.hiddensection{
+    display: none;
+}
+.link1{
+    background-color: #b1b16d;
+}
+.link2{
+    background-color: rgb(105, 179, 174)
+}
+.link3{
+    background-color: rgb(122, 196, 191)
+}
+.link4{
+    background-color: rgb(133, 209, 204)
+}
+.link5{
+    background-color: rgb(148, 219, 215)
+}
+.link6{
+    background-color: rgb(164, 231, 228)
+}
+.link7{
+    background-color: rgb(180, 241, 238)
+}
+.fa-chevron-down{
+    font-size: 12px;
+    float: right;
+    margin:0 1rem;
+}
+.show{
+    display: block;
+    height: fit-content;
+}
+@media (min-width: 576px){
+.container, .container-sm {
+    max-width: 100%;
+}}

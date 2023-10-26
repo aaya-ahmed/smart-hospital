@@ -1,0 +1,102 @@
+section{
+    margin-top: 7.9875rem;
+    margin-bottom: 7rem;
+    min-height: 50vh;
+    text-align: center;
+}
+.department-div{
+    background-color: #445182!important;
+}
+input[type="checkbox"]{
+    display: none;
+}
+.department-div label{
+    color: white;
+    margin: 0!important;
+    display: block;
+    text-align: center;
+}
+.department-div table tr td button{
+    width: 100%;
+    text-align: left;
+    color: white;
+}
+.active,.department-div table tr td button:hover{
+    background-color: #f1f8f2!important;
+    color: black!important;
+}
+.doctors{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.doctoritem{
+    width: 15rem;
+    height: fit-content;
+    display: inline-block;
+    margin: auto 1.5%;
+    white-space: normal;
+    transition: display;
+    transition-duration: 10s;
+    transition-timing-function: ease-out;
+    border: 1px solid #e4e6e7;
+    text-align: left;
+    padding: 0;
+}
+.doctoritem img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+.doctoritem h2, .doctoritem h3{
+    padding-left: 0.5rem;
+    margin: 0.5rem 0;
+}
+.doctoritem h4{
+    font-size: 1.3em;
+    color:#aeb4b7;
+    padding-left: 0.5rem;
+}
+.doctoritem p:nth-child(4){
+    border-top: 1px solid #e4e6e7;
+    padding-top:0.3rem ;
+}
+.doctoritem p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.doctoritem p i{
+    padding-right:0.5rem;
+    padding-left: 0.5rem;
+
+}
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    .department-div div{
+        display: none;
+    }
+    .department-div label{
+        cursor: pointer;
+    }
+    .department-div input[type="checkbox"]:checked+div{
+        display: block;
+        height: 20vh;
+        overflow-y: scroll;
+    }
+    .small-department-div{
+        display: block;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+
+}

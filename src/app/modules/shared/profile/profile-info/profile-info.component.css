@@ -1,0 +1,17 @@
+table{
+    width: 100%;
+    text-align: left;
+}
+table tr td,table tr th{
+    padding: 0.5rem 0.3rem;
+}
+.info-col1{
+    float: right;
+    cursor: pointer;
+    color: green;
+}
+@media(max-width:795px){
+    table tr td,table tr th{
+        padding: 0.5rem 0.3rem;
+    }
+}

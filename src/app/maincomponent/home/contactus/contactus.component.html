@@ -1,0 +1,28 @@
+<section class="row justify-content-center my-5">
+    <div class="col-md-4 image">
+        <img src="../../../../assets/contact.png"/>
+    </div>
+    <div class="col-md-6 col-11 doctors">
+        <h4>Contact With Us</h4>
+        <form [formGroup]="email" (ngSubmit)="sendemail()">
+            <div>
+                <input type="email" formControlName="from_name" class="form-control" id="email"
+                [ngClass]="{'is-invalid':((email.controls['from_name'].touched&&email.controls['from_name'].hasError('required'))||(email.controls['from_name'].touched&&email.controls['from_name'].hasError('email')))}"
+                placeholder="Email"/>
+                <input type="text" formControlName="subject" class="form-control" id="subject"
+                [ngClass]="{'is-invalid':(email.controls['subject'].touched&&email.controls['subject'].hasError('required'))}"
+                placeholder="Subject"/>
+                <textarea formControlName="message" class="form-control" id="body" 
+                [ngClass]="{'is-invalid':(email.controls['message'].touched&&email.controls['message'].hasError('required'))}"
+                placeholder="Message"></textarea>
+            </div>
+            <div class="submit-section">
+                <input type="submit" value="send" class="btn" [disabled]="loader||email.invalid"/>
+                <span *ngIf="issent==1" class="success-message">email is send</span>
+                <span *ngIf="issent==2" class="success-message">error</span>
+
+                <img src="../../../../assets/Spinner.svg" *ngIf="loader"/>
+            </div>
+        </form>
+    </div>
+</section>

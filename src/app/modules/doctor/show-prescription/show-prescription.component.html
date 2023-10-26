@@ -1,0 +1,66 @@
+
+   <div class="fluid-container bg-white">
+    <div class="inner-container">
+        <div class="prep-row" >
+            <button class="btn" (click)="set_show_all_prep_flag()" type="button" data-toggle="collapse" data-target="#show-prep">
+                <label class="form-lable" for="shoose-prep"><i class="fa-solid fa-prescription mx-2"></i>Show All Patient Prescriptions  </label>
+            </button>
+            <div class="collapse" id="show-prep" [ngClass]="{'show': showAllPrepflag}">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class='pdf'>Prescription</th>
+                                    <th>Clinic Name</th>
+                                    <th>Doctor Name</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of allPatientPrescriptionsList;let j=index">
+                                    <td class="pdf" (click)="show_all_patient_prescriptions_in_pdf(i.prescription.prescriptionId)"><img src="assets/pdficon.png"/></td>
+                                    <td>{{i.department}}</td>
+                                    <td>{{i.doctorFullName}}</td>
+                                    <td>
+                                        {{i.prescription.prescription_Date |date: 'longDate'}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>          
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="prep-row" >
+            <button class="btn" (click)="set_show_doc_prep_flag()" type="button" data-toggle="collapse" data-target="#showdocprep">
+                <label class="form-lable" ><i class="fa-solid fa-prescription mx-2" aria-hidden="true"></i>Show Common Prescriptions </label>
+            </button>
+            <div class="collapse" id="showdocprep" [ngClass]="{'show':showdocPrepflag}">
+                <div class="card">
+                    
+                    <div class="table-responsive">
+                        <table class="table pat-doc-table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class='pdf'>pdf</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of patientDoctorPrescriptionsList;let j=index">
+                                    <td class="pdf" (click)="show_patient_and_doctor_prescriptions_in_pdf(i.prescription.prescriptionId)"><img src="assets/pdficon.png"/></td>
+                                    
+                                    <td>
+                                        
+                                        {{i.prescription.prescription_Date |date: 'longDate'}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+   </div>

@@ -1,0 +1,52 @@
+.table-responsive{
+    display: block;
+    overflow-y: auto;
+}
+
+.table thead tr th{
+    background-color: rgb(59, 152, 206);
+    color: white;
+    padding: 0.5rem 0;
+}
+.noAppointImg{
+    width:60px;
+    height:60px;
+    margin-top: 20px;
+}
+.info-col1{
+    float: right;
+    cursor: pointer;
+    color: green;
+}
+.show{
+    display: block;
+}
+.alert-dismissible{
+    position: fixed;
+    width: 25%;
+    padding: 0.8rem 1rem;
+    top: 13rem;
+    left: 39%;
+    z-index: 900;
+    display: none;
+}
+.successmes,.errormes{
+    display: none;
+    position: fixed;
+    top: 50%;
+}
+.successshow,.errorshow{
+    display: block;
+}
+.appoint-title td{
+    border-bottom: none;
+    border-bottom-width:0px ;
+    font-weight: 600;
+}
+@media(max-width:970px){
+    .noAppointImg{
+        width:50px;
+        height:50px;
+    }
+
+}

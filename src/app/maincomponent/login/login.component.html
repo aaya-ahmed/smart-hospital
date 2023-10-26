@@ -1,0 +1,38 @@
+<div class="row">
+  <button (click)="close()">
+    <i class="fa-solid fa-close"></i>
+  </button>
+  <div class="col-lg-4 col-md-6 col-8 formdiv">
+    <h2>Log In</h2>
+
+    <form [formGroup]="login" (ngSubmit)="submit()">
+      <div  class="form-group">
+        <div>
+          <i class="fas fa-user"></i>
+          <input type="text"  class="form-control" placeholder="User Name" id="UserName" formControlName="UserName" [ngClass]="{'is-invalid':UserNamev?.touched&&UserNamev?.invalid||message!=''}"/>
+        </div>
+        <div class="invalid-feedback">{{(UserNamev?.touched&&UserNamev?.invalid||message!='')?'please enter your UserName':''}}</div>
+    </div>
+      <div class="form-group">
+        <div>
+          <i class="fas fa-lock"></i>
+          <input  type="password" class="form-control" placeholder="Password" id="pass" formControlName="Password" 
+          [ngClass]="{'is-invalid':Passwordv?.touched&&Passwordv?.invalid||message!=''}"
+          />
+        </div>
+        <div class='invalid-feedback'>{{(Passwordv?.touched&&Passwordv?.invalid||message!='')?'please enter your password':''}}</div>
+      </div>
+
+      <div class="form-group form-footer">
+        <input [disabled]="loader" type="submit" class="btn" value="Login">
+        <img src="assets/Spinner.svg" *ngIf="loader"/>
+        <span *ngIf="message!=''" class="error-message">
+          {{message}}
+        </span>
+        <span>
+           create an account<button (click)="gotoreg()">from here</button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

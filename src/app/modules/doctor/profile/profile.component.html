@@ -1,0 +1,59 @@
+<div class="fluid-container">
+    <div class="sec-info">
+        <div class="photo">
+            <app-profile-image [controller]="'Doctor/update'"></app-profile-image>
+        </div>
+        <div class="main-info">
+            <app-profile-info [controller]="'Doctor/update'"></app-profile-info>
+        </div>
+    </div>
+    <div class="main">
+        <div class="statistics">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <img class="icon" src="../assets/appoint icon.png">
+                    <h3>Appointment's Today</h3>
+                    <span>{{numberDetails.numberOfTodayAppointment}}</span>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <img class="icon" src="../assets/appoint icon.png">
+                    <h3>Total Appointments</h3>
+                    <span>{{numberDetails.numberOfAllAppointments}}</span>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <img class="icon" src="../assets/inpatient icon.png">
+                    <h3>Indoor Patients</h3>
+                    <span>{{numberDetails.numberOfInDoorPatients}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="appoint table-responsive" >
+            <div *ngIf="appointflag;then appointtable;else noappointimg"></div>
+        </div>
+    </div>
+</div>
+<ng-template #appointtable>
+        <table class="table">
+            <thead>
+                <tr class="appoint-title"><td colspan="4">Today's appointments</td></tr>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of appointment">
+                    <td>{{i.patientName}}</td>
+                    <td>{{i.age}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.slotTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+</ng-template>
+<ng-template #noappointimg>
+    <img class="noAppointImg" src="../assets/no appoint icon.webp">
+    <p>No Appointments Today</p>
+</ng-template>

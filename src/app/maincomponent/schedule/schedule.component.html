@@ -1,0 +1,92 @@
+<section>
+    <div class="image">
+        <img src="../../../assets/bg.jpg"/>
+        <h2>Schedules</h2>
+    </div>
+    <ng-container *ngIf="!loading">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-2  col-md-3 col-11 p-3 department-div">
+                <label class="text-center" for="clinic">Clinics</label>
+                <input type="checkbox" id="clinic"/>
+                <div>
+                    <table class="table text-white">
+                        <tr *ngFor="let item of departments">
+                            <td class="p-2"><button [ngClass]="{'active':activeitem==item}" (click)="getschedules(item)">{{item.departmentName}}</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-8 col-11">
+                <ng-container *ngIf="scheduleflag">
+                    <div class="table-responsive" *ngIf="schedules.length>0">
+                        <h2 class="text-center p-3">{{activeitem.departmentName}} schedule</h2>
+                        <table class="table table-striped schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Doctor Name</th>
+                                    <th>schedule</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of schedules|paginate: { itemsPerPage: 10, currentPage: p ,totalItems:totallength};let y=index">
+                                    <td class="col4">{{y+1}}</td>
+                                    <td class="col4">{{i.doctorName}}</td>
+                                    <td>
+                                        <table class="w-100">
+                                            <tr class="row schedule-head">
+                                                <th class="col-3">day of work</th>
+                                                <th class="col-3">start time</th>
+                                                <th class="col-3">end time</th>
+                                                <th class="col-3">time per patient</th>
+                                            </tr>
+                                            <ng-container *ngIf="i.scheduleObjects.length>0">
+                                               <tr class="row" *ngFor="let j of i.scheduleObjects;let m=index">
+                                                    <td class="col-3">
+                                                        <ng-container [ngSwitch]="j.dayOfWork">
+                                                            <span *ngSwitchCase="0">sunday</span>
+                                                            <span *ngSwitchCase="1">monday</span>
+                                                            <span *ngSwitchCase="2">tuesday</span>
+                                                            <span *ngSwitchCase="3">wednesday</span>
+                                                            <span *ngSwitchCase="4">thursday</span>
+                                                            <span *ngSwitchCase="5">friday</span>
+                                                            <span *ngSwitchCase="6">saturday</span>
+                                                        </ng-container>
+                                                    </td>
+                                                    <td class="col-3">
+                                                        <p class="col8">{{j.startTime}}</p>
+                                                    </td>
+                                                    <td class="col-3">
+                                                        <p class="col8">{{j.endTime}}</p>
+                                                    </td>
+                                                    <td class="col-3">
+                                                        <p class="col8">{{j.timePerPatient}}</p>
+                                                    </td>
+                                                </tr>
+                                            </ng-container>
+                                            <ng-container *ngIf="i.scheduleObjects.length==0">
+                                                <tr class="row text-center text-danger">
+                                                    <td colspan="4" class="col-12">
+                                                        No Items
+                                                    </td>
+                                                </tr>
+                                            </ng-container>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
+                    <pagination-controls *ngIf="schedules.length>0" style="margin:3rem 0;float: right;"(pageChange)="p = $event"></pagination-controls>
+                    <div *ngIf="schedules.length==0" style="width:50%;text-align: center; margin:0 auto;color:red">No Data Found</div>
+                </ng-container>
+                <ng-container *ngIf="!scheduleflag">
+                    <img src="../../../../assets/Spinner.svg"/>
+                </ng-container>
+            </div>
+        </div>
+</ng-container>
+<ng-container *ngIf="loading">
+        <img src="../../../../assets/Spinner.svg"/>
+</ng-container>
+</section>

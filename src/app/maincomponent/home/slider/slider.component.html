@@ -1,0 +1,24 @@
+<!--slide show-->
+<div class="carousel slide carousel-fade w-100" id="slides" data-interval="3000" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li class="active" data-target="#slides" data-slide-to="0"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner w-100 h-100" >
+        <div class="carousel-item w-100 h-100" [ngClass]="{'active':currentindex==index}" *ngFor="let item of images;let index=index" style='background-image: url({{item.image}});'>
+            <div class="comment">
+                <ng-container *ngFor="let comment of item.comment">
+                    <span>{{comment}}</span>
+                </ng-container>
+            </div>
+        </div>
+        <button class="carousel-control-next" (click)="slidforward()">
+            <span class="fa-solid fa-arrow-right" ></span>
+        </button>
+        <button class="carousel-control-prev" (click)="slidback()">
+            <span class="fa-solid fa-arrow-left"></span>
+        </button>
+    </div>
+</div>
+<!--slide show end -->

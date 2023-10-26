@@ -1,0 +1,129 @@
+<div class="container w-100">
+    <div class="row align-items-start justify-content-center">
+        <div class="col-12 my-3 px-0 form">
+            <header>
+                <h3>
+                    LABORATORY REPORT
+                </h3>
+            </header>
+            <div class="searching-field w-75 m-auto my-1" *ngIf="isrequest">
+                <label>Choose Test </label>
+                <select class="form-select"  #labName (change)="settest($event)">
+                    <option></option>
+                    <option *ngFor="let data of testslist " value="{{data.id}}">{{data.name}}</option>
+                </select>
+            </div>
+            <form [formGroup]="test" (ngSubmit)="paramtersvalue()" *ngIf="showform" >
+                <div class="row py-2 justify-content-between">
+                    <div class="col-md-5 col-12">
+                        <label class="form-label" for="date">Date</label>
+                        <input type="text" id="date" formControlName="testDate" class="form-control" readonly/>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label class="form-label" for="testname">Test Name</label>
+                        <input type="text" id="testname" formControlName="testname" class="form-control" readonly /> 
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label class="form-label" for="docname">Doctor Name</label>
+                        <input type="text" name="docname" id="docname" formControlName="docname" class="form-control" [readonly]="!isrequest" 
+                        [ngClass]="{'is-invalid':(test.get('docname')?.hasError('required')&&test.get('docname')?.touched)||
+                        (test.get('docname')?.hasError('required')&&issubmitted)}"
+                                        />
+                        <div class="invalid-feedback">
+                            {{((test.get('docname')?.hasError('required')&&test.get('docname')?.touched)||(test.get('docname')?.hasError('required')&&issubmitted))?"This field is reqired":''}}
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label class="form-label" for="pname">Patient Name</label>
+                        <input type="text" name="pname" id="pname" formControlName="patientname" class="form-control" [readonly]="!isrequest"
+                        [ngClass]="{'is-invalid':(test.get('patientname')?.hasError('required')&&test.get('patientname')?.touched)||
+                        (test.get('patientname')?.hasError('required')&&issubmitted)}"
+                                        />
+                        <div class="invalid-feedback">
+                            {{((test.get('patientname')?.hasError('required')&&test.get('patientname')?.touched)||(test.get('patientname')?.hasError('required')&&issubmitted))?"This field is reqired":''}}
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label class="form-label" for="age">Age</label>
+                        <input type="text" name="age" id="age" formControlName="age" class="form-control" [readonly]="!isrequest"
+                        [ngClass]="{'is-invalid':(test.get('age')?.hasError('required')&&test.get('age')?.touched)||
+                        (test.get('age')?.hasError('required')&&issubmitted)}"
+                                        />
+                        <div class="invalid-feedback">
+                            {{((test.get('age')?.hasError('required')&&test.get('age')?.touched)||(test.get('age')?.hasError('required')&&issubmitted))?"This field is reqired":''}}
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label class="form-label" for="age">Gender</label>
+                        <input type="text" name="gender" id="gender"  formControlName="gender" class="form-control" [readonly]="!isrequest"
+                        [ngClass]="{'is-invalid':(test.get('gender')?.hasError('required')&&test.get('gender')?.touched)||
+                        (test.get('gender')?.hasError('required')&&issubmitted)}"
+                                        />
+                        <div class="invalid-feedback">
+                            {{((test.get('gender')?.hasError('required')&&test.get('gender')?.touched)||(test.get('gender')?.hasError('required')&&issubmitted))?"This field is reqired":''}}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter Name</th>
+                                    <th>Result</th>
+                                    <th>Unit</th>
+                                    <th>Normal Range</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr   *ngFor="let item of numericalDetails;let i=index">
+                                    <td>{{item.parameterName}}</td>
+                                    <td>
+                                        <input type="text" [formControl]="item.result"  [name]="item.result" class="form-control"
+                                        [ngClass]="{'is-invalid':(item.result?.hasError('required')&&item.result.touched)||
+                                                                 ((item.result?.hasError('required')||item.result?.hasError('pattern'))&&issubmitted)||
+                                                                 (item.result?.hasError('pattern')&&item.result.dirty)}"
+                                        />
+                                        <div class="invalid-feedback">
+                                            {{((item.result.hasError('required')&&item.result.touched)||(item.result.hasError('required')&&issubmitted))?"This field is reqired":''}}
+                                            {{(item.result.hasError('pattern')&&item.result.dirty||(item.result.hasError('pattern')&&issubmitted))?"not correct":''}}
+                                        </div> 
+                                    </td>
+                                    <td>{{item.unit}}</td>
+                                    <td>{{item.min_Range}}-{{item.max_Range}}</td>
+                                </tr>
+                                <tr *ngFor="let item of categoricalDetails;let i=index">
+                                    <td>{{item.ParameterName}}</td>
+                                    <td>
+                                        <input type="text" [formControl]="item.result" class="form-control" 
+                                        [ngClass]="{'is-invalid':(item.result?.hasError('required')&&item.result.touched)||
+                                                                 ((item.result?.hasError('required')||item.result?.hasError('pattern'))&&issubmitted)||
+                                                                 (item.result?.hasError('pattern')&&item.result.dirty)}"
+                                        />
+                                        <div class="invalid-feedback">
+                                            {{((item.result.hasError('required')&&item.result.touched)||(item.result.hasError('required')&&issubmitted))?"This field is reqired":''}}
+                                            {{(item.result.hasError('pattern')&&item.result.dirty||(item.result.hasError('pattern')&&issubmitted))?"not correct":''}}
+                                        </div>
+                                    </td> 
+                                    <td>{{item.unit}}</td>  
+                                    <td>{{item.normalvalue}}</td> 
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+                <div class="row py-3 justify-content-start">
+                    <div class="col-2" *ngIf="isrequest">
+                        <button class="form-control btn"> Print </button>
+                    </div>
+                    <div class="col-2" *ngIf="!isrequest">
+                        <button class="form-control btn"> Add </button>
+                    </div>
+                    <div class="col-2" *ngIf="!isrequest">
+                        <button class="form-control btn bg-danger" (click)="close()"> Cancel </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    

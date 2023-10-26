@@ -1,0 +1,32 @@
+<div class="collapse" id="requestscan">
+    <div class="card w-100 ">
+        <div class="card-body">
+            <div class="scan" >
+                <label for="scanslist">Scan Name</label>
+                <select id="scanslist" class="form-select"  (change)="add_to_scan_list($event)" required   [ngClass]="{'is-invalid':submitscanflag}">
+                    <option></option>
+                    <option *ngFor="let i of scanlist; let j=index" value="{{j}}">{{i.scanName}}</option>
+                </select>
+                <p class="error" [ngClass]="{'invalid-feedback':submitscanflag}">please choose scan</p>
+            </div>
+            <div class="showlist">
+                <h5>Scan List</h5>
+                <div>
+                    <p *ngFor="let i of requestscanlist;let j=index">
+                        <button type="button" (click)="remove_from_scan_list(j)"><i style="color:red" class="fa fa-trash"  aria-hidden="true"></i></button>
+                        <i>{{i.scanName}}</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" (click)="send_scan_request()">Send Request</button>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success alert-dismissible fade sucessmes" role="alert" [ngClass]="{'successshow':successflag}">
+    <strong>success !</strong>
+  </div>
+<div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':errorflag}">
+    error!
+  </div>

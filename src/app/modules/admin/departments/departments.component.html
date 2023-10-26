@@ -1,0 +1,49 @@
+<div class="fluid-container">
+        <!-- display loading view or page -->
+    <div *ngIf="flag;then page;else loading"></div>
+<!-- start page template -->
+    <ng-template #page>
+        <div class="container-fluid w-100">
+            <div class="d-block p-2 head m-0">
+                <button type="button" class="btn text-white btn-success"  (click)="openAddDepartmentSide()" data-toggle="modal" data-target="#exampleModalCenter">
+                    Add New Department    
+                </button>
+            </div>
+            <div class="table-responsive  disaplay-info">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>State</th>
+                        <th>has clinical?</th>
+                        <th>Option</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of department|paginate: { itemsPerPage: 10, currentPage: p ,totalItems:totallength}">
+                            <td>{{i.departmentName}}</td>
+                            <td>{{i.departmentLocation}}</td>
+                            <td>
+                                <p *ngIf="i.isActive">Active</p>
+                                <p *ngIf="!i.isActive">In-Active</p>
+                            </td>
+                            <td>
+                                <p *ngIf="i.isClinical">Yes</p>
+                                <p *ngIf="!i.isClinical">No</p>
+                            </td>
+                            <td>
+                                <button id="update_btn" (click)="openUpdateDepartmentSide(i)"> <span class="fa-solid fa-pen-to-square " style="color:green " > </span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <pagination-controls style="margin:1rem 0 0 0;float: right;" (pageChange)="p = $event"></pagination-controls> 
+        </div>
+    </ng-template>
+<!-- end page template -->
+<!-- start loading page -->
+<ng-template #loading>
+    <div class="fluid-container loading"><img src="assets/Spinner.svg" width="50px" height="50px" /></div>
+</ng-template>
+<!-- end loading page -->
+</div>

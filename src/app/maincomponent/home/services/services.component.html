@@ -1,0 +1,48 @@
+<section class="row justify-content-center">
+    <div class="col-lg-2 col-md-3 col-12 p-3 department-div">
+        <h2 class="text-center text-white">Departments</h2>
+        <table class="table text-white">
+            <tr *ngFor="let item of departments">
+                <td class="p-2">{{item.departmentName}}</td>
+            </tr>
+        </table>
+        <button class="btn d-flex justify-content-center align-items-center g-2" (click)="gotodeppage()">
+            <i class="fa-solid fa-arrow-left px-1"></i>
+            view All
+        </button>
+    </div>
+    <div class="col-lg-7 col-md-8 col-12 Service">
+        <h4>Our Services</h4>
+        <div class="controls">
+            <button (click)="goleft()"><i class="fa-solid fa-arrow-left"></i></button>
+            <button (click)="goright()"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="Service-items" #servicediv>
+            <div class="Serviceitem">
+                <img src="../../../../assets/medicaltreatment.jpg">
+                <h2>Medical Treatment</h2>
+                <p>Patients admitted at our hospital can rest assured that medicines would be available at the hospital 24 hours. No running around to various drug stores to buy essential medicines to the patient.</p>
+            </div>
+            <div class="Serviceitem">
+                <img src="../../../../assets/LaboratoryAnalysis.jpg">
+                <h2>Laboratory Analysis</h2>
+                <p>A well equipped medical laboratory with reagents of the best standards are the hallmark of the laboratory. All the tests prescribed by doctors will be available at our laboratories.</p>
+            </div>
+            <div class="Serviceitem">
+                <img src="../../../../assets/Outpatientclinical.jpg">
+                <h2>Outpatient Clinicals</h2>
+                <p>our outpatient clinics are covering more than 30 specialties and 18 clinics running simultaneously.</p>
+            </div>
+            <div class="Serviceitem">
+                <img src="../../../../assets/outpatientsurgery.jpg">
+                <h2>Outpatient Surgery</h2>
+                <p>Our hospital provides outpatient surgery services as well as inpatient surgeries</p>
+            </div>
+            <div class="Serviceitem">
+                <img src="../../../../assets/emergencyhelp.jpg">
+                <h2>Emergency Help</h2>
+                <p>Our emergency specialists are adept in handling any emergency including Trauma, Cardiac, Neuro, Renal, Gastrointestinal, Poisoning and other Emergencies.</p>
+            </div>
+        </div>
+    </div>
+</section>

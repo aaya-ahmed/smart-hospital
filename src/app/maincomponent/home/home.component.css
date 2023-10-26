@@ -1,0 +1,18 @@
+header{
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    height: fit-content;
+}
+.navbar{
+    padding: 0!important;
+    margin: 0!important;
+    width: 100%;
+}
+.host{
+    display: block;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+}

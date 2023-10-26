@@ -1,0 +1,35 @@
+<main class="container">
+    <header class="row justify-content-around align-content-center">
+        <button class="col-1" (click)="close()">
+            <span class="fa-solid fa-xmark"></span>
+        </button>
+        <h3 class="col-9 m-0">New scan</h3>
+    </header>
+    <section class="fluid-container">
+        <form #formdata="ngForm" (ngSubmit)="save(formdata)">
+            <div class="p-3">
+                <label class="form-lable" for="doctorfname"> Scan Name </label>
+                <input type="text" id="scanname" name="scanname" class="form-control form-control1" 
+                required #scanname="ngModel" [(ngModel)]="scan.scanName" [disabled]="updateflag"/>
+                <div class="invalid-feedback">
+                  {{(scanname.errors?.['required']&&formdata.submitted)?"this is required":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctorfname">  Scan Charge </label>
+                <input type="number" id="scancharge" [(ngModel)]="scan.scanCharge" [min]="10" name="Charge" class="form-control form-control1" min="100" #Charge="ngModel" required ngModel />          
+                <div class="invalid-feedback">
+                  {{(Charge.errors?.['required']&&formdata.submitted)?"this is required":''}}
+                  {{(Charge.errors?.['min']&&formdata.submitted)?"min value is 10":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="col-sm-3">
+                    <input [hidden]="updateflag" type="submit" id="add_btn" class="form-control btn" value="Add">
+                    <input  [hidden]="!updateflag"  type="submit" id="add_btn" class="form-control btn" value="Update">
+                    <div *ngIf="submitted&&formdata.valid" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+                </div>
+            </div>
+        </form>
+    </section>
+</main>

@@ -1,0 +1,68 @@
+.container{
+    background-color: #ffffffc2;
+    width: 98%;
+    height: 100vh;
+    text-align: center;
+    margin: 1rem auto;
+}
+.rounded{
+    background-color: white;
+}
+.date-feild{
+    border: none;
+    background-color: transparent;
+}
+#accept,
+#reject {
+    border: none;
+    background-color: rgb(45, 148, 45);
+    padding: 5px 10px 5px 10px;
+    color: white;
+    margin: 0px 10px 0 10px;
+    border-radius: 4px;
+}
+
+#reject {
+    background-color: rgb(170, 20, 20);
+}
+.table-responsive {
+    margin-top: 1rem;
+    overflow: auto;
+    height: 70vh;
+    display: flex;
+}
+table{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+table tr td {
+    vertical-align: middle;
+}
+table tr th{
+    width: 150px;
+}
+table thead .table-header th{
+    padding: 2rem 0rem;
+}
+.table-title{
+    text-align: right;
+    padding: 2rem 0.4rem;
+    font-size: 15px;
+    color: rgb(55, 158, 184);
+}
+.table-date{
+    text-align: left;
+    padding: 2rem 0;
+}
+.table1{
+    width: 100%;
+    text-align: center;
+}
+.col1{
+    color:#1899b7;
+    padding: 0.5rem;
+}
+.row{
+    margin-top: 2rem;
+}

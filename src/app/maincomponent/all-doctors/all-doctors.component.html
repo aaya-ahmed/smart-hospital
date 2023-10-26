@@ -1,0 +1,52 @@
+<section>
+    <ng-container *ngIf="!loading">
+        <div class="row mt-5 justify-content-center">
+            <ng-container *ngIf="depname==''">
+                <div class="col-lg-2  col-md-3 col-11 p-3 department-div">
+                    <label class="text-center" for="clinic">Departments</label>
+                    <input type="checkbox" id="clinic"/>
+                    <div>
+                        <table class="table text-white">
+                            <tr *ngFor="let item of departments">
+                                <td class="p-2"><button [ngClass]="{'active':activeitem==item}" (click)="getDoctors(item)">{{item.departmentName}}</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="loadingdoctors">
+                <div class="col-md-8 col-11 fa-sm text-center">
+                    <img src="../../../../assets/Spinner.svg"/>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!loadingdoctors">
+                <div class="col-md-8 col-11 row doctors">
+                    <h2>{{activeitem?.departmentName||depname}} Doctors</h2>
+                    <ng-container *ngIf="doctors.length>0">
+                        <div  class="doctoritem" *ngFor="let item of doctors|paginate:{itemsPerPage:10,currentPage:p,totalItems:totallength}">
+                            <img src="{{item.imageName}}">
+                            <h2>{{item.firstName}} {{item.lastName}}</h2>
+                            <h3>{{item.docDegree}}</h3>
+                            <p title="{{item.clinicalDoctor?'has clinic':'-'}}">
+                                <i class="fa-solid fa-house-medical-circle-check"></i><span>{{item.clinicalDoctor?'has clinic':'-'}}</span>
+                            </p>
+                            <p title="{{item.phoneNumber}}">
+                                <i class="fa-solid fa-phone"></i><span>{{item.phoneNumber}}</span>
+                            </p>
+                            <p title="{{item.mail}}">
+                                <i class="fa-solid fa-envelope"></i><span>{{item.mail}}</span>
+                            </p>
+                        </div>
+                        <pagination-controls (pageChange)="$event"></pagination-controls>
+                    </ng-container>
+                    <div *ngIf="doctors.length==0" class="No-Data">
+                        <p>No data found</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+</ng-container>
+<ng-container *ngIf="loading">
+        <img src="../../../../assets/Spinner.svg"/>
+</ng-container>
+</section>

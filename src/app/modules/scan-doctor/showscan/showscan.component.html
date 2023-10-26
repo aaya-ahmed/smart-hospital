@@ -1,0 +1,88 @@
+<div class="container">
+    <section>
+        <div class="selectedoption" [ngSwitch]="option">
+            <ng-container *ngSwitchCase="'patient'">
+                <form #searchform="ngForm" (ngSubmit)="search(searchform)" class="patientinformation">
+                    <div class="row justify-content-evenly">
+                        <div class="col-10 col-md-3">
+                            <label>patient Name</label>
+                            <select class="form-select" ngModel #idpatient="ngModel" name="id" required
+                            [ngClass]="{'is-invalid':idpatient.errors?.['required']&&searchform?.['submitted']}">
+                                <option *ngFor="let i of patientlist;let j=index" value="{{i.id}}">{{i.firstName}}&nbsp;{{i.lastName}}</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                {{(idpatient.errors?.['required']&&searchform.submitted)?"please select patient":''}}
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-3">
+                            <label>Date</label>
+                            <input type="Date" class="form-control" ngModel #date="ngModel" name="date" />
+                        </div>
+                        <div class="col-10 col-md-3 my-1 my-md-0 submitbtn">
+                            <button class="btn">search</button>
+                        </div>
+                    </div>
+                </form>
+            </ng-container>
+            <ng-container *ngSwitchCase="'doctor'">
+                <form #searchdocform="ngForm" (ngSubmit)="searchbydoctor(searchdocform)" class="patientinformation">
+                    <div class="row justify-content-evenly">
+                        <div class="col-10 col-md-3">
+                            <label>Doctor Name</label>
+                            <select class="form-select" ngModel #iddoctor="ngModel" name="iddoctor"  required
+                             [ngClass]="{'is-invalid':iddoctor.errors?.['required']&&searchdocform?.['submitted']}">
+                                <option *ngFor="let i of Doctorlist;let j=index" value="{{i.id}}">{{i.firstName}}&nbsp;{{i.lastName}}</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                {{(iddoctor.errors?.['required']&&searchdocform.submitted)?"this is required":''}}
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-3">
+                            <label>Date</label>
+                            <input type="Date" class="form-control"  name="date" ngModel #date="ngModel" />
+                        </div>
+                        <div class="col-10 col-md-3 my-1 my-md-0 submitbtn">
+                            <button type="submit" class="btn">search</button>
+                        </div>
+                    </div>
+                </form>
+            </ng-container>
+        </div>
+        <div *ngIf="scanflag" class="table-responsive">
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th *ngIf="option=='doctor'">patient Name</th>
+                    <th>option</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of listscan|paginate: { itemsPerPage: 5, currentPage: p ,totalItems:totallength};let j=index">
+                        <td>{{i.scanName}}</td>
+                        <td>{{i.scanDate |date: 'longDate'}}</td>
+                        <td *ngIf="option=='doctor'">{{i.patientName}}</td>
+                        <td><button (click)="show(i)"><i class="fa-solid fa-display"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="options">
+        <div>
+            <ul id="accordion" class="accordion">
+                <li>
+                    <div class="link" (click)="changesection('patient')">
+                        <i class="fa-solid fa-search"></i>
+                        search for patient
+                    </div>
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('doctor')">
+                        <i class="fa-solid fa-search"></i>
+                        search for doctor
+                    </div> 
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

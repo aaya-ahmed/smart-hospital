@@ -1,0 +1,15 @@
+.table{
+    width: max-content!important;
+}
+.del-row{
+    text-align: center;
+    color: red!important;
+    line-height: 1.9;
+    font-size: 20px;
+}
+.add-btn{
+    text-align: center;
+    color: green;
+    line-height: 0.9;
+    font-size: 20px;
+}

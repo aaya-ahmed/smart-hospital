@@ -1,0 +1,45 @@
+<div class="fluid-container">
+    <div *ngIf="loadflag;then loading;else page" ></div>
+    <!-- start page template -->
+        <ng-template #page>
+            <div *ngIf="allPatientPrescriptionsList.length==0" style="margin-top:0rem; text-align:center ;">
+                No Avaliable Data<br>
+            </div>
+            <div *ngIf="allPatientPrescriptionsList.length>0" class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Clinic Name</th>
+                                <th>Doctor Name</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of allPatientPrescriptionsList|paginate: {itemsPerPage:10,currentPage:p,totalItems:allPatientPrescriptionsList.length};let j=index">
+                                <td class="pdf" (click)="show_all_patient_prescriptions_in_pdf(i.prescription.prescriptionId)"><img src="assets/pdficon.png"/></td>
+                                <td>{{i.department}}</td>
+                                <td>{{i.doctorFullName}}</td>
+                                <td>
+                                    {{i.prescription.prescription_Date |date: 'longDate'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <pagination-controls (pageChange)="$event"></pagination-controls>
+            </ng-template>
+            <!-- end page template -->
+            <!-- start loading page -->
+            <ng-template #loading>
+                <div class="fluid-container loading">
+                    <img src="assets/Spinner.svg" />
+                </div>
+            </ng-template>
+            <!-- end loading page -->
+        </div>
+        
+        
+        
+        
+        

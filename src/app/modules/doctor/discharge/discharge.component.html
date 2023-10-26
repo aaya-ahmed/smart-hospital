@@ -1,0 +1,20 @@
+<div class="container1">
+<form #form="ngForm" (ngSubmit)="discharge(form)">
+    <div class="form-Group">
+        <label for="patientname">Patient Name</label>
+        <input class="form-control" value="{{patient.patientName}}" id="patientname" type="text" disabled/>
+    </div>
+    <div class="form-Group">
+        <label for="patientdate">Date</label>
+        <input class="form-control" value="{{today}}" id="patientdate" type="text" disabled/>
+    </div>
+    <div class="form-Group">
+        <label for="recommendation">recommendation</label>
+        <textarea cols="20" rows="10" class="form-control" id="recommendation" name="recommendation" ngModel #recommendation="ngModel"></textarea>
+    </div>
+    <div class="form-Group">
+        <button type="submit" class="submit_btn">Discharge</button>
+    </div>
+    
+</form>
+</div>

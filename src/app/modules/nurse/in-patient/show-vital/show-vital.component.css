@@ -1,0 +1,92 @@
+.fluid-container{
+    width:80%;
+        margin: 0 auto;
+        margin-top: 1rem;
+        height: fit-content;
+        min-height: 100vh;
+
+}
+main{
+    background-color: #c3d3dd;
+
+}
+header{
+    width: 100%;
+text-align: center;
+background-color: #143961;
+color: white;
+border-radius: 10px 10px 0 0px;
+}
+header h3{
+    width: 40%;
+    margin: 0 auto;
+    padding: 4px 0px;
+}
+.header {
+    background-color: #d5e3f3;
+    color: white;
+    text-align: center;
+    margin: auto;
+    margin-top: 15px;
+    width: 50%;
+    position: sticky;
+}
+
+div.patientinfo {
+    border-bottom: solid;
+}
+
+.info {
+    color: #235c9c;
+}
+#btn{
+    border: none;
+    background-color: #143961;
+    border-radius: 4px;
+    color:white
+}
+.end-table{
+border-bottom:1px solid #143961;
+}
+p{
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    color: grey;
+}
+@media only screen and (max-width:800px) {
+    #no-more-tables tbody,
+    #no-more-tables tr,
+    #no-more-tables td {
+        display: block;
+    }
+    #no-more-tables tbody tr th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    #no-more-tables td {
+        position: relative;
+        padding-left: 40%;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+    #no-more-tables td:before {
+        content: attr(data-title);
+        position: absolute;
+        left: 6px;
+        font-weight: bold;
+    }
+    #no-more-tables tr {
+        border-bottom: 1px solid #ccc;
+    }
+ 
+}
+
+@media (max-width:500) {
+    .header {
+        width: 100%;
+    }
+}
+
+   

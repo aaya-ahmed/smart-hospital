@@ -1,0 +1,91 @@
+.container{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2.5vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.container section:nth-child(1){
+    width: 70%;
+}
+.options{
+    width: 30%;
+    display: block;
+}
+.options>div{
+    margin: 1rem;
+}
+.patientinformation{
+    border-radius: 0.5rem;
+    background-color: #ffffffb8;
+    padding:1rem .3rem;
+    margin: 1.5rem 1rem;
+}
+.selectedoption{
+    margin: 0 1rem;
+}
+table{
+    width: 100%;
+    margin: 0 auto;
+    padding:1rem ;
+}
+table tr th{
+    padding: 0.3rem 0;
+    width: 150px;
+}
+.container{
+    width: 100%;
+    margin: 0rem auto 2rem auto;
+  }
+.container ul{
+    width: 100%;
+    list-style: none;
+    padding: 0!important;
+}
+.container ul li{
+    width: 90%;
+    margin: 0.5rem;
+}
+.container ul li .link i{
+    color:#445182;
+}
+.container ul li .link{
+    width: 95%;
+    padding: 1rem;
+    cursor: pointer;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 1px -1px 0px 0px #00000059;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0.1rem auto;
+}
+.hiddensection{
+    display: none;
+}
+.fa-chevron-down{
+    font-size: 12px;
+    float: right;
+    margin:0 1rem;
+}
+.show{
+    display: block;
+    height: fit-content;
+}
+.submitbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    padding: 0.3rem 1rem;
+}
+.table-responsive {
+    margin: 1rem 2rem;}
+@media (min-width: 576px){
+.container, .container-sm {
+    max-width: 100%;
+}}

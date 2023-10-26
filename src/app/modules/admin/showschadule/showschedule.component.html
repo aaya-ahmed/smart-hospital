@@ -1,0 +1,79 @@
+<div class="fluid-container">
+    <div class="department-list">
+        <label>Department</label>
+        <select class="form-select" (change)="getschedules($event)" >
+            <option *ngFor="let i of departments"  value="{{i.id}}">{{i.department_Name}}</option>
+        </select>
+    </div>
+    <div class="text-center">
+        <img src="../../../../assets/Spinner.svg" *ngIf="loading" />
+    </div>
+    <div class="table-responsive" *ngIf="schedules.length>0">
+        <table class="table table-striped schedule-table bg-white">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Doctor Name</th>
+                    <th>schedule</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of schedules|paginate: { itemsPerPage: 10, currentPage: p ,totalItems:totallength};let y=index">
+                    <td class="col4">{{y+1}}</td>
+                    <td class="col4">{{i.doctorName}}</td>
+                    <td>
+                        <table class=" schedule2-tables">
+                            <tr>
+                                <th>day of work</th>
+                                <th>start time</th>
+                                <th>end time</th>
+                                <th>time per patient</th>
+                                <th>option</th>
+                            </tr>
+                            <tr *ngFor="let j of i.scheduleObjects;let m=index">
+                                <td>
+                                    <select [disabled]=true value="{{j.dayOfWork}}" #day>
+                                        <option value="0">sunday</option>
+                                        <option value="1">monday</option>
+                                        <option value="2">tuesday</option>
+                                        <option value="3">wednesday</option>
+                                        <option value="4">thursday</option>
+                                        <option value="5">friday</option>
+                                        <option value="6">saturday</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <p class="col8">{{j.startTime}}</p>
+                                </td>
+                                <td>
+                                    <p class="col8">{{j.endTime}}</p>
+                                </td>
+                                <td>
+                                    <p class="col8">{{j.timePerPatient}}</p>
+                                </td>
+                                <td>
+                                    <button (click)="delet(y,m)">
+                                        <i class="fa-solid fa-trash" style="color:red"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    <pagination-controls *ngIf="schedules.length>0" style="margin:3rem 0;"(pageChange)="p = $event"></pagination-controls>
+    <div class="alert alert-danger mess" role="alert" [ngClass]="{'show':show}">
+        <p> you want delete this schedule</p>
+        <div class="row justify-content-center">
+            <div class="col-1">
+                <button (click)="deleteschadle()" style="color:red">yes</button>
+            </div>
+            <div class="col-1">
+                <button (click)="close()">no</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loading&&schedules.length==0"  style="width:50%;text-align: center; margin:0 auto;color:red">No schedule</div>
+</div>

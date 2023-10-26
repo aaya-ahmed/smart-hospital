@@ -1,0 +1,61 @@
+.table-responsive{
+    width:95%;
+    margin: 0 auto;
+    height:60vh;
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: auto;
+}
+table thead{
+    background-color: aliceblue;
+}
+button{
+    border:none;
+    outline:none;
+    background-color: teal;
+    padding: 0.3rem .5rem;
+    color:white;
+    border-radius: 3px;
+
+}
+.statistics,.appoint{
+    width: 100%;
+}
+.icon{
+    width: 60px;
+    height: 60px;
+}
+.row{
+    width: 95%;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+.row .col-md-5,.row .col-md-4{
+    background-color: white;
+    border-radius: 3px;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+.nodata{
+    width: 88%;
+    text-align: center;
+    margin: 1rem auto;
+    padding: 1rem;
+    color:red;
+    background-color: white;
+    height:83vh
+
+}
+.nodata img{
+    width:70px;
+    height: 70px;
+}
+.alert-dismissible{
+    position: fixed;
+    width: 30%;
+    margin: 0 auto;
+    left: 40%;
+    top: 25rem;
+    opacity: 1;
+}

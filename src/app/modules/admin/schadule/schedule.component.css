@@ -1,0 +1,35 @@
+.fluid-container{
+    width:97%;
+    margin:auto;
+    
+}
+.fluid-container .row{
+    width: 100%;
+    padding: 0.6rem 0;
+    border-bottom: 2px solid gray;
+    margin: 0 auto;
+    gap: 10px;
+}
+.add_btn,.show_btn{
+    width:200px
+}
+.add_btn button,.show_btn button{
+    width:150px;
+    margin: 0 auto;
+    background-color: #17385e;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.show_btn .active, .add_btn .active{
+    background-color: #83a188;
+}
+.main-page{
+    width: 100%;
+    overflow-y: auto;
+    margin: 0 auto;
+}

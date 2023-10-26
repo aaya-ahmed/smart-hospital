@@ -1,0 +1,30 @@
+<div class="collapse" id="requestlab">
+    <div class="card w-100 ">
+        <div class="card-body">
+            <div class="lab">
+                <select class="form-select" (change)="add_lab_to_list($event)" >
+                    <option value="0">-- Select Test --</option>
+                    <option *ngFor="let lab of testsList;let j=index" value="{{j}}">{{lab.name}}</option>
+                </select>
+            </div>
+            <div class="showlist">
+                <h5>Tests List</h5>
+                <div>
+                    <p *ngFor="let labName of RequstList;let i=index">
+                        <button type="button" (click)="remove_from_lab_list(i)"><i style="color:red" class="fa fa-trash"  aria-hidden="true"></i></button>
+                        <i>{{labName.labName}}</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" (click)="send_lab_request()">Send Request</button>
+        </div>
+    </div>
+</div>
+<div class="alert alert-success alert-dismissible fade sucessmes" role="alert" [ngClass]="{'successshow':successflag}">
+    <strong>success !</strong>
+  </div>
+<div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':errorflag}">
+    error!
+  </div>

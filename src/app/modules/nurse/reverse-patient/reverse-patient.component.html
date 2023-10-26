@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-12 py-2">
+            <header>
+                <h3>
+                   Reverse Patient
+                </h3>
+            </header>
+            <form #form="ngForm" (ngSubmit)="submit(form)" >
+                <div class="row py-2 justify-content-around">
+                    <div class="col-md-5 col-12">
+                        <label>Patient Name</label>
+                        <input type="text" class="form-select" id="name" list="patientname" required name="patient" ngModel #patient="ngModel">
+                        <datalist id="patientname" [ngClass]="{'is-invalid':patient.errors?.['required']&&patient.touched||patient.errors?.['required']&&form.submitted}">
+                            <option *ngFor="let i of patients" value="{{i.firstName}} {{i.lastName}}"> 
+                        </datalist>
+                        <div class="invalid-feedback">
+                            {{patient.errors?.['required']&&patient.touched||patient.errors?.['required']&&form.submitted?"this is required":''}}
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label>Doctor Name</label>
+                        <select class="form-select" required name="doctor" ngModel #doctor="ngModel" [ngClass]="{'is-invalid':doctor.errors?.['required']&&doctor.touched||doctor.errors?.['required']&&form.submitted}">
+                            <option></option>
+                            <option *ngFor="let i of doctors;let j=index" value="{{i.id}}">{{i.firstName}}{{i.lastName}}</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            {{doctor.errors?.['required']&&doctor.touched||doctor.errors?.['required']&&form.submitted?"this is required":''}}
+                        </div>
+                    </div>               
+                </div>
+                <div class="row py-2 justify-content-around">
+                    <div class="col-md-5 col-12">
+                        <label>Department</label>
+                        <input class="form-control" type="text" value="{{departmentname}}" disabled/>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label>Room </label>
+                        <select class="form-select" required (change)="getfreebeds($event)"  name="room" ngModel #room="ngModel" [ngClass]="{'is-invalid':room.errors?.['required']&&room.touched||room.errors?.['required']&&form.submitted}">
+                            <option></option>
+                            <option *ngFor="let i of rooms;let j=index" value="{{i.id}}">{{i.roomNumber}}{{i.roomType}}</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            {{room.errors?.['required']&&room.touched||room.errors?.['required']&&form.submitted?"this is required":''}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 justify-content-around">
+                    <div class="col-md-5 col-12">
+                        <label>Bed Number</label>
+                        <select class="form-select" required name="bed" ngModel #bed="ngModel" [ngClass]="{'is-invalid':bed.errors?.['required']&&bed.touched||bed.errors?.['required']&&form.submitted}">
+                            <option></option>    
+                            <option *ngFor="let i of freebeds" value="{{i.id}}">{{i.number}}</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            {{bed.errors?.['required']&&bed.touched||bed.errors?.['required']&&form.submitted?"this is required":''}}
+                        </div>
+                    </div>
+                    <div class="col-5"></div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-md-11 col-12 py-2">
+                        <label>cause Of Admission</label>
+                        <textarea class="form-control" rows="20" cols="40" required name="causeOfAdmission" ngModel #causeOfAdmission="ngModel" [ngClass]="{'is-invalid':causeOfAdmission.errors?.['required']&&causeOfAdmission.touched||causeOfAdmission.errors?.['required']&&form.submitted}" >
+                        </textarea>
+                        <div class="invalid-feedback">
+                            {{causeOfAdmission.errors?.['required']&&causeOfAdmission.touched||causeOfAdmission.errors?.['required']&&form.submitted?"this is required":''}}
+                        </div>
+                    </div>
+                    <div class="col-md-11 col-12 py-2">
+                        <label>Medical History</label>
+                        <textarea class="form-control"  rows="20" cols="40" required name="oralMedicalHistory" ngModel #oralMedicalHistory="ngModel" [ngClass]="{'is-invalid':oralMedicalHistory.errors?.['required']&&oralMedicalHistory.touched||oralMedicalHistory.errors?.['required']&&form.submitted}">
+                        </textarea>
+                        <div class="invalid-feedback">
+                            {{oralMedicalHistory.errors?.['required']&&oralMedicalHistory.touched||oralMedicalHistory.errors?.['required']&&form.submitted?"this is required":''}}
+                        </div>
+                    </div>
+                    <div class="col-md-11 col-12 py-2">
+                        <button id="submit-btn" type="submit">submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    

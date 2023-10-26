@@ -1,0 +1,44 @@
+.head {
+    border-bottom: 2px solid #0d0c5f;
+}
+
+.form-control {
+    border: 1px solid rgb(24, 24, 112);
+    width: 100%;
+}
+.searching {
+    width: 100%;
+    padding: 1rem 0.5rem;
+}
+.searching label {
+    width: 90%;
+    border: none;
+    text-decoration: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.searching a:active {
+    color: black;
+}
+.searching button {
+    padding: 0.5rem 2rem;
+}
+.serach {
+    visibility: hidden;
+    position: absolute;
+}
+div.searching-fields {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+input:checked~div.searching-fields {
+    max-height: fit-content;
+    padding: 1rem;
+    background-color: white;
+    margin-top: 0.3rem;
+}
+
+

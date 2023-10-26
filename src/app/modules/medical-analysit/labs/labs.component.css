@@ -1,0 +1,246 @@
+
+
+
+.display-info {
+    width: 100%;
+    height: 70vh;
+}
+.alert-danger{
+    z-index:999 !important; 
+    position: fixed;
+    width: 500px;
+    margin: auto;
+    margin-left: 60px;
+    top: 24rem;
+    text-align: center;
+}
+.alert-warning{
+    z-index:999 !important; 
+    position: fixed;
+    width: 300px;
+    margin: auto;
+   
+    top: 24rem;
+  }
+
+
+
+label{
+    font-weight: 500;
+    
+}
+
+
+.infield{
+    width: 60%;
+}
+
+.fa-edit{
+    color: green;
+}
+.fa-trash{
+    color: red;
+}
+.fa-times{
+    color: white;
+    background-color: red;
+    display: inline;
+   
+   
+}
+.headline{
+    color: white;
+    background-color: #38608d;
+    width: 25%;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+}
+
+
+h4{
+    border-radius: 5px;
+        color: white;
+        background-color: rgb(13, 172, 158);
+        width: 35%;
+        text-align: center;
+}
+
+
+@media(max-width: 510px) {
+    .patient-info,table{
+        font-size: 10px;
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+div.adding-form {
+    width: 90%;
+    max-height: 0px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+input:checked~div.adding-form {
+    max-height: fit-content;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.adding-form form label {
+    margin: 10px 0;
+    font-size: 20px;
+}
+.adding-label{
+    text-align: center;
+}
+.adding-label label {
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    padding: 1.5rem;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(255, 60, 0);
+}
+.table-responsive.paramter-table{
+    width: 100%;
+}
+.table-striped{
+    width: 100%;
+   
+}
+.table-striped thead{
+    background-color: none;
+}
+.table-responsive{
+    overflow: auto;
+    width: 60%;
+    margin:0 auto;
+    background-color: white;
+}
+table thead{
+    background-color: aliceblue;
+}
+.form-control1{
+    height:5vh;
+    border-bottom: 2px solid #70b175;
+}
+.form-control1:focus{
+    outline: none;
+    border: none;
+    border-color: transparent;
+    box-shadow: none;
+
+    border-top-style: hidden;
+}
+.col-sm-8{
+    width:60%
+}
+
+#add_btn{
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    background-color: #338668;
+    float: right;
+    margin-right: 2rem;
+  }
+  .alert-dismissible{
+    position: fixed;
+    width: 70%;
+    margin: 0 auto;
+    top: 19rem;
+    left: 16%;
+    display: none;
+    height:7vh
+  }
+  .successmes,.errormes{
+    display: none;
+    position: absolute;
+    top:60px;
+  }
+  .successshow,.errorshow{
+    display: block;
+  }
+  
+.col-sm-4{
+    padding: 40px 0px 0px 20px;
+}
+input[type=checkbox] {
+    visibility: hidden;
+    position: absolute;
+}
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+  }
+.is-invalid{
+    border-color: red;
+}
+.container1{
+    position: relative;
+    top:-300px;
+    width:60%;
+    height:100vh;
+    margin: 0 auto;
+    background-color: white;
+}
+.container1 form{
+    width:60%;
+    margin: 0 auto;
+}
+.container1 form .col-sm-8{
+    width: 100%;
+}
+.form-check{
+    width:80%;
+}
+.form-check .form-check-input {
+    margin-left: 0.5em;}
+
+.updating-header{
+    display: flex;
+    background-color: steelblue;
+    padding: 0 2px;
+}
+.updating-header h3{
+    width:80%;
+    text-align: center;
+}
+.update_btn{
+    width: 100%;
+}
+
+.hidden-adding{
+    display: none;
+  }
+  .toggle-addmodel{
+    display: block;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: -webkit-fill-available;
+    top: 0;
+    left: 0;
+  }
+  .hidden-update{
+    display: none;
+  }
+  .toggle-updatemodel{
+    display: block;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: -webkit-fill-available;
+    top: 0;
+    left: 0;
+  }

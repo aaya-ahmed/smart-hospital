@@ -1,0 +1,72 @@
+<main class="container">
+    <header class="row justify-content-around align-content-center">
+        <button class="col-1" (click)="close()">
+            <span class="fa-solid fa-xmark"></span>
+        </button>
+        <h3 class="col-9 m-0">DR/ {{doctorinfo.firstName}} {{doctorinfo.lastName}}</h3>
+    </header>
+    <section class="fluid-container">
+            <div class="p-3">
+                <label>Name</label>
+                <span>{{doctorinfo.firstName}} {{doctorinfo.lastName}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctoruname">User Name</label>
+                <span>{{doctorinfo.userName}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="nationalId">National Id</label>
+                <span>{{doctorinfo.nationalId}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="age">Age</label>
+                <span>{{doctorinfo.age}}</span>
+            </div>            
+            <div class="p-3">
+                <label class="form-lable" for="gender">gender</label>
+                <span>{{doctorinfo.gender}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="bloodtype">bloodtype</label>
+                <span>{{doctorinfo.bloodType}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Email">Email</label>
+                <span>{{doctorinfo.mail}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="phone">phone</label>
+                <span>{{doctorinfo.phoneNumber}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable label1" for="address">address</label>
+                <span>{{doctorinfo.address}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Department">Department</label>
+                <span>{{doctorinfo.departmentName}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="specialization">specialization</label>
+                <span>{{doctorinfo.docSpecialization}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Degree">Degree</label>
+                <span>{{doctorinfo.docDegree}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="hiring">Hiring Date</label>
+                <span>{{doctorinfo.createdDtm|date:'yyyy-mm-dd'}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable success" for="active" >Active</label>
+                <span  class="text-success" *ngIf="doctorinfo.isActive">Yes</span>
+                <span  class="text-danger" *ngIf="!doctorinfo.isActive">No</span>
+            </div> 
+            <div class="p-3">
+                <label class="form-lable2 success" for="clinic">Has clinic?</label>
+                <span  class="text-success" *ngIf="doctorinfo.clinicalDoctor">Yes</span>
+                <span  class="text-danger" *ngIf="!doctorinfo.clinicalDoctor">No</span>
+            </div> 
+    </section>
+</main>

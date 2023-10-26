@@ -1,0 +1,180 @@
+        <form  [formGroup]="addLabGroup" #myForm="ngForm" (ngSubmit)="addLab()" class="newrayform">
+            <div class="row mx-auto justify-content-between py-3 ">
+                <div class="col-md-6 col-12">
+                    <label> Test Name:&nbsp;</label> 
+                    <input type="text" class="form-control form-control1" formControlName="testName"
+                    [ngClass]="((testName?.touched && testName?.dirty) || myForm?.['submitted']) && testName?.hasError('required')
+                    ? 'is-invalid' : '' || testName?.hasError('minlength') 
+                    ? 'is-invalid' : '' || ((testName?.touched || testName?.dirty)&& !testName?.invalid)
+                    ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                        {{testName?.hasError('required')?"This field is reqired":''}}
+                        {{testName?.hasError('minlength')?"Test Name must contain at least 2 characters":''}}
+                    </div>
+                 </div>
+                <div class="col-md-6 col-12">
+                    <label for="discharge">Test Charge:&nbsp;</label> 
+                    <input type="text" class="form-control form-control1" id="discharge" formControlName="testCharge" 
+                     [ngClass]="((testCharge?.touched && testCharge?.invalid) ||( myForm?.['submitted'])&& testCharge?.hasError('required'))
+                     ? 'is-invalid' : '' || testCharge?.hasError('pattern') 
+                     ? 'is-invalid' : '' || ((testCharge?.touched || testCharge?.dirty)&& !testCharge?.invalid)
+                     ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                     {{testCharge?.hasError('required')?"This field is reqired":''}}
+                     {{testCharge?.hasError('pattern')?"Can Contain numbers and decimal point(.)":''}}
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="!updateflag">
+                <h4 class="row">
+                    <span class="col-12">
+                        Numerical Paramters
+                    </span>
+                </h4>
+                <div formArrayName="numericalParamters">
+                    <ng-container *ngIf="addLabGroup.controls['numericalParamters']!=null" >
+                        <div class="table-responsive paramter-table" >
+                            <table class="table table-striped ">
+                                <thead>
+                                    <tr>
+                                        <th class="col-2">Paramter Name</th>
+                                        <th class="col-2">Unit</th>
+                                        <th class="col-2">Min.Normal Value</th>
+                                        <th class="col-2">Max.Normal Value</th>
+                                        <th class="col-1 add-btn">
+                                            <div class="fa fa-plus num-fa" aria-hidden="true" (click)="addNumericalParamters()"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let paramrow of numericalParamters.controls; let i=index" [formGroupName]="i" >
+                                        <td>
+                                            <input type="text" class="form-control form-control1" formControlName="testParameterName"
+                                            [ngClass]=" (numericalParamters.controls[i].get('testParameterName')?.touched || numericalParamters.controls[i].get('testParameterName')?.dirty 
+                                            || myForm?.['submitted'])&& numericalParamters.controls[i].get('testParameterName')?.hasError('required')
+                                            ? 'is-invalid' : '' || ((numericalParamters.controls[i].get('testParameterName')?.dirty)
+                                            && !(numericalParamters.controls[i].get('testParameterName')?.invalid))
+                                            ?  'is-valid' : '' " />
+                                            <div class="invalid-feedback">
+                                                {{numericalParamters.controls[i].get('testParameterName')?.hasError('required')?"This field is reqired":''}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control1" formControlName="unit" />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control1 " formControlName="min_Range"  
+                                            [ngClass]=" (numericalParamters.controls[i].get('min_Range')?.touched || numericalParamters.controls[i].get('min_Range')?.dirty 
+                                            || myForm?.['submitted'])&& numericalParamters.controls[i].get('min_Range')?.hasError('required')
+                                            ? 'is-invalid' : '' || numericalParamters.controls[i].get('min_Range')?.hasError('pattern') 
+                                            ? 'is-invalid' : '' || ((numericalParamters.controls[i].get('min_Range')?.dirty)
+                                            && !(numericalParamters.controls[i].get('min_Range')?.invalid))
+                                            ?  'is-valid' : '' " />
+                                            <div class="invalid-feedback">
+                                                {{numericalParamters.controls[i].get('min_Range')?.hasError('required')?"This field is reqired":''}}
+                                                {{numericalParamters.controls[i].get('min_Range')?.hasError('pattern')?"Can Contain numbers and decimal point(.)":''}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-control1 " formControlName="max_Range"  
+                                            [ngClass]=" (numericalParamters.controls[i].get('max_Range')?.touched || numericalParamters.controls[i].get('max_Range')?.dirty 
+                                            || myForm?.['submitted'])&& numericalParamters.controls[i].get('max_Range')?.hasError('required')
+                                            ? 'is-invalid' : '' || numericalParamters.controls[i].get('max_Range')?.hasError('pattern') 
+                                            ? 'is-invalid' : '' || ((numericalParamters.controls[i].get('max_Range')?.dirty)
+                                            && !(numericalParamters.controls[i].get('max_Range')?.invalid))?  'is-valid' : '' " />
+                                            <div class="invalid-feedback">
+                                                {{numericalParamters.controls[i].get('max_Range')?.hasError('required')?"This field is reqired":''}}
+                                                {{numericalParamters.controls[i].get('max_Range')?.hasError('pattern')?"Can Contain numbers and decimal point(.)":''}}
+                                            </div>
+                                        </td>
+                                        <td class="del-row">
+                                            <div class="fas fa-times fa-dalete1" (click)="deleteNumericalParamter(i)"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                  </div>
+                </ng-container>
+            </div>
+            <h4 class="row">
+                <span class="col-12">
+                    Catogerical Paramters:
+                </span>
+            </h4>
+            <div formArrayName="categoricalParamters">
+                <ng-container *ngIf="addLabGroup.controls['categoricalParamters']!=null" >
+                        <div class="table-responsive paramter-table" >
+                            <table class="table table-striped ">
+                                <thead>
+                                    <tr >
+                                        <th class="col-2">Paramter Name</th>
+                                        <th class="col-2">Unit</th>
+                                        <th class="col-2">Normal Value</th>
+                                        <th class="col-1 add-btn">
+                                            <div class="fa fa-plus cat-fa" aria-hidden="true" (click)="addcategoricalParamters()">
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let catamrow of categoricalParamters.controls; let i=index "[formGroupName]="i" >
+                                        <td class="col-xs-3"><input type="text" class="form-control form-control1 " formControlName="testParameterName" 
+                                        [ngClass]=" (categoricalParamters.controls[i].get('testParameterName')?.touched || categoricalParamters.controls[i].get('testParameterName')?.dirty 
+                                        || myForm?.['submitted'])&& categoricalParamters.controls[i].get('testParameterName')?.hasError('required')
+                                        ? 'is-invalid' : '' || ((categoricalParamters.controls[i].get('testParameterName')?.dirty)
+                                        && !(categoricalParamters.controls[i].get('testParameterName')?.invalid))
+                                        ?  'is-valid' : '' " />
+                                        <div class="invalid-feedback">
+                                            {{categoricalParamters.controls[i].get('testParameterName')?.hasError('required')?"This field is reqired":''}}
+                                            </div>
+                                    </td>
+                                        <td class="col-xs-3"><input type="text" class="form-control form-control1 " formControlName="unit" /> </td>
+                                        <td class="col-xs-3"> <input type="text" class="form-control form-control1" formControlName="normalvalue" 
+                                        [ngClass]=" (categoricalParamters.controls[i].get('normalvalue')?.touched || categoricalParamters.controls[i].get('normalvalue')?.dirty 
+                                        || myForm?.['submitted'])&& categoricalParamters.controls[i].get('normalvalue')?.hasError('required')
+                                        ? 'is-invalid' : '' || ((categoricalParamters.controls[i].get('normalvalue')?.dirty)
+                                        && !(categoricalParamters.controls[i].get('normalvalue')?.invalid))
+                                        ?  'is-valid' : '' " />
+                                        <div class="invalid-feedback">
+                                            {{categoricalParamters.controls[i].get('normalvalue')?.hasError('required')?"This field is reqired":''}}
+                                            </div>
+                                        </td>
+                                        <td class="del-row"><div class="fas fa-times fa-dalete " (click)="deleteCategoricalParamters(i)"></div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+            <div class="row p-3 justify-content-start">
+                <div class=" col-sm-2">
+                    <input [hidden]="updateflag" type="submit" id="add_btn" class="form-control btn" value="Add">
+                    <input  [hidden]="!updateflag"  type="submit" id="add_btn" class="form-control btn" value="Update">
+                    <div *ngIf="submitted&&addLabGroup.valid" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+                </div>
+            </div> 
+        </form>
+        <!-- <form #formdata="ngForm" (ngSubmit)="save(formdata)">
+            <div class="p-3">
+                <label class="form-lable" for="doctorfname"> Scan Name </label>
+                <input type="text" id="scanname" name="scanname" class="form-control form-control1" 
+                required #scanname="ngModel" [(ngModel)]="scan.scanName" [disabled]="updateflag"/>
+                <div class="invalid-feedback">
+                  {{(scanname.errors?.['required']&&formdata.submitted)?"this is required":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctorfname">  Scan Charge </label>
+                <input type="number" id="scancharge" [(ngModel)]="scan.scanCharge" [min]="10" name="Charge" class="form-control form-control1" min="100" #Charge="ngModel" required ngModel />          
+                <div class="invalid-feedback">
+                  {{(Charge.errors?.['required']&&formdata.submitted)?"this is required":''}}
+                  {{(Charge.errors?.['min']&&formdata.submitted)?"min value is 10":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="col-sm-3">
+                    
+                </div>
+            </div>
+        </form> -->

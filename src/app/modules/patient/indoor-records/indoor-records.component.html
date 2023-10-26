@@ -1,0 +1,72 @@
+<div class="fluid-container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reserving Date</th>
+                    <th>Discharge Date</th>
+                    <th>Room Type</th>
+                    <th>Floor Number</th>
+                    <th>Room Number</th>
+                    <th>Bed Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of indoorPatientRecords |paginate: {itemsPerPage:10,currentPage:p,totalItems:indoorPatientRecords.length};let j=index">
+                    <td>{{i.enterDate|date:'shortDate'}}</td>
+                    <td>{{i.discahrgeDate|date:'shortDate'}}</td>
+                    <td>{{i.roomType}}</td>
+                    <td>{{i.floorNumber}}</td>
+                    <td>{{i.roomNumber}}</td>
+                    <td>{{i.bedNumber}}</td>
+                    <td class="options">
+                        <span (click)="getreportInfo(j)" ><img src="assets/pdficon.png"/></span>
+                        <span (click)="getPrescriptionsInfo(j)"><i class="fa-solid fa-prescription fa-xl"></i></span>
+                        <span (click)="getTestsInfo(j)" ><i class="fa-solid fa-flask fa-xl"></i></span>
+                        <span (click)="getscanInfo(j)" ><i class="fa-solid fa-x-ray fa-xl"></i></span>
+                    </td>
+                </tr>
+            </tbody>    
+        </table>
+    </div>
+    <pagination-controls (pageChange)="$event"></pagination-controls>
+    <br/>
+    <br/>
+    <div *ngIf="showPrescriptionsflag">
+    <div *ngIf="showPrescriptionsflag ;then prescriptiontable; else nopres"></div>
+    <ng-template #prescriptiontable>
+        <div class="table-responsive">
+            <h4>Prescriptions</h4>
+            <div *ngFor="let i of prescriptions;let j=index">
+                <img src="assets/pdficon.png" (click)="getPrescriptionByPrescriptionId(i.prescriptionId)"/>
+                {{i.prescription_Date |date: 'shortDate'}}
+            </div>                            
+        </div>
+    </ng-template>
+    <ng-template #nopres>
+        <img class="noAppointImg" src="../assets/no appoint icon.webp">
+        <p>You Don't have Prescriptions In this Record</p>
+    </ng-template>
+</div> 
+<div *ngIf="showTestsFlag; then teststable"></div>
+    <ng-template #teststable>
+            <div class="table-responsive">
+                <h4>Tests</h4>
+                <div *ngFor="let i of tests;let j=index">
+                    <img src="assets/pdficon.png" (click)="getTestId(i.patientTestId)"/>
+                    {{i.testDate |date: 'shortDate'}}
+                </div>
+            </div>  
+    </ng-template> 
+    <div *ngIf="showScansFlag; then scanstable"></div>
+    <ng-template #scanstable>
+        <div class="table-responsive">
+            <h4>Scans</h4>
+            <div *ngFor="let i of scans;let j=index">
+                <img src="assets/pdficon.png" (click)="getScanId(i.patientScanId)"/>
+                {{i.scanDate |date: 'shortDate'}}
+            </div>  
+        </div>
+    </ng-template>
+</div>

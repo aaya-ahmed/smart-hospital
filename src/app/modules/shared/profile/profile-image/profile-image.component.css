@@ -1,0 +1,52 @@
+table{
+    width: 100%;
+    text-align: center;
+}
+img{
+width: 150px;
+height: 150px;
+border-radius: 10px;
+}
+#actual-btn{
+    padding: 0.4rem;;
+    background-color: #85bda8;
+    color: white;
+    border-radius: 5px;
+}
+.col4 button{
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 1rem;
+}
+.col2{
+    font-size: 20px;
+    font-weight: 600;
+}
+.col3{
+    color: rgba(128, 128, 128, 0.753);
+}
+.col3-title{
+    padding: 0 0.3rem;
+  
+}
+@media(max-width:970px){
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        }
+}
+
+@media(max-width:795px){
+    table{
+        margin: 4rem 0;
+    }
+}
+@media(max-width:645px){
+     table{
+        margin: 0;
+    }
+
+}

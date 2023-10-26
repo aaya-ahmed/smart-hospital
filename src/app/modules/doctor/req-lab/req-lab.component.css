@@ -1,0 +1,119 @@
+.collapse{
+    display: block;
+}
+.card-body{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+}
+.card-footer{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 37px;
+}
+.card-footer button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #3F828D;
+    color: white;
+    font-size: medium;
+    padding: 0.2rem 0.5rem;
+    float: right;
+
+}
+
+.btn-check:focus+.btn, .btn:focus {
+    outline: 0;
+    box-shadow:none;
+}
+.btn{
+    font-size: 20px;
+    background-color: #3F828D;
+    padding: 0.3rem 1rem;
+    margin: 0;
+    color: white;
+}
+.btn label{
+    width:250px;
+    cursor: pointer;
+}
+.form-select{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    appearance: none;
+    /* appearance: none; */
+}
+.form-select:focus {
+    outline: 0;
+    box-shadow:none;
+}
+
+.lab , .showlist{
+    width:50%;
+    height:20vh;
+
+}
+.lab select{
+    width:80%
+}
+.showlist div{
+    overflow-y: auto;
+    height: 68%;
+}
+.error{
+    display: none;
+}
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+  }
+
+.showlist p button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 0 2px;
+}
+.showlist h5{
+    width: 100%;
+    background-color: #3F828D;
+    text-align: center;
+    padding: 0.2rem 0;
+    color: white;
+    margin: 0.5rem 0 0 0;
+}
+.alert-dismissible{
+    position: fixed;
+    width: 20%;
+    margin: 0 auto;
+    top: 16.5rem;
+    left: 45%;
+}
+.successmes,.errormes{
+    display: none;
+}
+
+.successshow,.errorshow{
+    display: block;
+    opacity: 1;
+}

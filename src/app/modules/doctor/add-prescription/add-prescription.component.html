@@ -1,0 +1,165 @@
+<div class="fluid-container">
+    <div class="container container-sm">
+        <header>
+            <div class="logo">
+                <img src="assets/logo.png" width="80px" height="80px" />
+                <p><strong>Fayoum University hospital</strong></p>
+            </div>
+            <div class="patient-info">
+                <table>
+                    <tr>
+                        <th>Patient Name:</th>
+                        <td>{{patient.patientName}}</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor Name:</th>
+                        <td>{{doctorInfo.firstName}}&nbsp;{{doctorInfo.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender:</th>
+                        <td>{{patient.gender}}</td>
+                    </tr>
+                    <tr>
+                        <th>Departement:</th>
+                        <td>{{doctorInfo.departmentName}}</td>
+                    </tr>
+                </table>
+            </div>  
+        </header>
+        <hr>
+        <main>
+            <form class="form" name="form"  #myForm="ngForm" (ngSubmit)="myForm.form.valid">
+                <body>
+                <div class="row" *ngFor="let item of prescriptionItem ;let i=index">
+                    <div class="title">
+                        <p>Medicine {{i+1}}</p>
+                        <div class="btn fas fa-times" (click)="deleteRow(i)"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>M.Name</h4>
+                        <input type="text" class="form-control"  #item.medicine_Name="ngModel" [(ngModel)]="item.medicine_Name" name="{{item.medicine_Name}}" [ngModelOptions]="{standalone: true}" required  ngModel
+                        [ngClass]="{'is-invalid':item.medicine_Name.errors?.['required']&&myForm.submitted||item.medicine_Name.touched&&item.medicine_Name.invalid}" />
+                        <div *ngIf="item.medicine_Name.errors?.['required']&&myForm.submitted||item.medicine_Name.touched&&item.medicine_Name.invalid" class="invalid-feedback">
+                            This Field is  Requied
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>M.Type </h4>
+                        <input type="text" class="form-control" [(ngModel)]="item.medicineType" name="{{item.medicineType}}" [ngModelOptions]="{standalone: true}" id="dept" list="medicine_type" required  ngModel >
+                                    <datalist id="medicine_type" required>
+                                        <option value="Liquid">
+                                        <option value="Capsules">
+                                        <option value="Drops">
+                                        <option value="Injections">  
+                                        <option value="Rectal Suppositories">      
+                                    </datalist>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>M.strength</h4>
+                        <input type="text" class="form-control" [(ngModel)]="item.medicine_concentration" name="{{item.medicine_concentration}}" [ngModelOptions]="{standalone: true}" required  ngModel
+                                    [ngClass]="{'is-invalid':item.medicine_concentration.errors?.['required']&&myForm.submitted||item.medicine_concentration.touched&&item.medicine_concentration.invalid}" />
+                                    <div *ngIf="item.medicine_concentration.errors?.['required']&&myForm.submitted||item.medicine_concentration.touched&&item.medicine_concentration.invalid" class="invalid-feedback">
+                                        This Field is  Requied
+                                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Duration</h4>
+                        <div class="input-group">
+                            <input type="number" class="form-control" required [(ngModel)]="item.durarionNum" name="{{item.durarionNum}}" [ngModelOptions]="{standalone: true}" style="width: 50%;"
+                            [ngClass]="{'is-invalid':item.durarionNum.errors?.['required']&&myForm.submitted||item.durarionNum.touched&&item.durarionNum.invalid}" required  ngModel />
+                            <div *ngIf="item.durarionNum.errors?.['required']&&myForm.submitted||item.durarionNum.touched&&item.durarionNum.invalid" class="invalid-feedback">
+                                This Field is  Requied
+                            </div>
+                            <select class="form-select"required aria-label="Default select example" [(ngModel)]="item.durarionReptition" name="{{item.durarionReptition}}" [ngModelOptions]="{standalone: true}" style="width: 50%;">
+                                <option value="days" selected>Days</option>
+                                <option value="months">Months</option>
+                                <option value="years">Years</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Dose</h4>
+                        <div class="input-group">
+                            <input type="number" class="form-control" required [(ngModel)]="item.doseNumber"name="{{item.doseNumber}}" [ngModelOptions]="{standalone: true}" style="width: 50%;"  ngModel
+                            [ngClass]="{'is-invalid':item.doseNumber.errors?.['required']&&myForm.submitted||item.doseNumber.touched&&item.doseNumber.invalid}" />
+                            <div *ngIf="item.doseNumber.errors?.['required']&&myForm.submitted||item.doseNumber.touched&&item.doseNumber.invalid" class="invalid-feedback">
+                                This Field is  Requied
+                            </div>
+                            <select class="form-select" required aria-label="Default select example" [(ngModel)]="item.doseRepition" name="{{item.doseRepition}}" [ngModelOptions]="{standalone: true}" style="width: 50%;">
+                                <option value="Daily" selected>Daily</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Yearly">Yearly</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h4>Instructions</h4>
+                        <input type="text" class="form-control" [(ngModel)]="item.instructions" name="{{item.instructions}}" [ngModelOptions]="{standalone: true}" >
+                    </div>
+                </div>
+                <div class="fa fa-plus btn btn-success my-4" aria-hidden="true" (click)="addRow()"></div>
+
+                <div class="row dignoise" [ngClass]="{'show':flag}">
+                    <div class="col-md-12">
+                        <h4>Medical Diagnosis</h4>
+                        <textarea class="md-textarea form-control" rows="2" name="diagnosis" required ngModel #diagnosis="ngModel" 
+                                    [ngClass]="(diagnosis.touched || diagnosis.dirty ||myForm?.['submitted'])&& diagnosis.hasError('required')
+                                    ? 'is-invalid' : '' || ((diagnosis.touched || diagnosis.dirty)&& !diagnosis.invalid)
+                                    ?  'is-valid' : '' "></textarea>
+                    <div class="invalid-feedback">
+                        {{(diagnosis.touched || diagnosis.dirty ||myForm?.['submitted'])&& diagnosis.hasError('required')?"this field is required":''}}
+                    </div>
+                    </div>
+                </div>
+                </body>
+                <hr width="95%" style="border:2px solid black">
+            </form>
+            <form class="form" name="form" [ngClass]="{'show':flag}"  #appointForm="ngForm" (ngSubmit)="appointForm.form.valid">
+                    <div  class="row reappointment-section" >
+                        <div class="col-md-4"  *ngIf="outpatientflag">
+                            <label class="px-2">date of re-examination</label>
+                            <mat-form-field >
+                                <input #minmaxInput matInput 
+                                name="reAppointDate"
+                                 #reAppointDate
+                                  ngModel="reAppointDate"
+                                  [min]="minDate" 
+                                  [max]="maxDate"
+                                 
+                                  (dateChange)="freetime($event)"
+                                  [matDatepickerFilter]="weekendsDatesFilter"
+                                  [matDatepicker]="minmaxvalidation" 
+                                  placeholder="choose your date"
+                                  aria-owns="mat-datepicker-3">
+                                <mat-datepicker-toggle matSuffix [for]="minmaxvalidation" style="display:block">
+                                   </mat-datepicker-toggle>
+                                <mat-datepicker #minmaxvalidation ></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+                        <div class="col-md-4" *ngIf="outpatientflag">
+                            <label>time</label>
+                            <select class="form-select"  name="reAppointTime" [ngClass]="{'is-invalid':timeflag}" #reAppointTime ngModel="reAppointTime" >
+                                <option *ngFor="let i of slot;let j=index" value="{{j}}">{{i.slotTime}}</option>
+                            </select>
+                           <div class="invalid-feedback" *ngIf="timeflag">
+                            this field is required
+                           </div>
+                        </div>
+                    </div>
+                <div class="row p-3 justify-content-end " >
+                    <div class="col-sm-3 ">
+                        <input type="submit" value="submit" (click)="addAppointment(appointForm,myForm)" class="form-control" id="submit" />
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+    </div>
+    <div class="alert alert-success alert-dismissible fade sucessmes" role="alert" [ngClass]="{'successshow':precflag}">
+        <strong>success !</strong>
+      </div>
+    <div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':messflag}">
+        please enter prescription
+      </div>

@@ -1,0 +1,160 @@
+.fluid-container{
+    width:100%;
+    margin: 0 auto;
+    padding: 1rem 0.5rem;
+}
+header{
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+}
+.department-list label,.doctor-list label{
+    font-size: 20px;
+    padding: 0.5rem 0rem 0.5rem 0;
+}
+.department-list,.doctor-list{
+    margin: 0.4rem 1rem 0.4rem 0;
+}
+
+.form-select:focus{
+box-shadow: none;
+}
+.form-control:focus{
+    box-shadow: none;
+    }
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+    border-color:red ;
+  }
+.addrow{
+    background-color: teal;
+    outline: none;
+    border: none;
+    color: white;
+}
+  button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.submit_btn{
+    background-color: aliceblue;
+    color: black;
+    float: right;
+    background-color: #8cb8df;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    margin: 0 1rem 0 0;
+}
+.update-div{
+    width:60%;
+    margin: 1.5rem auto;
+}
+.update-class{
+    width: 100%;
+}
+.update-class table tr th{
+    width:40%;
+    padding: 0.5rem 0;
+}
+.update-class table tr td{
+    width: 60%;
+    padding: 0.5rem 0;
+}
+.table-footer button{
+    float: right;
+    background-color: rgb(72, 122, 72);
+    color: white;
+    padding: 0.5rem 1rem ;
+    margin: 0 0.2rem;
+}
+.table-responsive{
+    display: block;
+    margin: 0 auto;
+    overflow: auto;
+}
+.form-select,.form-control{
+    width:200px
+}
+h5{
+
+    color: #8cb8df;
+    font-weight: 600;
+    font-size: 20px;
+    width: 200px;
+    padding: 1rem 0;
+}
+.time{
+    background-color: transparent;
+    border: none;
+    appearance: none;
+}
+.alert-dismissible{
+    position: fixed;
+    width: 70%;
+    margin: 0 auto;
+    top: 25rem;
+    left: 15%;
+    display: none;
+}
+
+.successmes{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #8acd8a;
+    color: white;
+    padding: 1rem;
+    position: fixed;
+    top: 50%;
+    border-radius: 9px;
+    left: 25%;
+    display: none;
+}
+.errormes{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #d92323;
+    color:white;
+    padding: 1rem;
+    position: fixed;
+    top: 50%;
+    border-radius: 9px;
+    left: 25%;
+    display: none;
+}
+.successshow,.errorshow{
+    display: block;
+}
+.update-class table{
+    margin: 0 auto;
+}
+.alert{
+    position: fixed;
+    top: 55%;
+}
+@media(max-width:940px) {
+    .form-select,.form-control{
+        width:135px
+    }
+    .table-responsive{
+        width: 85%;
+    }
+}
+.mess{
+    width: 50%;
+    margin: 0 auto;
+    background-color: #d92323;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    border-radius: 5px;
+    top: 35%;
+    left: 25%;
+}

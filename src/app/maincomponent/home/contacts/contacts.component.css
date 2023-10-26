@@ -1,0 +1,96 @@
+:host{
+    display: block;
+    position: relative;
+    height: 50vh;
+}
+section:nth-child(1){
+    height: 30vh;
+    background-color: #eceaea78;
+    padding:2rem 0 0 0 ;
+}
+
+section:nth-child(2){
+    position: absolute;
+    top: 20vh;
+}
+section:nth-child(1) div i{
+    line-height: 3em;
+}
+section:nth-child(2) div:nth-child(1){
+    background-color: #e7ede2;
+}
+section:nth-child(2) div:nth-child(2){
+    background-color: #d3deca;
+}
+section:nth-child(2) div:nth-child(3){
+    background-color: #b5c1ab;
+}
+section:nth-child(2) div:nth-child(1),
+section:nth-child(2) div:nth-child(2),
+section:nth-child(2) div:nth-child(3){
+    height: 30vh
+}
+h4{
+    color: rgba(58,58,58,0.6)
+}
+h2{
+    font-size: 25px;
+    color: #4a4f46;
+}
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+    section:nth-child(1){
+        padding:1rem 0 0 0 ;
+    }
+    section:nth-child(2){
+        top: 15vh;
+    }
+    section:nth-child(2) div:nth-child(1),
+    section:nth-child(2) div:nth-child(2),
+    section:nth-child(2) div:nth-child(3){
+        height: 35vh
+    }
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+    section:nth-child(2) div{
+        padding: 2rem!important;
+    }
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    :host{
+        height: 125vh;
+    }
+    section:nth-child(1){
+        height: 35vh!important;
+        padding: 0rem 0;
+    }
+    section:nth-child(1) div{
+        align-items: center;
+    }
+    section:nth-child(2){
+        position: relative;
+        top: 0;
+    }
+    section:nth-child(2) div:nth-child(1),
+    section:nth-child(2) div:nth-child(2),
+    section:nth-child(2) div:nth-child(3){
+        height: 30vh
+    }
+    .contact{
+        position: relative;
+    }
+    .contact::after{
+        content: "";
+        display: block;
+        border: 1px solid #00000040;
+        width: 90%;
+        position: absolute;
+        top: 98%;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+
+}

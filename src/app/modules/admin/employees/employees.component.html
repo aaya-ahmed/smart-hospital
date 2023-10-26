@@ -1,0 +1,81 @@
+<div class="fluid-container">
+<!-- display loading view or page -->
+    <div *ngIf="loadflag;then loading;else page" ></div>
+<!-- start page template -->
+<ng-template #page>
+<div *ngIf="pageflag" class="container-fluid w-100">
+    <div class="d-block p-2 head m-0">
+        <button (click)="openAddEmployeeSide()" class="btn text-white btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Add receptionist </button>
+    </div>
+    <div class="searching">
+        <input class="serach" type="checkbox" id="check" />
+        <div class="d-flex">
+            <label for="check"><i class="fa-solid fa-magnifying-glass "></i> &nbsp; srearch for special receptionist</label>
+            <div>
+                <button class="btn" (click)="allreceptionist()" disabled #allbtn>All</button>
+            </div>
+        </div>
+        <div class="searching-fields">
+            <form #docInf="ngForm" (ngSubmit)="search(docInf,allbtn)" class="row mx-auto justify-content-between py-3">
+                <div class="col-lg-3 col-md-6">
+                    <label for="docstate">State</label><br>
+                    <select class="form-control" name="docstate" id="docstate" ngModel #docstate="ngModel">
+                        <option value="" disabled></option>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                </div>
+                <div class="mt-2">
+                    <input type="submit" class="btn" value="search" >
+                </div>
+            </form>
+        </div>
+    </div>
+   <div *ngIf="tableflag;then table;else loading"></div>
+   <ng-template #table>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>username</th>
+                    <th>Name</th>
+                    <th>National Id</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>hiring date</th>
+                    <th>state</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of receptionistlist|paginate: { itemsPerPage:5, currentPage: p ,totalItems:totallength}">
+                    <td>{{i.userName}}</td>
+                    <td>{{i.firstName}}&nbsp;{{i.lastName}}</td>
+                    <td>{{i.nationalId}}</td>
+                    <td>{{i.mail}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.phoneNumber}}</td>
+                    <td>{{i.createdDtm |date:'shortDate'}}</td>
+                    <td><p *ngIf="i.isActive">Active</p><p *ngIf="!i.isActive">In-Active</p></td>
+                    <td>
+                        <button (click)="openUpdateEmployeeSide(i)"> <span class="fa-solid fa-pen-to-square " style="color:green " > </span></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls style="margin:3rem 0;float: right;" (pageChange)="p = $event"></pagination-controls> 
+</ng-template>
+</div>
+<div *ngIf="!pageflag" style="margin-top:0rem; text-align:center ;">
+    No Avaliable Data<br>
+    <p style="color:red">please try later</p></div>
+</ng-template>
+<!-- end page template -->
+<!-- start loading page -->
+<ng-template #loading>
+    <div class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+</ng-template>
+<!-- end loading page -->
+</div>

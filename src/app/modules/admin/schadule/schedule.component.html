@@ -1,0 +1,29 @@
+<div *ngIf="flag;then page;else loading"></div>
+<ng-template #page>
+    <div class="fluid-container">
+        <div class="row">
+            <div class="show_btn" >
+                <button (click)="gotoshowschedule()" [ngClass]="{'active':!color_btn}">
+                    Show schedule
+                </button>
+            </div>
+            <div class="add_btn">
+                <button (click)="openaddschedulepage()" [ngClass]="{'active':color_btn}">
+                    Add schedule
+                </button>
+            </div>
+        </div>
+        <div class="main-page">
+            <div *ngIf="toggle;then addschedule; else showschedule "></div>
+        </div>
+    </div>
+    <ng-template #addschedule>
+        <app-setschedule [departments]="department"></app-setschedule>
+    </ng-template>
+    <ng-template #showschedule>
+        <app-showschedule [departments]="department"></app-showschedule>
+    </ng-template>
+</ng-template>
+<ng-template #loading>
+    <div class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+</ng-template>

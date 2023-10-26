@@ -1,0 +1,55 @@
+h4{
+    padding: 1rem 0;
+    color: #4a4f46;
+    font-size: 25px;
+    font-weight: 500;
+}
+form,h4{
+    margin: 0 8%;
+}
+.form-control{
+    margin: 1rem 0;
+}
+textarea{
+    width: 100%;
+    height: 20vh;
+    resize: none;
+}
+.form-control:focus{
+    outline: none;
+    box-shadow: none;
+}
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.submit-section img{
+    display: inline;
+    width: 50px;
+    height: 50px;
+}
+submit-section span{
+    color: green;
+}
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    .image{
+        display: none;
+    }
+    form,h4{
+        margin: 0;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+
+}

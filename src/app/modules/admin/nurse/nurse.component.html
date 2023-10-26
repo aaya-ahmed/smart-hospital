@@ -1,0 +1,88 @@
+<div class="fluid-container">
+    <div *ngIf="loadflag;then loading;else page" ></div>
+<ng-template #page>
+<div *ngIf="pageflag" class="container-fluid w-100">
+    <div class="d-block p-2 head m-0">
+        <button (click)="openAddNurseSide()" class="btn text-white btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Add nurse </button>
+    </div>
+ <div class="searching">
+        <input class="serach" type="checkbox" id="check" />
+        <div class="d-flex">
+            <label for="check"><i class="fa-solid fa-magnifying-glass "></i> &nbsp; srearch for special nurse</label>
+            <div>
+                <button class="btn" (click)="allnurses()" [disabled]="allflag">All</button>
+            </div>
+        </div>
+        <div class="searching-fields">
+            <form #NurseInf="ngForm" (ngSubmit)="search(NurseInf.value)" class="row mx-auto justify-content-start py-3">
+                <div class="col-lg-3 col-md-6">
+                    <div>
+                        <label for="nursedepartment">Department</label><br>
+                        <select class="form-control" name="nursedepartment" id="nursedepartment" ngModel>
+                            <option disabled>-- select Departement Name --</option>
+                            <option *ngFor="let dep of departementsList" value="{{dep.departmentName}}">{{dep.departmentName}}</option>    
+                    </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <label for="nursestate">State</label><br>
+                    <select class="form-control" name="nursestate" id="nursestate" #nursestate="ngModel" ngModel>
+                        <option>-- Select Nurse State --</option>
+                        <option value="true">Active</option>
+                        <option value="false">Not Active</option>
+                    </select>
+                </div>
+                <div class="mt-2">
+                    <input type="submit" class="btn" value="search" >
+                </div>
+            </form>
+        </div>
+    </div> 
+   <div *ngIf="tableflag;then table;else loading"></div>
+</div>
+<div *ngIf="!pageflag" style="margin-top:0rem; text-align:center ;">
+    No Avaliable Data<br>
+    <p style="color:red">please try later</p></div>
+</ng-template>
+</div>
+
+<ng-template #loading>
+    <div class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+</ng-template>
+<ng-template #table>
+    <div class="table-responsive">
+        <table  class="table table-striped ">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Department</th>
+                    <th>Degree</th>
+                    <th>Hiring Date</th>
+                    <th>State</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let nurse of nursesList|paginate: { itemsPerPage:5, currentPage: p ,totalItems:totallength}">
+                    <td>{{nurse.firstName+' '+nurse.lastName}}</td>
+                    <td>{{nurse.userName}}</td>
+                    <td>{{nurse.departmentName}}</td>
+                    <td>{{nurse.nurseDegree}}</td>
+                    <td>{{nurse.createdDtm|date:'shortDate'}}</td>
+                    <td>
+                        <div *ngIf="nurse.isActive">Active</div>
+                        <div *ngIf="!nurse.isActive">Not Active</div>
+                    </td>
+                   
+                    <td>
+                        <button (click)="openShowNurseSide(nurse)"> <span class="fa-solid fa-display " style="color:rgb(196, 146, 18) " > </span></button>
+                        <button (click)="openUpdateNurseSide(nurse)"> <span class="fa-solid fa-pen-to-square " style="color:green " > </span></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls style="margin:1rem 0 0 0;float: right;" (pageChange)="p=$event"></pagination-controls>  
+</ng-template>
+

@@ -1,0 +1,41 @@
+<div class="fluid-container">
+    <div class="inner-container">
+            <div class="collapse" id="showlab">
+                <div class="card w-100 ">
+                    <form #searchform="ngForm" (ngSubmit)=" search_lab(searchform)">
+                        <div class="card-body card2">
+                            <div class="patien-lab-name">
+                                <label>Test Name</label>
+                                <select class="form-select"  required name="lab" #test="ngModel" ngModel [ngClass]="{'is-invalid':test.errors?.['required']&&test.touched||searchform.submitted&&test.errors?.['required']}">
+                                    <option></option>
+                                    <option *ngFor="let i of testsList" value="{{i.name}}">{{i.name}}</option>
+                                </select>    
+                                <p class="error" [ngClass]="{'invalid-feedback':test.errors?.['required']&&test.touched||searchform.submitted&&test.errors?.['required']}">please choose test</p>
+                            </div>
+                            <div class="search-sec">
+                                <button type="submit" ><i class="fa fa-search mx-2" aria-hidden="true"></i></button>
+                            </div>     
+                        </div>
+                    </form>
+                    <div class="card-body" *ngIf="searchedTestsList.length>0">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Test Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let test of searchedTestsList let j=index">
+                                        <td class="pdficon" (click)="showlab(test.patientTestId)"><img src="assets/pdficon.png"></td>
+                                        <td>{{test.testDate|date: 'longDate'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

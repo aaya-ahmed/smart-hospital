@@ -1,0 +1,46 @@
+<div class="fluid-container">
+    <div *ngIf="loadflag;then loading;else page" ></div>
+    <!-- start page template -->
+    <ng-template #page>
+        <div class="container-fluid w-100">
+            <div class="d-block px-2 py-3 head m-0">
+                <button (click)="openAddscanSide()" class="btn text-white btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Add scan </button>
+            </div>
+            <ng-container *ngIf="scanlist.length>0">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Scan Name</th>
+                                <th>Charge</th>
+                                <th>Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let scan of scanlist|paginate: { itemsPerPage:5, currentPage: p ,totalItems:totallength};let index=index">
+                                <td>{{scan.id}}</td>
+                                <td>{{scan.scanName}}</td>
+                                <td>{{scan.scanCharge}}</td>
+                                <td>
+                                    <button (click)="openupdatescanside(scan,index)"> <span class="fa-solid fa-pen-to-square " style="color:green " > </span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <pagination-controls style="margin:1rem 0 0 0;float: right;" (pageChange)="p = $event"></pagination-controls>     
+            </ng-container>
+            <ng-container *ngIf="scanlist.length==0" style="margin-top:0rem; text-align:center ;">
+                <p class="error">No Avaliable Data</p>
+            </ng-container>
+        </div>
+    </ng-template>
+    <!-- end page template -->
+</div>
+
+<ng-template #loading>
+    <div class="fluid-container loading">
+        <img src="assets/Spinner.svg" />
+    </div>
+</ng-template>

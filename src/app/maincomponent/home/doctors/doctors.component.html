@@ -1,0 +1,19 @@
+<section class="row justify-content-center">
+    <div class="col-lg-9 col-11 doctors">
+        <h4>Our Top doctors</h4>
+        <div class="doctor-items" #doctoritems (mouseenter)="goleft()" (mouseleave)="reset()">
+            <div class="doctoritem" *ngFor="let item of doctors">
+                <img src="{{item.imageName}}">
+                <h2>{{item.firstName}} {{item.lastName}}</h2>
+                <h4>{{item.departmentName}}</h4>
+                <p title="{{item.phoneNumber}}">
+                    <i class="fa-solid fa-phone"></i><span>{{item.phoneNumber}}</span>
+                </p>
+                <p title="{{item.mail}}">
+                    <i class="fa-solid fa-envelope"></i><span>{{item.mail}}</span>
+                </p>
+            </div>
+        </div>
+        <a [routerLink]="'/alldoctors'" class="link">View All</a>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+<main class="container">
+    <header class="row justify-content-around align-content-center">
+        <button class="col-1" (click)="close()">
+            <span class="fa-solid fa-xmark"></span>
+        </button>
+        <h3 class="col-9 m-0">{{data.departmentId?'Update':'New'}} Department</h3>
+    </header>
+    <section class="fluid-container">
+        <form #form="ngForm">
+            <div class="p-3">
+                <label for="departmentName">Name </label>
+                <input  type="text"
+                [(ngModel)]="data.departmentName"
+                [ngClass]="{'is-invalid':(departmentName.errors?.['required']&&form.submitted)||(departmentName.touched&&departmentName.invalid)}" class="form-control form-control1"
+                name="departmentName" id="departmentName" required minlength="6" ngModel #departmentName="ngModel"/>
+                <div *ngIf="departmentName.errors?.['required']&&form.submitted||departmentName.touched&&departmentName.errors?.['required']" class="invalid-feedback">
+                    Please enter department Name
+                </div>
+                <div *ngIf="departmentName.errors?.['minlength']&&departmentName.touched||form.submitted&&departmentName.errors?.['minlength']" class="invalid-feedback">
+                    min length is 6 char
+                </div>
+            </div>
+            <div class="p-3">
+                <label for="location">Location</label>
+                <input  type="text" 
+                [(ngModel)]="data.departmentLocation"
+                [ngClass]="{'is-invalid':location.errors?.['required']&&form.submitted||location.touched&&location.errors?.['required']||location.touched&&location.errors?.['minlength']}"
+                class="form-control form-control1" name="location" id="location" minlength="6" required ngModel #location="ngModel"/>
+                <div *ngIf="location.errors?.['required']&&form.submitted||location.touched&&location.errors?.['required']" class="invalid-feedback">
+                    Please enter department location
+                </div>
+                <div *ngIf="location.errors?.['minlength']&&location.touched||form.submitted&&location.errors?.['minlength']" class="invalid-feedback">
+                    min length is 6 char
+                </div>
+            </div>
+            <div class="p-3">
+                <label for="image">Image</label>
+                <input  type="file" 
+                [(ngModel)]="data.departmentImage"
+                [ngClass]="{'is-invalid':image.errors?.['required']&&form.submitted||image.touched&&image.errors?.['required']||image.touched&&image.errors?.['minlength']}"
+                class="form-control form-control1" name="image" id="image" required ngModel #image="ngModel"/>
+                <div *ngIf="image.errors?.['required']&&form.submitted||image.touched&&image.errors?.['required']" class="invalid-feedback">
+                    Please enter department image
+                </div>
+            </div>
+            <div class="py-2 px-3">
+                <input 
+                [(ngModel)]="data.isActive"
+                type="checkbox" id="isActive" name="isActive" checked  ngModel #isActive="ngModel"/>
+                <label for="isActive">Is Active?</label><br><br>
+            </div>
+            <div class="py-2 px-3">
+                <input 
+                [(ngModel)]="data.isClinical"
+                type="checkbox" id="isClinical" name="isClinical" checked  ngModel #isClinical="ngModel"/>
+                <label for="isClinical">Has Clinic?</label><br><br>
+            </div>
+            <div class="py-2 px-3">
+                <button [disabled]="!submitted" class="btn" (click)="submit(form)">Submit</button>
+                <span *ngIf="submitted&&errormessage!=''" class="error-message">{{errormessage}}</span>
+                <div *ngIf="submitted&&form.valid" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+            </div>
+        </form>
+    </section>
+</main>

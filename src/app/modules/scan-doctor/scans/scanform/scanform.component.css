@@ -1,0 +1,174 @@
+div.adding-form {
+    width: 90%;
+    max-height: 0px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+input:checked~div.adding-form {
+    max-height: fit-content;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.adding-form form label {
+    margin: 10px 0;
+    font-size: 20px;
+}
+.adding-label{
+    text-align: center;
+}
+.adding-label label {
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    padding: 1.5rem;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(255, 60, 0);
+}
+.table-responsive{
+    overflow: auto;
+    width: 60%;
+    margin:0 auto;
+    background-color: white;
+}
+table thead{
+    background-color: aliceblue;
+}
+.form-control1{
+    height:5vh;
+    border-bottom: 2px solid #70b175;
+}
+.form-control1:focus{
+    outline: none;
+    border: none;
+    border-color: transparent;
+    box-shadow: none;
+
+    border-top-style: hidden;
+}
+.col-sm-8{
+    width:60%
+}
+
+#add_btn{
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    background-color: #85bda8;
+    float: right;
+    margin-right: 2rem;
+  }
+  .alert-dismissible{
+    position: fixed;
+    width: 70%;
+    margin: 0 auto;
+    top: 19rem;
+    left: 16%;
+    display: none;
+    height:7vh
+  }
+  .successmes,.errormes{
+    display: none;
+    position: absolute;
+    top:60px;
+  }
+  .successshow,.errorshow{
+    display: block;
+  }
+  
+.col-sm-4{
+    padding: 40px 0px 0px 20px;
+}
+input[type=checkbox] {
+    visibility: hidden;
+    position: absolute;
+}
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+  }
+.is-invalid{
+    border-color: red;
+}
+.container1{
+    position: relative;
+    top:-300px;
+    width:60%;
+    height:100vh;
+    margin: 0 auto;
+    background-color: white;
+}
+.container1 form{
+    width:60%;
+    margin: 0 auto;
+}
+.container1 form .col-sm-8{
+    width: 100%;
+}
+.form-check{
+    width:80%;
+}
+.form-check .form-check-input {
+    margin-left: 0.5em;}
+table tr td button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.updating-header{
+    display: flex;
+    background-color: steelblue;
+    padding: 0 2px;
+}
+.updating-header h3{
+    width:80%;
+    text-align: center;
+}
+.update_btn{
+    width: 100%;
+}
+.update_btn input{
+    float: right;
+    border: none;
+    outline: none;
+    background-color: #425280;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+.hidden-adding{
+    display: none;
+  }
+  .toggle-addmodel{
+    display: block;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: -webkit-fill-available;
+    top: 0;
+    left: 0;
+  }
+
+@media(max-width:680px){
+    .container1{
+        width:80%
+    }
+    .table-responsive{
+        overflow: auto;
+        width: 80%;}
+}
+@media (max-width:310px){
+    .container1{
+        width:100%;
+        top:-428px
+    }
+}

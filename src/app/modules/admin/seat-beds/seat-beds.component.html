@@ -1,0 +1,80 @@
+<div class="fluid-container">
+    <div *ngIf="loadflag;then loading;else page" ></div>
+<ng-template #page>
+<div *ngIf="pageflag" class="container-fluid w-100">
+    <div class="d-block p-2 head m-0">
+        <button (click)="openAddBedSide()" class="btn text-white btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Add Room </button>
+    </div>
+    <div class="searching">
+        <input class="serach" type="checkbox" id="check" />
+        <div class="d-flex">
+            <label for="check"><i class="fa-solid fa-magnifying-glass "></i> &nbsp; srearch for special doctor</label>
+            <div>
+                <button class="btn" (click)="allrooms()" [disabled]="allflag" #allbtn>All</button>
+            </div>
+        </div>
+        <div class="searching-fields">
+            <form #roomInf="ngForm" (ngSubmit)="search(roomInf.value)" class="row mx-auto justify-content-between py-3">
+                <div class="col-sm-4">
+                    <label for="bednum ">Room Type</label><br>
+                    <select class="form-select"  id="roomType" name="roomType" ngModel>
+                        <option *ngFor="let r of roomtypes" value="{{r}}">{{r}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label for="roomnum ">Room Number</label><br>
+                    <input class="form-control" type="number " id="roomnum" name="roomnum" ngModel />
+                </div>
+                <div class="col-sm-4">
+                    <label for="floornum ">Floor Number</label><br>
+                    <input class="form-control" type="number " id="floornum " name="floormum" ngModel  />
+                </div>
+                
+                <div class="mt-2">
+                    <input type="submit" class="btn" value="search">
+                </div>
+            </form>
+
+        </div>
+    </div>
+   <div *ngIf="tableflag;then table;else loading"></div>
+</div>
+<div *ngIf="!pageflag" style="margin-top:0rem; text-align:center ;">
+    No Avaliable Data<br>
+    <p style="color:red">please try later</p></div>
+</ng-template>
+</div>
+<ng-template #loading>
+    <div class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+</ng-template>
+<ng-template #table>
+    <div class="table-responsive">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Room Type</th>
+                    <th>Floor Number</th>
+                    <th>Room Number</th>
+                    <th>Num.of All Beds</th>
+                    <th>Num.of Free Beds</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of allRooms|paginate: { itemsPerPage:5, currentPage: p ,totalItems:totallength};let j=index"> 
+                    <td>{{j+1}}</td>
+                    <td>{{i.roomType}}</td>
+                    <td>{{i.floorNumber}}</td>
+                    <td>{{i.roomNumber}}</td>
+                    <td>{{i.numberOf_allBeds}}</td>
+                    <td>{{i.numberOf_freeBeds}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls style="margin:3rem 0;float: right;" (pageChange)="p = $event"></pagination-controls> 
+</ng-template>
+
+
+
+

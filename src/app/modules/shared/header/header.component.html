@@ -1,0 +1,18 @@
+<header [ngClass]="{'w-100 start-0':!sideBarStatus}">
+    <button (click)="toggleSideBar()" hidden id="toggle"></button>
+    <div class="row justify-content-between logo-section">
+        <div>
+            <label class="toggle-label" for="toggle"><i class="toggle-span" class="fa-solid fa-bars "></i></label>  
+        </div>
+        <div>
+            <a class="d-flex justify-content-end">
+                <img src="./assets/logo.png" class="">
+                <h4 class=" title">
+                    <span class="heading-logo">
+                        University Hospital
+                    </span>
+                </h4>
+            </a>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,43 @@
+<div class="fluid-container">
+    <div *ngIf="loadflag;then loading;else page" ></div>
+    <!-- start page template -->
+    <ng-template #page>
+        <div *ngIf="scanList.length==0" class="text-center text-danger mt-0">
+                No Avaliable Data<br>
+        </div>
+        <div *ngIf="scanList.length>0" class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Scan Name</th>
+                        <th>Doctor Name</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of scanList|paginate: {itemsPerPage:10,currentPage:p,totalItems:scanList.length};let j=index">
+                        <td>{{i.scanName}}</td>
+                        <td>{{i.doctorName}}</td>
+                        <td>{{i.scanDate |date: 'longDate'}}</td>
+                        <td class="pdf" (click)="openpdf(i.patientScanId)"><img src="assets/pdficon.png"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls (pageChange)="$event"></pagination-controls>
+    </ng-template>
+    <!-- end page template -->
+    <!-- start loading page -->
+    <ng-template #loading>
+        <div class="fluid-container loading">
+            <img src="assets/Spinner.svg" />
+        </div>
+    </ng-template>
+    <!-- end loading page -->
+</div>
+        
+        
+        
+        
+        

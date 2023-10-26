@@ -1,0 +1,89 @@
+
+    <div class="statistics">
+        <div class="row">
+                <div class=" mt-2 col-md-5 col-sm-12">
+                    <img class="icon" src="../assets/inpatient icon.png">
+                    <h3>In patient Requests</h3>
+                    <span>{{in_number}}</span>
+                </div>
+                <div  class="mt-2 col-md-5 col-sm-12">
+                    <img class="icon" src="../assets/inpatient icon.png">
+                    <h3>Out patient Requests</h3>
+                    <span>{{out_number}}</span>
+                </div>
+        </div>
+    </div>
+    <div *ngIf="dataflag;then data;else nodata "></div>
+    <ng-template #data>
+       
+        <div *ngIf="out_number" class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="5" style="text-align: center ;background-color:white;">Out Patient Requests</th>
+                    </tr>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Patient Name</th>
+                        <th>Scan Name</th>
+                        <th>Request Date</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of outpatientrequests ">
+                        <td>{{i.doctorName}}</td>
+                        <td>{{i.patientName}}</td>
+                        <td>{{i.scanName}}</td>
+                        <td>{{i.createdDtm|date:'longDate'}}</td>
+                        <td>
+                            <button (click)="gotoaddscan(i)">add scan</button>&nbsp;&nbsp;
+                            <button (click)="gotodelscan(i)">del scan</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  *ngIf="in_number" class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="5" style="text-align: center ;background-color:white;">In Patient Requests</th>
+                    </tr>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Patient Name</th>
+                        <th>Scan Name</th>
+                        <th>Request Date</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of inpatientrequests">
+                        <td>{{i.doctorName}}</td>
+                        <td>{{i.patientName}}</td>
+                        <td>{{i.scanName}}</td>
+                        <td>{{i.createdDtm|date:'longDate'}}</td>
+                        <td>
+                            <button (click)="gotoaddscan(i)">add scan</button>&nbsp;&nbsp;
+                            <button (click)="gotodelscan(i)">del scan</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="deletflag">
+            <div class="alert alert-danger alert-dismissible fade errormes" role="alert">
+                You can't delete this request 
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #nodata>
+        <div class="nodata">
+            <p>
+                {{mess}}
+            </p>
+            <img src="/assets/norequest.jpg"/>
+        </div>
+        
+    </ng-template>

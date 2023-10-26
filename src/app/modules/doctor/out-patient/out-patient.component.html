@@ -1,0 +1,96 @@
+<div class="container">
+    <section>
+        <div class="patientinformation">
+            <table>
+                <tr>
+                    <th><strong>Patient Name</strong></th>
+                    <td class="col1">{{patient.patientName}}</td>
+                </tr>
+                <tr>
+                    <th><strong>Age</strong></th>
+                    <td  class="col2">{{patient.age}}</td>
+                </tr>
+                <tr>
+                    <th><strong>Gender</strong></th>
+                    <td  class="col3">{{patient.gender}}</td>
+                   
+                </tr>
+                <tr>
+                    <th><strong>Complain</strong></th>
+                    <td  class="col4">{{patient.complain}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="selectedoption" [ngSwitch]="section">
+            <ng-container *ngSwitchCase="'reports'">
+                <app-old-indoor-records [patient]="patient"></app-old-indoor-records>
+            </ng-container>
+            <ng-container *ngSwitchCase="'reqscan'">
+                <app-req-scan [patient]="patient" ></app-req-scan>
+            </ng-container>
+            <ng-container *ngSwitchCase="'scan'">
+                <app-scan [patient]="patient" ></app-scan>
+            </ng-container>
+            <ng-container *ngSwitchCase="'reqlab'">
+                <app-req-lab [patient]="patient" [outpatientflag]="outpatientflag"></app-req-lab>
+            </ng-container>
+            <ng-container *ngSwitchCase="'lab'">
+                <app-lab [patient]="patient" [outpatientflag]="outpatientflag"></app-lab>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Prescriptions'">
+                <app-show-prescription [patient]="patient"></app-show-prescription>
+            </ng-container>
+            <ng-container *ngSwitchCase="'makePrescriptions'">
+                <app-add-prescription [patient]="patient" [outpatientflag]="outpatientflag"></app-add-prescription>
+            </ng-container>
+        </div>
+    </section>
+    <section class="options">
+        <div>
+            <ul id="accordion" class="accordion">
+                <li>
+                    <div class="link" (click)="changesection('reports')">
+                        <i class="fa-solid fa-file-pen"></i>
+                        Previous Reports
+                    </div>
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('reqscan')">
+                        <i class="fa-solid fa-x-ray"></i>
+                        Reqest Scan
+                    </div> 
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('scan')">
+                        <i class="fa-solid fa-x-ray"></i>
+                        Show Scan
+                    </div>
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('reqlab')">
+                        <i class="fa-solid fa-flask-vial"></i>
+                        Request Lab
+                    </div>
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('lab')">
+                        <i class="fa-solid fa-flask-vial"></i>
+                        Lab
+                    </div>
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('Prescriptions')">
+                        <i class="fa-solid fa-prescription"></i>
+                        Show Previes Prescriptions
+                    </div>
+                </li>
+                <li>
+                    <div class="link" (click)="changesection('makePrescriptions')">
+                        <i class="fa-solid fa-prescription"></i>
+                        Make Prescription
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

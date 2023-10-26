@@ -1,0 +1,139 @@
+        <form [formGroup]="receptionistInfo" #signForm="ngForm">
+                <div class="p-3">
+                    <label class="form-lable" for="receptionistfname">First Name</label>
+                    <input class="form-control " type="text" name="receptionistfname" id="receptionistfname" formControlName="firstName"
+                    [ngClass]="{'is-invalid':((receptionistfname.touched&& receptionistfname.invalid)||(submitted&&receptionistfname.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistfname.touched&&receptionistfname.hasError('required'))||(submitted&&receptionistfname.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistfname.touched&&receptionistfname.hasError('minlength')?"Minimum Name length is 3":''}}
+                        {{receptionistfname.touched&&receptionistfname.hasError('maxlength')?"Maxiumim Name length is 10":''}}
+                        {{receptionistfname.touched&&receptionistfname.hasError('pattern')?" Only letters are allowed":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="receptionistlname">Last Name</label>
+                    <input class="form-control" type="text" name="receptionistlname" id="receptionistlname" formControlName="lastName" 
+                    [ngClass]="{'is-invalid':((receptionistlname.touched&& receptionistlname.invalid)||(submitted&&receptionistlname.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistlname.touched&&receptionistlname.hasError('required'))||(submitted&&receptionistlname.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistlname.touched&&receptionistlname.hasError('minlength')?"Minimum Name length is 3":''}}
+                        {{receptionistlname.touched&&receptionistlname.hasError('maxlength')?"Maxiumim Name length is 10":''}}
+                        {{receptionistlname.touched&&receptionistlname.hasError('pattern')?" Only letters are allowed":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="receptionistuname">User Name</label>
+                    <input class="form-control " type="text" name="receptionistuname" id="receptionistuname" formControlName="userName" 
+                    [ngClass]="{'is-invalid':((receptionistUserName.touched&& receptionistUserName.invalid)||(submitted&&receptionistUserName.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistUserName.touched&&receptionistUserName.hasError('required'))||(submitted&&receptionistUserName.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistUserName.touched&&receptionistUserName.hasError('pattern')?"character @ # / * etc.. not allowed":''}}
+                    </div>
+                </div>
+                <div class="p-3" *ngIf="!data">
+                    <label class="form-lable" for="Password">Password</label>
+                    <input class="form-control"  type="Password" name="Password" id="Password" formControlName="password"
+                     [ngClass]="{'is-invalid':((receptionistPassword.touched&& receptionistPassword.invalid)||(submitted&&receptionistPassword.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistPassword.touched&&receptionistPassword.hasError('required'))||(submitted&&receptionistPassword.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistPassword.touched&&receptionistPassword.hasError('minlength')?"please it must be at least 8 character":''}}
+                        {{receptionistPassword.touched&&receptionistPassword.hasError('pattern')?"must contain @ # . only and upper or lowercase ad number":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="nationalId">National Id</label>
+                    <input class="form-control" type="text" min="0" name="nationalId" id="nationalId" formControlName="nationalId" 
+                    [ngClass]="{'is-invalid':((receptionistNid.touched&& receptionistNid.invalid)||(submitted&&receptionistNid.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistNid.touched&&receptionistNid.hasError('required'))||(submitted&&receptionistNid.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistNid.touched&&receptionistNid.hasError('pattern')?"invalid national id":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="age">Age</label>
+                    <input class="form-control" type="number" min="20" name="Date-of-Birth" id="Date-of-Birth" formControlName="age" 
+                    [ngClass]="{'is-invalid':((receptionistAge.touched&& receptionistAge.invalid)||(submitted&&receptionistAge.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistAge.touched&&receptionistAge.hasError('required'))||(submitted&&receptionistAge.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistAge.touched&&receptionistAge.hasError('min')?"age must be between 20 ad 90 year":''}}
+                        {{receptionistAge.touched&&receptionistAge.hasError('max')?"age must be between 20 ad 90 year":''}}
+                    </div>
+                </div>            
+                <div class="p-3">
+                    <label class="form-lable" for="gender">gender</label>
+                    <select id="gender" class="form-control" formControlName="gender"
+                    [ngClass]="{'is-invalid':((receptionistGender.touched&& receptionistGender.invalid)||(submitted&&receptionistGender.hasError('required')))}">
+                        <option vlaue="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        {{((receptionistGender.touched&&receptionistGender.hasError('required'))||(submitted&&receptionistGender.hasError('required')))?"This field is reqired":''}}
+                        </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="bloodtype">bloodtype</label>
+                    <select id="bloodtype" class="form-control" formControlName="bloodType"
+                    [ngClass]="{'is-invalid':((receptionistBloodType.touched&& receptionistBloodType.invalid))}">
+                        <option vlaue="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option vlaue="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option vlaue="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option vlaue="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="Email">Email</label>
+                    <input class="form-control" type="email" name="Email" id="Email" formControlName="mail" 
+                    [ngClass]="{'is-invalid':((receptionistMail.touched&& receptionistMail.invalid)||(submitted&&receptionistMail.hasError('email')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistMail.touched&&receptionistMail.hasError('email'))||(submitted&&receptionistMail.hasError('email')))?"must in email format ex xx@xxxx.eg or com":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="phone">phone</label>
+                    <input class="form-control" type="tel" name="phone" id="phone" formControlName="phoneNumber" 
+                    [ngClass]="{'is-invalid':((receptionistPhone.touched&& receptionistPhone.invalid)||(submitted&&receptionistPhone.hasError('required')))}"
+                    />
+                    <div class="invalid-feedback">
+                        {{((receptionistPhone.touched&&receptionistPhone.hasError('required'))||(submitted&&receptionistPhone.hasError('required')))?"This field is reqired":''}}
+                        {{receptionistPhone.touched&&receptionistPhone.hasError('pattern')?"must 11 number and start with 010,011,012 or 015":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable label1" for="address">address</label>
+                    <input class="form-control form-control1" value="" type="text" name="address" id="address" formControlName="address"/>
+                </div>
+                <div class="p-3"  *ngIf="!data">
+                    <label class="form-lable" for="image">Image</label>
+                    <input type="file" id="image" class="form-control" (change)="uploadfile($event)" formControlName="image"/>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="hiring">Hiring Date</label>
+                    <input type="date" max="{{today}}" id="hiring" class="form-control" formControlName="createdDtm"
+                    [ngClass]="{'is-invalid':((Hdate.touched&& Hdate.invalid)||(submitted&&Hdate.hasError('required')))}"/>
+                    <div class="invalid-feedback">
+                        {{((Hdate.touched&&Hdate.hasError('required'))||(submitted&&Hdate.hasError('required')))?"This field is reqired":''}}
+                        </div>
+                </div>
+                <div class="p-3">
+                    <input type="checkbox" class="is-active" [checked]="receptionistactive.value" id="active"  formControlName="isActive"/>
+                    <label class="form-lable" for="active">Is Active</label>   
+                </div> 
+            <div class="row p-3 justify-content-center">
+                <div class="col-sm-3">
+                    <button *ngIf="!submitted" class="btn" (click)="submit()"></button>
+                    <span class="error-message" *ngIf="message!=''">{{message}}</span>
+                    <div *ngIf="submitted" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+                </div>
+            </div>
+        </form>

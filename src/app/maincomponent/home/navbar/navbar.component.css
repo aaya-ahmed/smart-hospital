@@ -1,0 +1,118 @@
+
+header{
+    width: 100%;
+    background-color: #e5f1e785;
+}
+header .social{
+    border-bottom: 1px solid white;
+}
+header .social ul{
+    gap:10px;
+    padding-right: 3rem!important;
+    padding-left: 0!important;
+}
+header .social ul li a i:hover{
+    color: white;
+}
+header .navigation{
+    padding:0 1rem!important;
+    justify-content: center;
+    align-items: center;
+}
+header .navigation .logo{
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+header .navigation .logo a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .navigation .logo a img{
+    width: 75px;
+    height: 75px;
+}
+header .navigation .logo a p{
+    margin: 0!important;
+}
+header .navigation .btn-toggle{
+    display: none;
+}
+header .navigation .btn-toggle button{
+    float: right;
+    background-color: transparent!important;
+    border: none!important;
+    width: fit-content;
+    padding: 1rem;
+}
+header .navigation .links-list{
+    padding: 0!important;
+}
+header .navigation .links-list nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+header .navigation .links-list nav ul li:hover{
+    border-bottom: 1px solid white;
+    font-weight: 800;
+    cursor: pointer;
+}
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    header .social ul{
+        padding-right: 0rem!important;
+    }
+    header .navigation{
+        padding: 0!important;
+        justify-content: space-evenly;
+    }
+    header .navigation .btn-toggle{
+        display: block;
+    }
+    header .navigation .links-list{
+        display: none;
+    }
+    header .navigation .logo a {
+        flex-direction: column;
+        width: 100%;
+        justify-content: start!important;
+        align-items: start!important;
+    }
+    header .navigation .logo a img {
+        width: 50px;
+        height: 50px;
+    }
+    header .navigation .links-list nav{
+        background: white;
+        padding:0 1rem!important ;
+    }
+    header .navigation .links-list nav ul{
+        flex-direction: column;
+        justify-content: start!important;
+        align-items: start!important;
+        padding: 0!important;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    header .navigation .logo a strong{
+        font-size: 10px;
+    }
+}
+.hide{
+    display: none!important;
+}
+.show{
+    display: block!important;
+}

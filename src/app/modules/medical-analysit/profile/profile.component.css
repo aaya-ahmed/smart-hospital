@@ -1,0 +1,223 @@
+.fluid-container{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    overflow-y: auto;
+
+}
+.sec-info{
+    width:350px;
+    margin-top: 2vh;
+}
+.main{
+    width: calc(100% - 350px);
+    margin-top: 2vh;
+
+}
+.photo,.main-info{
+    width:300px;
+    margin: 0 auto;
+    background-color: #4451823d;
+    box-shadow: 2px 1px 10px 0px #0000002b;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1rem;
+}
+.main-info{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.photo p{
+    margin: 0!important;
+}
+.photo table{
+    width: 100%;
+    text-align: center;
+}
+.photo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    }
+.col4 button{
+    background-color: #445182;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem 1rem;
+}
+.image-btn{
+    padding: 0.4rem;;
+    background-color: #e5f1e7;
+    color: black;
+    border-radius: 5px;
+}
+.col2{
+    font-size: 20px;
+    font-weight: 600;
+}
+.col3{
+    color: rgba(128, 128, 128, 0.753);
+}
+.col3-title{
+    padding: 0 0.3rem;
+}
+.main-info table{
+    width: 100%;
+    text-align: left;
+}
+.main-info table tr td,.main-info table tr th{
+    padding: 0.5rem 0.3rem;
+}
+.list{
+    width: 95%;
+    height: 95%;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+.main-info-col1{
+    float: right;
+    cursor: pointer;
+    color: #e5f1e7;
+}
+i{
+    color:#e5f1e7;
+    padding:0.2rem 0 ;
+    cursor: pointer;
+}
+.fixed_header{
+    overflow-x: auto;
+}
+.fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 530px;
+}
+.fixed_header thead tr {
+   display: block;
+   background-color: #445182;
+   color: white;
+   text-align: center;
+
+}
+.fixed_header tr th, .fixed_header tr td {
+    padding: 5px;
+    text-align: center;
+    width: 220px;
+}
+.fixed_header tbody tr{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fixed_header thead tr:nth-child(1){
+    text-align: center;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fixed_header thead tr:nth-child(1) td{
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+}
+@media(max-width:970px){
+    .sec-info{
+        width:300px;
+    } 
+    .main{
+        width: calc(100% - 300px);
+    }
+    .photo,.main-info{
+        width:250px;
+    }
+    .photo{
+        padding: 0.5rem;
+    }
+    .list{
+        height: 90%;
+        margin-bottom: 1rem;
+        box-shadow: 2px 1px 10px 0px #0000002b
+    }
+    .main-info{
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    .nolistImg{
+
+        width:50px;
+        height:50px;
+    }
+    .icon{
+        width: 50px;
+        height: 50px;
+    }
+    .photo img{
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        }
+    .col-md-3 h3,.col-md-3 span{
+        font-size: 12px;
+    }
+
+}
+@media(max-width:795px){
+    .fluid-container{
+        display: block;
+    }
+    .sec-info{
+        width: 100%;
+        display: flex;
+        padding: 0 1rem;
+    }
+    .photo{
+        width: 40%;
+    }
+    .photo table{
+        margin: 4rem 0;
+    }
+    .main-info{
+        width: 60%;
+        margin: 0 0 0rem 1rem;
+    }
+    .main-info table tr td,.main-info table tr th{
+        padding: 0.5rem 0.3rem;
+    }
+    .main{
+        width: 100%;
+    }
+
+}
+@media(max-width:645px){
+    .sec-info{
+        width: 100%;
+        display: block;
+    }
+    .photo{
+        width: 100%;
+    }
+    .photo table{
+        margin: 0;
+    }
+    .main-info{
+        width: 100%;
+        margin: 1rem 0 0 0;
+    }   
+    .row .col-md-3{
+        width:100%;
+    margin: 1rem 0;}
+
+}

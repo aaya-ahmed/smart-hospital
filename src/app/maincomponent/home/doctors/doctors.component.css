@@ -1,0 +1,100 @@
+section{
+    padding-top:6rem;
+}
+.doctors{
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0!important;
+    
+}
+.doctors h4:nth-child(1){
+    padding: 1rem 0;
+    color: #4a4f46;
+    font-size: 25px;
+    font-weight: 500;
+}
+.doctor-items{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 95%;
+    margin: 0.5rem 1rem;
+
+}
+.doctoritem{
+    width: 14rem;
+    flex-shrink: 0;
+    display: inline-block;
+    margin: auto 1.5rem;
+    white-space: normal;
+    transition: display;
+    transition-duration: 10s;
+    transition-timing-function: ease-out;
+    border: 1px solid #e4e6e7;
+}
+
+.doctoritem img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+.doctoritem h2{
+    padding-left: 0.5rem;
+    margin: 0.5rem 0;
+}
+.doctoritem h4{
+    font-size: 1.3em;
+    color:#aeb4b7;
+    padding-left: 0.5rem;
+}
+.doctoritem p:nth-child(4){
+    border-top: 1px solid #e4e6e7;
+    padding-top:0.3rem ;
+}
+.doctoritem p{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.doctoritem p i{
+    padding-right:0.5rem;
+    padding-left: 0.5rem;
+
+}
+.link{
+    display: block;
+    padding: 1rem;
+    font-weight: 800;
+    color: #495583!important;
+}
+.link::before{
+    content: "<<";
+
+}
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+    section{
+        padding-top:4rem;
+    }
+    .doctoritem{
+        width: 14rem;
+        margin: 0px 2.5%;
+    }
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    .doctoritem{
+        width: 14rem;
+        margin: 0px 2.5%;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .doctoritem{
+        width: 14rem;
+        margin: 0px 2.5%;
+    }
+}

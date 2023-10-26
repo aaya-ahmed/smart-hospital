@@ -1,0 +1,6 @@
+<app-header (ToggleSideBarEvent)="changeToggleSideBar($event)" [sideBarStatus]="sideState"></app-header>
+  <shared-sidebar [linksList]="linksList" [sideState]="sideState" (sideStateout)="changeToggleSideBar($event)"></shared-sidebar>
+  <section [ngClass]="{'w-100 mx-0':!sideState}">
+    <router-outlet></router-outlet>
+  </section>
+  <app-sidehost></app-sidehost>

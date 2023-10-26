@@ -1,0 +1,70 @@
+<!-- <div class="container">
+<div class="table-responsive">
+    <table class="table1">
+        <tr>
+            <th class="col3">Patient Name</th>
+            <th class="col1" colspan="2">{{user.patientname}}</th>
+            <th class="col3">Doctor Name</th>
+            <th class="col" colspan="2">{{medicineList.result.doctorFullName}}</th>
+        </tr>
+    </table>
+    <table class="table">
+        <thead class="table-header">
+            <tr>
+              
+                <th>Medicine Name</th>
+                <th>Medicine Type</th>
+                <th>Medicine Strength</th>
+                <th>Dose</th>
+                <th >Dose Time(in hour)</th>
+                <th class="col2">Instructions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let f of medicineList.result.prescription.prescriptionItems;let i=index">
+                <td>{{f.medicine_Name}}</td>
+                <td>{{f.medicineType}}</td>
+                <td>{{f.medicine_concentration}}</td>
+                <td>{{f.dose}}</td>
+                <td >{{f.durarion}}</td>
+                <td class="col2">{{f.instructions}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+  
+</div> -->
+        <div class="p-3">
+            <label>Patient name</label>
+            <span>{{data.patientname}}</span>
+        </div>
+        <div class="p-3">
+            <label class="form-lable" for="doctoruname">Doctor name</label>
+            <span>{{medicineList.result.doctorFullName}}</span>
+        </div>
+        <ng-container *ngFor="let i of medicineList.result.prescription.prescriptionItems">
+            <div class="p-3">
+                <label>Medicine Name</label>
+                <span>{{i.medicine_Name}}</span>
+            </div>
+            <div class="p-3">
+                <label>Type</label>
+                <span>{{i.medicineType}}</span>
+            </div>
+            <div class="p-3">
+                <label>concentration</label>
+                <span>{{i.medicine_concentration}}</span>
+            </div>
+            <div class="p-3">
+                <label>dose</label>
+                <span>{{i.dose}}</span>
+            </div>            
+            <div class="p-3">
+                <label>duration</label>
+                <span>{{i.durarion}}</span>
+            </div>
+            <div class="p-3">
+                <label>instructions</label>
+                <span>{{i.instructions}}</span>
+            </div>
+        </ng-container>

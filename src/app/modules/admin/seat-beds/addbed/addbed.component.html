@@ -1,0 +1,71 @@
+
+        <form class="form" #form="ngForm" (ngSubmit)="addNewRoom(form)">
+                <div class="p-3">
+                    <label class="form-lable" for="roomType">Room Type</label>
+                    <input class="form-control" type="text" name="roomType" id="roomType" required ngModel #roomType="ngModel"
+                    [ngClass]="((roomType.touched&&roomType.invalid) ||(form?.['submitted']&& roomType.hasError('required')))
+                    ? 'is-invalid' : '' || (roomType.touched&& !roomType.invalid)
+                    ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                        {{((roomType.touched&&roomType.invalid) ||(form?.['submitted']&& roomType.hasError('required')))?"This field is reqired":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="roomCharges">Room Charge</label>
+                    <input class="form-control" type="number" name="roomCharges" id="roomCharges" required ngModel #roomCharges="ngModel"
+                    [ngClass]="(roomCharges.touched && roomCharges.invalid)||(form?.['submitted']&& roomCharges.hasError('required'))
+                    ? 'is-invalid' : '' || (roomCharges.touched&& !roomCharges.invalid)
+                    ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                        {{(roomCharges.touched && roomCharges.invalid)||(form?.['submitted']&& roomCharges.hasError('required'))?"This field is reqired":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="departmentId">Departement Name</label>
+                    <select  id="Department" class="form-select"  id="departmentId" name="departmentId" required ngModel #departmentId="ngModel"
+                    [ngClass]="((departmentId.touched && departmentId.invalid)||(form?.['submitted']&& departmentId.hasError('required')))
+                    ? 'is-invalid' : '' || (departmentId.touched && !departmentId.invalid)
+                    ?  'is-valid' : '' " >
+                        <option disabled>-- select Departement Name --</option>
+                        <option *ngFor="let dep of departementsList" value="{{dep.departmentId}}">{{dep.departmentName}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        {{((departmentId.touched && departmentId.invalid)||(form?.['submitted']&& departmentId.hasError('required')))?"This field is reqired":''}}
+                    </div>
+                 </div>
+                <div class="p-3">
+                    <label class="form-lable" for="numberOfBeds">Number Of Beds</label>
+                    <input class="form-control" type="number" name="numberOfBeds" id="numberOfBeds" required ngModel #numberOfBeds="ngModel"
+                    [ngClass]="((numberOfBeds.touched&&numberOfBeds.invalid)||(form?.['submitted']&& numberOfBeds.hasError('required')))
+                    ? 'is-invalid' : '' || (numberOfBeds.touched&& !numberOfBeds.invalid)
+                    ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                        {{((numberOfBeds.touched&&numberOfBeds.invalid)||(form?.['submitted']&& numberOfBeds.hasError('required')))?"This field is reqired":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="floorNumber">Floor Number</label>
+                    <input class="form-control" type="number" name="floorNumber" id="floorNumber" required ngModel #floorNumber="ngModel"
+                    [ngClass]="((floorNumber.touched &&floorNumber.invalid )||(form?.['submitted']&& floorNumber.hasError('required')))
+                    ? 'is-invalid' : '' || (floorNumber.touched&& !floorNumber.invalid)
+                    ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                        {{((floorNumber.touched &&floorNumber.invalid )||(form?.['submitted']&& floorNumber.hasError('required')))?"This field is reqired":''}}
+                    </div>
+                </div>
+                <div class="p-3">
+                    <label class="form-lable" for="roomNumber">Room Number</label>
+                    <input class="form-control" type="number" name="roomnumber" id="roomnumber" required ngModel #roomnumber="ngModel"
+                    [ngClass]="((roomnumber.touched && roomnumber.invalid)||(form?.['submitted']&& roomnumber.hasError('required')))
+                    ? 'is-invalid' : '' || (roomnumber.touched && !roomnumber.invalid)
+                    ?  'is-valid' : '' " />
+                    <div class="invalid-feedback">
+                        {{((roomnumber.touched && roomnumber.invalid)||(form?.['submitted']&& roomnumber.hasError('required')))?"This field is reqired":''}}
+                    </div>
+                </div>
+            <div class="row p-3 justify-content-end">
+                <div class="col-sm-3">
+                    <input type="submit" value="submit" class="form-control" id="submit" [disabled]="submitted"  />
+                </div>
+            </div>
+        </form>

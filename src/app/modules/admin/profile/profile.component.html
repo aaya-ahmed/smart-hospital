@@ -1,0 +1,49 @@
+<div class="main">
+    <div class="statistics">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-calendar-days icon"></i>
+                <h3>Appointment's Today</h3>
+                <span>{{statistical.numberOfTodayAppointments}}</span>
+            </div>
+            <div class="col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-calendar-days icon"></i>
+                <h3>Total Appointments</h3>
+                <span>{{statistical.numberOfAllAppointments}}</span>
+            </div>
+            <div class="col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-bed-pulse icon"></i>
+                <h3>In patient</h3>
+                <span>{{statistical.numberOfInPatients}}</span>
+            </div>
+            <div  class="mt-2 col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-hospital-user icon"></i>
+                <h3>Out patient</h3>
+                <span>{{statistical.numberOfOutPatients}}</span>
+            </div>
+            <div  class="mt-2 col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-user-doctor icon"></i>
+                <h3>doctors</h3>
+                <span>{{statistical.numberOfDoctors}}</span>
+            </div>
+            <div  class="mt-2 col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-user-nurse icon"></i>
+                <h3>Nurses</h3>
+                <span>{{statistical.numberOfNurses}}</span>
+            </div>
+            <div  class="mt-2 col-md-3 col-sm-12 icon-div">
+                <i class="fa-solid fa-user-tie icon"></i>
+                <h3>Receptionist</h3>
+                <span>{{statistical.numberOfReceptionist}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-between w-100">
+        <div class="col-md-5 col-11 chart">
+            <canvas  #doctorchart></canvas>
+        </div>
+        <div class="col-md-5 col-11 chart">
+            <canvas  #nursechart></canvas>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<table>
+    <tr>
+        <th>Information</th>
+        <td class="info-col1"><i class="fas fa-edit" (click)="openupdateprofileside()"></i></td>
+    </tr>
+    <tr>
+        <th>userName</th>
+        <td>{{user.userName||'-'}}</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>{{user.gender||'-'}}</td>
+    </tr>
+    <tr>
+        <th>Blood Type</th>
+        <td>{{user.bloodType||'-'}}</td>
+    </tr>
+    <tr>
+        <th>phone Number</th>
+        <td>{{user.phoneNumber||'-'}}</td>
+    </tr>
+    <tr>
+        <th>E-mail</th>
+        <td>{{user.mail||'-'}}</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>{{user.address||'-'}}</td>
+    </tr>
+    <ng-container *ngIf="showdata">
+        <tr>
+            <th>Department</th>
+            <td>{{user.departmentName||'-'}}</td>
+        </tr>
+        <tr>
+            <th>Specialization</th>
+            <td>{{user.docSpecialization||'-'}}</td>
+        </tr>
+        <tr>
+            <th>Degree</th>
+            <td>{{user.docDegree||'-'}}</td>
+        </tr>
+    </ng-container>
+</table>

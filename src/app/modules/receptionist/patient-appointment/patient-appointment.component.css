@@ -1,0 +1,72 @@
+.container{
+    padding-top: 1.5rem;
+    width:100%;
+    height: 100%;
+ }
+ .header p{
+    font-size: 23px;
+ }
+ .container .row{
+     margin: 0 auto;
+     justify-content: center;
+     align-items: center;
+ }
+ .submit_btn{
+     border: none;
+     background-color: rgb(90, 170, 207);
+     color:white;
+     padding: 0.5rem 1rem;
+     border-radius: 5px;
+     margin: 1.2rem 0 0 0; 
+ }
+ #submit_btn{
+    text-align: center;
+ }
+input{
+    background-color: white!important;
+}
+hr{
+width:70%;
+margin: 2rem auto;
+}
+.form-control{
+    background-color: transparent;
+}
+.table-responsive{
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    height: 60vh;
+    overflow: auto;
+}
+.noappoint-sec{
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    color: red;
+}
+@media  (max-width:990px) {
+    .container .row,.table-responsive {
+        width: 90%;
+        margin: 0 auto;
+        justify-content: center;
+    }
+    hr{
+        width: 90%;
+    }
+    
+}
+@media  (max-width:766px) {
+    .container .row,.table-responsive {
+        width: 100%;
+        margin: 0 auto;
+        justify-content: center;
+    }
+    hr{
+        width: 90%;
+
+    }
+  form  .doctor-select{
+        width:200px
+    }
+}

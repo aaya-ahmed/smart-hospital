@@ -1,0 +1,16 @@
+
+.newrayform .row{
+    width: 50%;
+    margin: 0 auto;
+    height:50vh;
+}
+.col-12{
+    width:50%;
+}
+.form-control{
+    width:50%;
+}
+.page-warpper{
+    min-height:160vh;
+    height: fit-content;
+}

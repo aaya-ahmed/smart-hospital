@@ -1,0 +1,193 @@
+<!-- <main class="container">
+    <header class="row justify-content-around align-content-center">
+        <button class="col-1" (click)="close()">
+            <span class="fa-solid fa-xmark"></span>
+        </button>
+        <h3 class="col-9 m-0">New Doctor</h3>
+    </header>
+    <section class="fluid-container"> -->
+        <form [formGroup]="doctorInfo" #signForm="ngForm">
+            <div class="p-3">
+                <label class="form-lable" for="doctorfname">First Name</label>
+                <input class="form-control " type="text" name="doctorfname" id="doctorfname" formControlName="firstName"
+                [ngClass]="{'is-invalid':((doctorfname.touched&& doctorfname.invalid)||(submitted&&doctorfname.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                                    {{((doctorfname.touched&&doctorfname.hasError('required'))||(submitted&&doctorfname.hasError('required')))?"This field is reqired":''}}
+                                    {{doctorfname.touched&&doctorfname.hasError('minlength')?"Minimum Name length is 3":''}}
+                                    {{doctorfname.touched&&doctorfname.hasError('maxlength')?"Maxiumim Name length is 10":''}}
+                                    {{doctorfname.touched&&doctorfname.hasError('pattern')?" Only letters are allowed":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctorlname">Last Name</label>
+                <input class="form-control" type="text" name="doctorlname" id="doctorlname" formControlName="lastName" 
+                [ngClass]="{'is-invalid':((doctorlname.touched&& doctorlname.invalid)||(submitted&&doctorlname.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorlname.touched&&doctorlname.hasError('required'))||(submitted&&doctorlname.hasError('required')))?"This field is reqired":''}}
+                    {{doctorlname.touched&&doctorlname.hasError('minlength')?"Minimum Name length is 3":''}}
+                    {{doctorlname.touched&&doctorlname.hasError('maxlength')?"Maxiumim Name length is 10":''}}
+                    {{doctorlname.touched&&doctorlname.hasError('pattern')?" Only letters are allowed":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctoruname">User Name</label>
+                <input class="form-control " type="text" name="doctoruname" id="doctoruname" formControlName="userName" 
+                [ngClass]="{'is-invalid':((doctorUserName.touched&& doctorUserName.invalid)||(submitted&&doctorUserName.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorUserName.touched&&doctorUserName.hasError('required'))||(submitted&&doctorUserName.hasError('required')))?"This field is reqired":''}}
+                    {{doctorUserName.touched&&doctorUserName.hasError('pattern')?"character @ # / * etc.. not allowed":''}}
+                </div>
+            </div>
+            <div class="p-3" *ngIf="user==''">
+                <label class="form-lable" for="Password">Password</label>
+                <input class="form-control"  type="Password" name="Password" id="Password" formControlName="password"
+                 [ngClass]="{'is-invalid':((doctorPassword.touched&& doctorPassword.invalid)||(submitted&&doctorPassword.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorPassword.touched&&doctorPassword.hasError('required'))||(submitted&&doctorPassword.hasError('required')))?"This field is reqired":''}}
+                    {{doctorPassword.touched&&doctorPassword.hasError('minlength')?"please it must be at least 8 character":''}}
+                    {{doctorPassword.touched&&doctorPassword.hasError('pattern')?"must contain @ # . only and upper or lowercase ad number":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="nationalId">National Id</label>
+                <input class="form-control" type="text"  name="nationalId" id="nationalId" formControlName="nationalId" 
+                [ngClass]="{'is-invalid':((doctorNid.touched&& doctorNid.invalid)||(submitted&&doctorNid.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorNid.touched&&doctorNid.hasError('required'))||(submitted&&doctorNid.hasError('required')))?"This field is reqired":''}}
+                    {{doctorNid.touched&&doctorNid.hasError('pattern')?"invalid national id":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="age">Age</label>
+                <input class="form-control" type="number" min="20" name="Date-of-Birth" id="Date-of-Birth" formControlName="age" 
+                [ngClass]="{'is-invalid':((doctorAge.touched&& doctorAge.invalid)||(submitted&&doctorAge.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorAge.touched&&doctorAge.hasError('required'))||(submitted&&doctorAge.hasError('required')))?"This field is reqired":''}}
+                    {{doctorAge.touched&&doctorAge.hasError('min')?"age must be between 20 ad 90 year":''}}
+                    {{doctorAge.touched&&doctorAge.hasError('max')?"age must be between 20 ad 90 year":''}}
+                </div>
+            </div>            
+            <div class="p-3">
+                <label class="form-lable" for="gender">gender</label>
+                <select id="gender" class="form-control" formControlName="gender"
+                [ngClass]="{'is-invalid':((doctorGender.touched&& doctorGender.invalid)||(submitted&&doctorGender.hasError('required')))}">
+                    <option vlaue="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{((doctorGender.touched&&doctorGender.hasError('required'))||(submitted&&doctorGender.hasError('required')))?"This field is reqired":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="bloodtype">bloodtype</label>
+                <select id="bloodtype" class="form-control" formControlName="bloodType"
+                [ngClass]="{'is-invalid':((doctorBloodType.touched&& doctorBloodType.invalid))}">
+                    <option vlaue="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option vlaue="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option vlaue="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option vlaue="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Email">Email</label>
+                <input class="form-control" type="email" name="Email" id="Email" formControlName="mail" 
+                [ngClass]="{'is-invalid':((doctorMail.touched&& doctorMail.invalid)||(submitted&&doctorMail.hasError('email')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorMail.touched&&doctorMail.hasError('email'))||(submitted&&doctorMail.hasError('email')))?"must in email format ex xx@xxxx.eg or com":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="phone">phone</label>
+                <input class="form-control" type="tel" name="phone" id="phone" formControlName="phoneNumber" 
+                [ngClass]="{'is-invalid':((doctorPhone.touched&& doctorPhone.invalid)||(submitted&&doctorPhone.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorPhone.touched&&doctorPhone.hasError('required'))||(submitted&&doctorPhone.hasError('required')))?"This field is reqired":''}}
+                    {{doctorPhone.touched&&doctorPhone.hasError('pattern')?"must 11 number and start with 010,011,012 or 015":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable label1" for="address">address</label>
+                <input class="form-control form-control1" value="" type="text" name="address" id="address" formControlName="address"/>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Department">Department</label>
+                <select id="Department" class="form-control" formControlName="departmentName"
+                [ngClass]="{'is-invalid':((doctorDep.touched&&doctorDep.invalid)||(submitted&&doctorDep.hasError('required')))}">
+                    <option vlaue=""></option>
+                    <option *ngFor="let i of departments" value="{{i.departmentName}}">{{i.departmentName}}</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{((doctorDep.touched&&doctorDep.hasError('required'))||(submitted&&doctorDep.hasError('required')))?"This field is reqired":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="specialization">specialization</label>
+                <input type="text" id="specialization" class="form-control" formControlName="docSpecialization"
+                [ngClass]="{'is-invalid':((doctorSpecalization.touched&& doctorSpecalization.invalid)||(submitted&&doctorSpecalization.hasError('required')))}"
+                />
+                <div class="invalid-feedback">
+                    {{((doctorSpecalization.touched&&doctorSpecalization.hasError('required'))||(submitted&&doctorSpecalization.hasError('required')))?"This field is reqired":''}}
+                </div>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Degree">Degree</label>
+                <select id="Degree" class="form-control" formControlName="docDegree"
+                    [ngClass]="{'is-invalid':((doctorDeg.touched&& doctorDeg.invalid)||(submitted&&doctorDeg.hasError('required')))}">
+                    <option></option>
+                    <option value="traineedoctor">Traineer Doctor</option>
+                    <option value="residentphysician"> Resident physician</option>
+                    <option value="specialist">Specialist</option>
+                    <option value="firstspecialist">First Specialist</option>
+                    <option value="consultant">Consultant</option>
+                    <option value="firstconsultant">First Consultant</option>
+                    <option value="professor">Professor</option>
+                    <option value="firstprofessor">First Professor</option>
+                    <option value="assistantprofessor">Assistant Professor</option>
+                    <option value="PHD">PHD</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{((doctorDeg.touched&&doctorDeg.hasError('required'))||(submitted&&doctorDeg.hasError('required')))?"This field is reqired":''}}
+                </div>
+            </div>
+            <div class="p-3" *ngIf="user==''">
+                <label class="form-lable" for="image">Image</label>
+                <input type="file" id="image" class="form-control"  formControlName="image" (change)="setdoctorimage($event)"/>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="hiring">Hiring Date</label>
+                <input type="date" max="{{today}}" id="hiring" class="form-control" formControlName="createdDtm"
+                [ngClass]="{'is-invalid':((Hdate.touched&& Hdate.invalid)||(submitted&&Hdate.hasError('required')))}"/>
+                <div class="invalid-feedback">
+                    {{((Hdate.touched&&Hdate.hasError('required'))||(submitted&&Hdate.hasError('required')))?"This field is reqired":''}}
+                </div>
+            </div>
+            <div class="p-3 alignitemscenter">
+                <input type="checkbox" class="is-active" [checked]="doctoractive.value" name="active" id="active"  formControlName="isActive"/>
+                <label class="form-lable" for="active">Is Active</label>
+            </div> 
+            <div class="p-3 alignitemscenter">
+                <input type="checkbox" class="is-clinic" formControlName="clinicalDoctor" id="clinic"/>
+                <label class="form-lable2" for="clinic">Has Clinical?</label>
+            </div> 
+            <div class="p-3">
+                <div class="col-sm-3">
+                    <button *ngIf="!submitted&&doctorInfo.valid" class="btn" (click)="submit()">Submit</button>
+                    <span class="error-message" *ngIf="errorMessage!=''">{{errorMessage}}</span>
+                    <div *ngIf="submitted&&doctorInfo.valid" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+                </div>
+            </div>
+        </form>
+    <!-- </section>
+</main> -->

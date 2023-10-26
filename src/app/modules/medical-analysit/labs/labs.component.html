@@ -1,0 +1,122 @@
+<!--
+   <div class="hidden-adding" [ngClass]="{'toggle-addmodel':ModuleFlag}">
+        <div class="modal fade"  id="exampleModalCenter"  role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">New Test</h3> 
+                        <button type="button" (click)="togglemodalfunc()" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="fa-solid fa-xmark"></span>
+                        </button>
+                    </div>    
+                    <div class="modal-body">
+                    
+                <div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':noParamtersflag}">
+                    <h2 >Invalid!</h2> You Must Add At Least One Paramter To This Test     
+                </div>
+                <div class="alert alert-success alert-dismissible fade sucessmes" role="alert" [ngClass]="{'successshow':successflag}">
+                    <strong>success !</strong>
+                  </div>
+                <div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':errorflag}">
+                    error!
+                  </div>
+            </div>
+    </div>
+    </div>
+</div>           
+</div>
+<div class="hidden-update" [ngClass]="{'toggle-updatemodel':updateflag}">
+        <div class="modal fade"  id="exampleModalCenter"  role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Update Test Charge</h3> 
+                        <button type="button" (click)="togglemodalfunc()" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="fa-solid fa-xmark"></span>
+                        </button>
+                    </div>    
+                    <div class="modal-body">
+                    <form [formGroup]="updatingTestInfo" (ngSubmit)="updateTestInfo()" #updateForm="ngForm" class="newrayform">
+   
+                        <div class="row p-2 justify-content-center">
+                        <div class="col-md-6">
+                            <label class="form-lable" for="testName">Test Name</label>
+                            <input class="form-control" type="text" [value]="labName"  disabled/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-lable" for="charge">Test Charge</label>
+                            <input class="form-control form-control1" type="text" name="charge" [value]="oldCharge" id="charge" formControlName="newcharge" 
+                            [ngClass]="((updatingTestInfo.get('newcharge')?.touched || updatingTestInfo.get('newcharge')?.invalid) 
+                            || updateForm?.['submitted'])&&updatingTestInfo.get('newcharge')?.hasError('reqired')
+                                    ? 'is-invalid' : '' || updatingTestInfo.get('newcharge')?.hasError('pattern') 
+                                    ? 'is-invalid' : '' || ((updatingTestInfo.get('newcharge')?.touched || updatingTestInfo.get('newcharge')?.dirty)&& !updatingTestInfo.get('newcharge')?.invalid)
+                                    ?  'is-valid' : '' " />
+                                <div class="invalid-feedback">
+                                    {{testCharge?.hasError('required')?"This field is reqired":''}}
+                                    {{testCharge?.hasError('pattern')?"Can Contain numbers and decimal point(.)":''}}
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row p-2 justify-content-center">
+                            <div class=" col-sm-4">
+                                <input type="submit" value="Update" class="form-control " id="add_btn" />
+                            </div>
+                            
+                        </div> 
+            </form>
+                    </div>
+                    <div class="alert alert-success alert-dismissible fade sucessmes" role="alert" [ngClass]="{'successshow':successflag}">
+                        <strong>success !</strong>
+                      </div>
+                    <div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':errorflag}">
+                        error!
+                      </div>
+                </div></div></div>
+        </div>
+</div> -->
+<div class="fluid-container">
+    <div *ngIf="loadflag;then loading;else page" ></div>
+    <!-- start page template -->
+    <ng-template #page>
+        <div class="container-fluid w-100">
+            <div class="d-block px-2 py-3 head m-0">
+                <button (click)="openAddtestSide()" class="btn text-white btn-success">Add test </button>
+            </div>
+            <ng-container *ngIf="alltests.length>0">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>test Name</th>
+                                <th>Charge</th>
+                                <th>Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let test of alltests|paginate: { itemsPerPage:5, currentPage: p ,totalItems:totallength};let index=index">
+                                <td>{{test.id}}</td>
+                                <td>{{test.name}}</td>
+                                <td>{{test.testCharge}}</td>
+                                <td>
+                                    <button (click)="openupdatetestside(test,index)"> <span class="fa-solid fa-pen-to-square " style="color:green " > </span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <pagination-controls style="margin:1rem 0 0 0;float: right;" (pageChange)="p = $event"></pagination-controls>     
+            </ng-container>
+            <ng-container *ngIf="alltests.length==0" style="margin-top:0rem; text-align:center ;">
+                <p class="error">No Avaliable Data</p>
+            </ng-container>
+        </div>
+    </ng-template>
+    <!-- end page template -->
+</div>
+
+<ng-template #loading>
+    <div class="fluid-container loading">
+        <img src="assets/Spinner.svg" />
+    </div>
+</ng-template>

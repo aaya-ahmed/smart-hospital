@@ -1,0 +1,11 @@
+<main [ngClass]="{'container':show}">
+    <header class="row justify-content-around align-content-center">
+        <button class="col-1" (click)="close()">
+            <span class="fa-solid fa-xmark"></span>
+        </button>
+        <h3 class="col-9 m-0">{{title}}</h3>
+    </header>
+    <section class="fluid-container">
+        <ng-template appHost ></ng-template>
+    </section>
+</main>

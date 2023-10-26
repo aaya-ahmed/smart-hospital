@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.newrayform .row{
+    width: 50%;
+    margin: 0 auto;
+    height:50vh;
+}
+.col-12{
+    width:50%;
+}
+.form-control{
+    width:50%;
+}
+
+.page-warpper{
+    width: 100%;
+    height: fit-content;
+    background-repeat: repeat;
+    background-size:  cover;
+}
+

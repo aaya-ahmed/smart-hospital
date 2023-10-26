@@ -1,0 +1,65 @@
+<header>
+    <div class="social">
+        <ul class="d-flex justify-content-center justify-content-md-end  align-items-center pt-3">
+            <li class="px-3">
+                <a target="_blank" href="https://facebook.com">
+                    <i class="fa-brands fa-facebook fa-xl"></i>
+                </a>
+            </li>
+            <li class="px-3">
+                <a target="_blank" href="https://twitter.com">
+                    <i class="fa-brands fa-twitter fa-xl"></i>
+                </a>
+            </li>
+            <li class="px-3">
+                <a target="_blank" href="https://youtube.com">
+                    <i class="fa-brands fa-youtube fa-xl"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="row navigation">
+        <div class="col-7 col-md-5 logo">
+                <a [routerLink]="'/home'">
+                    <img src="assets/logo.png" alt="logo" />
+                    <p><strong>Fayoum University Hospital</strong></p>
+                </a>
+        </div>
+        <div class="col-4 btn-toggle" >
+            <button class="btn" (click)="togglenav()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="col-md-7 col-12 links-list" [ngClass]="{'show':toggle,'hide':!toggle}">
+            <nav>
+                <ul>
+                    <li class="p-3">
+                        <a [routerLink]="'/home'">Home</a>
+                    </li>
+                    <li class="p-3">
+                        <a [routerLink]="'/departments'">Departments</a>
+                    </li>
+                    <li class="p-3">
+                        <a [routerLink]="'/schedule'">Schedules</a>
+                    </li>
+                    <ng-container *ngIf="logoutstatus">
+                        <li class="p-3">
+                            <a (click)="openlogin()">Login</a>
+                        </li>
+                        <li class="p-3">
+                            <a (click)="openreg()">Register</a>
+                        </li>
+                    </ng-container>
+                    <ng-container *ngIf="!logoutstatus">
+                        <li class="p-3">
+                            <a (click)="openprofile()">My Profile</a>
+                        </li>
+                        <li class="p-3">
+                            <a (click)="logout()">Log Out</a>
+                        </li>
+                    </ng-container>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

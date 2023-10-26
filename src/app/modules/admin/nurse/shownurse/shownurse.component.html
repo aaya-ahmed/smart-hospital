@@ -1,0 +1,53 @@
+<div class="p-3">
+    <label>Name</label>
+                <span>{{nurse.firstName}} {{nurse.lastName}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctoruname">User Name</label>
+                <span>{{nurse.userName}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="nationalId">National Id</label>
+                <span>{{nurse.nationalId}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="age">Age</label>
+                <span>{{nurse.age}}</span>
+            </div>            
+            <div class="p-3">
+                <label class="form-lable" for="gender">gender</label>
+                <span>{{nurse.gender}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="bloodtype">bloodtype</label>
+                <span>{{nurse.bloodType}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Email">Email</label>
+                <span>{{nurse.mail}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="phone">phone</label>
+                <span>{{nurse.phoneNumber}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable label1" for="address">address</label>
+                <span>{{nurse.address}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Department">Department</label>
+                <span>{{nurse.departmentName}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Degree">Degree</label>
+                <span>{{nurse.nurseDegree}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="hiring">Hiring Date</label>
+                <span>{{nurse.createdDtm|date:'yyyy-mm-dd'}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable success" for="active" >Active</label>
+                <span  class="text-success" *ngIf="nurse.isActive">Yes</span>
+                <span  class="text-danger" *ngIf="!nurse.isActive">No</span>
+            </div>

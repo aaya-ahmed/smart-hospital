@@ -1,0 +1,24 @@
+    <table>
+        <tr>
+            <td class="col1"><img [src]="imagesrc"></td>
+        </tr>
+        <tr>
+            <td class="col2">{{user.firstName}}&nbsp;{{user.lastName}}</td>
+        </tr>
+        <tr>
+            <td >*******
+            <i class="fas fa-edit" title="change password" 
+            style="color:green;padding:0.2rem 0 ;cursor: pointer;" (click)="openupdatepasswordside()"></i></td>
+        </tr>
+        <tr>
+            <td class="col3">
+                <span class="col3-title">Age</span><span>{{user.age}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="col4">
+                <input type="file" id="actual-btn" hidden (change)="uploadfile($event)"/>
+                <label for="actual-btn" id="actual-btn">Change Image</label>
+            </td>
+        </tr>
+    </table>

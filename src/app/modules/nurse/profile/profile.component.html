@@ -1,0 +1,42 @@
+<div class="fluid-container">
+    <div class="sec-info">
+        <div class="photo">
+            <app-profile-image [controller]="'Nurse/update'"></app-profile-image>
+        </div>
+        <div class="main-info">
+            <app-profile-info [controller]="'Nurse/update'"></app-profile-info>
+        </div>
+    </div>
+    <div class="main">
+        <div class="list table-responsive" >
+            <div *ngIf="listflag;then datalist;else nodata"></div>
+        </div>
+    </div>
+</div>
+<ng-template #datalist>
+        <table class="table fixed_header">
+            <thead>
+                <tr class="list-title"><td colspan="5">In Patient List</td></tr>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Room Number</th>
+                    <th>Bed Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of list">
+                    <td>{{i.firstName}}&nbsp;{{i.lastName}}</td>
+                    <td>{{i.age}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.room_Number}}</td>
+                    <td>{{i.bedNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+</ng-template>
+<ng-template #nodata>
+    <p>No Data Found</p>
+</ng-template>
+

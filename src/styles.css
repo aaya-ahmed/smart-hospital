@@ -1,1 +1,121 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+
+    overflow: hidden
+}
+html,body{
+    width:100%;
+    height:100%;
+}
+html{
+    overflow: hidden
+}
+body{
+    overflow-y: auto;
+    position:relative;
+}
+.threedot{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+i{
+    overflow: initial;
+    color:#445182 ;
+}
+.No-Data{
+    color: red
+}
+.error-message{
+    display: inline!important;
+    color: #ad2525;
+}
+.success-message{
+    color: green
+}
+@import "~bootstrap/dist/css/bootstrap.css";
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px rgb(46, 44, 44);
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: rgb(44, 43, 43);
+    border-radius: 3px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #140606;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+html, body { height: 100%;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+.mat-typography{
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+a{
+    text-decoration: none!important;
+    color: black!important;
+}
+.btn {
+    color: white!important;
+    border: none!important;
+    background-color: #495583!important;
+    border-radius: 2rem!important;
+}
+.text-justify{
+    text-align: justify;
+}
+*:focus{
+    outline: none!important;
+    box-shadow: none!important;
+}
+button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.leaflet-tile-container,.leaflet-pane,.leaflet-layer {
+    width: 100%!important;
+    height: 100%!important;
+}
+.leaflet-pane{
+    transform: translate3d(0px, 0px, 0px)!important;
+}
+.alignitemscenter{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gab:10px;
+}

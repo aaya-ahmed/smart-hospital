@@ -1,0 +1,109 @@
+section{
+    margin-top: 7.9875rem;
+    margin-bottom: 7rem;
+    min-height: 50vh;
+    text-align: center;
+}
+.department-div{
+    background-color: #445182!important;
+}
+input[type="checkbox"]{
+    display: none;
+}
+.department-div label{
+    color: white;
+    margin: 0!important;
+    display: block;
+    text-align: center;
+}
+.department-div table tr td button{
+    width: 100%;
+    text-align: left;
+    color: white;
+}
+.active,.department-div table tr td button:hover{
+    background-color: #f1f8f2!important;
+    color: black!important;
+}
+.table-responsive{
+    width: 100%;
+}
+.table-responsive table{
+    width: 700px;
+    min-width: 100%;
+    overflow-x: auto;
+}
+.schedule-table thead{
+    background-color:  #f1f8f2!important;
+}
+.schedule-table thead tr th{
+    padding: 1rem;
+}
+.schedule-head{
+    background-color: #445182;
+    color: white;
+    padding: 0.5rem 0;
+}
+table td,table th{
+    vertical-align: middle;
+}
+.image{
+    position: relative;
+    top: 0;
+    height: 40vh;
+    width: 100%;
+}
+.image img{
+    width: 100%;
+    height: 100%;
+
+}
+.image h2{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    margin: 0rem 2.5rem;
+    color: white;
+    font-size: 40px;
+    font-weight: 500;
+    z-index: 1;
+}
+.image::after{
+    content: "";
+    display: block;
+    background-color: #445182d4;
+    position: absolute;
+    top: 0;
+    width: 50%!important;
+    height: 185%!important;
+    transform: rotate(200deg) translate(25%, 20%)!important;
+}
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+}
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    .department-div div{
+        display: none;
+    }
+    .department-div label{
+        cursor: pointer;
+    }
+    .department-div input[type="checkbox"]:checked+div{
+        display: block;
+        height: 20vh;
+        overflow-y: scroll;
+    }
+    .small-department-div{
+        display: block;
+    }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+
+}

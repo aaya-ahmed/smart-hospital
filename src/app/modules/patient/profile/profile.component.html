@@ -1,0 +1,24 @@
+ <div class="fluid-container">
+    <div class="sec-info">
+        <div class="photo">
+            <app-profile-image [controller]="'Patient/update'"></app-profile-image>
+        </div>
+        <div class="main-info">
+            <app-profile-info [controller]="'Patient/update'"></app-profile-info>
+        </div>
+    </div>
+   <div class="main">
+        <div class="statistics">
+            <div class="row">
+                <div class="col-md-6  col-sm-12">
+                    <img class="icon" src="../assets/inpatient icon.png">
+                    <h3>Your Indoor Records</h3>
+                    <span>{{numOfIndoorRec}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="appoint table-responsive" >
+            <app-patientappointments [patient]="patient.id"></app-patientappointments>
+        </div>
+    </div>
+</div>

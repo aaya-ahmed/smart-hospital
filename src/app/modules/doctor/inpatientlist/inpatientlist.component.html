@@ -1,0 +1,52 @@
+<div *ngIf="flag then mainpage;else loading"></div>
+<ng-template #mainpage>
+    <div class="container" [hidden]="!patientflag">
+        <div class="row text-center">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-4">In Patient</h1>
+            </div>
+        </div>
+        <div class="row  table-responsive" >
+            <div class="col-xl-3 col-sm-6 mb-5" *ngFor="let i of inpatient;let j=index">
+                <div class="rounded shadow-sm py-2 px-1">
+                    <table>
+                        <tr>
+                            <th>Patient Name</th>
+                            <td><h5 class="mb-0">{{i.patientName}}</h5></td>
+                        </tr>
+                        <tr>
+                            <th>Room Num</th>
+                            <td><span class="small text-uppercase text-muted">{{i.room_Number}}</span></td>
+                        </tr>
+                        <tr>
+                            <th>Bed Num</th>
+                            <td><span class="small text-uppercase text-muted">{{i.bedNumber}}</span></td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <span class="small text-uppercase text-muted">{{i.gender}}</span>
+                        </tr>
+                        <tr>
+                            <th>Age</th>
+                            <td><span class="small text-uppercase text-muted">{{i.age}}</span></td>
+                        </tr>
+                        <tr style="text-align:center">
+                            <td colspan="2"><button (click)="examine(j)" id="accept">Examine</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" [hidden]="patientflag">
+        <div class="row text-center">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-4">In Patient</h1>
+            </div>
+        </div>
+        <p style="color:red;"> There is No Patient</p>
+    </div>
+</ng-template>
+<ng-template #loading>
+    <div class="fluid-container loading"><img src="assets/Spinner.svg" width="50px" height="50px" /></div>
+</ng-template>

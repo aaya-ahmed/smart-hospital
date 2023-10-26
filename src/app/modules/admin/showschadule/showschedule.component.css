@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.fluid-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0.5rem;
+}
+
+.dept,
+.table-responsive {
+    width: 95%;
+    margin: 0 auto;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+.col8{
+    padding-top: 12px;
+}
+
+.table-responsive {
+    height: 400px;
+}
+
+.dept {
+    display: flex;
+    margin-top: 25px;
+}
+
+.form-select {
+    width: 300px;
+    height: 40px;
+    background-color: white;
+}
+
+.col1 {
+    width: 150px;
+    min-width: 150px;
+    font-size: 18px;
+    color: rgba(66, 143, 89, 0.89);
+    font-weight: bold;
+}
+
+.col2 {
+    width: 400px;
+    height: 40px;
+}
+
+.col3 {
+    width: 150px;
+    background-color: rgb(27, 133, 175);
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.col3 button {
+    color: white;
+}
+
+.col4 {
+    vertical-align: middle;
+}
+
+.table-responsive table tr th {
+    min-width: 90px;
+    width: 90px;
+    text-align: center;
+    background-color: rgb(68 81 130);
+    color: white;
+}
+
+.table-responsive table tr td {
+    min-width: 100px;
+    width: 100px;
+    text-align: center;
+}
+
+.table-responsive table tr .col1 {
+    min-width: 50px;
+    width: 50px;
+}
+
+.schedule-table {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 2rem;
+}
+
+p {
+    height: 30px;
+    padding-top: 2px;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.schedule2-tables th {
+    border-top: none;
+}
+
+.schedule2-tables tr {
+    border-bottom: none;
+    outline: none;
+    text-align: center;
+}
+.schedule2-tables tr td input{
+    margin:0 auto;
+}
+table {
+    width: 100%;
+}
+p{
+    color: gray;
+    width: 100%;
+    text-align: center;
+}
+input ,select{
+    border:none;
+    outline: none;
+    background-color: transparent;
+    padding-left: 0px;
+}
+select[disabled] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+.department-list{
+    width: 100%;
+}
+.department-list label{
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+}
+.department-list select{
+    width: 95%;
+    border: 1px solid rgb(45, 93, 156);
+    margin: 0.3rem auto;
+}
+.form-select:focus{
+    box-shadow: none;
+}
+.mess{
+    width:400px;
+    margin: 0;
+    position: absolute;
+    display: none;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.show {
+    display: block;
+}

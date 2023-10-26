@@ -1,0 +1,74 @@
+    <form [formGroup]="vitalform"  (ngSubmit)="add_vital()" >
+      <div class="p-3">
+            <label class="form-lable" for="date">Date</label>
+            <input type="text" value="{{today|date: 'longDate'}}" id="date" class="form-control" placeholder="Date" disabled/>
+      </div>
+      <div class="p-3">
+            <label class="form-lable" for="patientname">Patient Name</label>
+            <input type="text" value="{{user.patientname}}" id="patientname" class="form-control" placeholder="patientname"  disabled/>
+      </div>
+      <div class="p-3">
+            <label class="form-lable" for="Nursename">Nurse Name</label>
+            <input type="text" value="{{user.nursename}}" id="Nursename" class="form-control" placeholder="Nursename" disabled/>
+      </div>
+      <div class="p-3">
+            <label class="form-lable" for="pressure">pressure</label>
+            <input type="text" id="pressure" class="form-control" 
+            placeholder="ex:- 120-80" formControlName="pressure" 
+            [ngClass]="{'is-invalid':((vitalpressure.touched&&vitalpressure.invalid)||(submitted&&vitalpressure.hasError('required')))}"/>
+            <div class="invalid-feedback">
+              {{((vitalpressure.touched&&vitalpressure.invalid)||(submitted&&vitalpressure.hasError('required')))?"This field is reqired":''}}
+              {{((vitalpressure.touched&&vitalpressure.hasError('pattern'))||(submitted&&vitalpressure.hasError('required')))?"pressure format xxx-xxx":''}}
+            </div>
+      </div>
+      <div class="p-3">
+            <label class="form-lable" for="pulseRate">pulseRate</label>
+            <input type="number" min="0" id="pulseRate" 
+            class="form-control" name="pulserate" formControlName="pulserate"
+            [ngClass]="{'is-invalid':((vitalpulserate.touched&&vitalpulserate.invalid)||(submitted&&vitalpulserate.hasError('required')))}"/>
+            <div class="invalid-feedback">
+              {{((vitalpulserate.touched&&vitalpulserate.invalid)||(submitted&&vitalpulserate.hasError('required')))?"This field is reqired":''}}
+            </div>
+      </div>            
+      <div class="p-3">
+            <label class="form-lable" for="Temperature">Temperature</label>
+            <input type="number" min="25" max="50" class="form-control" id="Temperature"
+            formControlName="temperature" [ngClass]="{'is-invalid':((vitaltemperature.touched&&vitaltemperature.invalid)||(submitted&&vitaltemperature.hasError('required')))}"/>
+            <div class="invalid-feedback">
+              {{((vitaltemperature.touched&&vitaltemperature.invalid)||(submitted&&vitaltemperature.hasError('required')))?"This field is reqired":''}}
+              {{((vitaltemperature.touched&&vitaltemperature.hasError('min'))||(submitted&&vitaltemperature.hasError('min')))?"min temprature is 25":''}}
+              {{((vitaltemperature.touched&&vitaltemperature.hasError('max'))||(submitted&&vitaltemperature.hasError('max')))?"max temprature is 50":''}}
+            </div>
+      </div>
+      <div class="p-3">
+            <label class="form-lable" for="ecg">ECG</label>
+            <input type="file" (change)="uploadfile($event)" class="form-control" id="ecg" formControlName="ecg"/>
+      </div>
+      <div class="p-3">
+            <label class="form-lable" for="Respiration Rate">Respiration Rate</label>
+            <input type="number" class="form-control" id="Respiration Rate" formControlName="respirationrate"
+            [ngClass]="{'is-invalid':((vitalrespirationrate.touched&&vitalrespirationrate.invalid)||(submitted&&vitalrespirationrate.hasError('required')))}"/>
+            <div class="invalid-feedback">
+              {{((vitalrespirationrate.touched&&vitalrespirationrate.invalid)||(submitted&&vitalrespirationrate.hasError('required')))?"This field is reqired":''}}
+            </div>
+      </div>
+      <div class="p-3">
+            <div class="col-sm-3">
+                <input *ngIf="!submitted&&vitalform.valid" type="submit" value="save" class="form-control text-white bg-success" id="submit1" />
+                <div *ngIf="submitted&&vitalform.valid" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
+            </div>
+      </div>
+      <div class="row note">
+        <label for="Note">
+          Notes
+        </label>
+      </div>
+      <div class="p-3">
+        <label for="title">Title</label>
+        <input type="text" id="title" class="form-control" formControlName="titlenote" />
+      </div>
+      <div class="p-3">
+        <label for="explain">explain</label>
+        <textarea row="40" col="30" id="explain" class="form-control" formControlName="exnote" ></textarea>
+      </div>
+    </form>

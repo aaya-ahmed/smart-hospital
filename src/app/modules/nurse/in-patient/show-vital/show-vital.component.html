@@ -1,0 +1,73 @@
+
+        <div class="table-responsive" id="no-more-tables">
+            <table class="table">
+                <tbody>
+                <tr >
+                    <th><strong>Patient Name: </strong> </th>
+                    <td data-title="Patient Name:"> <input type="text" class="form-control"  value="{{data.patientname}}" disabled/></td>
+                    <th><strong>Age: </strong> </th>
+                    <td data-title="Age:"> <input type="text" class="form-control" value="{{data.patientage}}"  disabled/></td>
+                </tr>
+                <tr class="end-table">
+                    <th><label for="startdate">Start Time</label></th>
+                    <td data-title="Start Time"> 
+                        <input type="date" class="form-control" [max]="today" id="startdate" #start (change)="onchange()"
+    
+                        [ngClass]="{'is-invalid':startflag}"
+                        />
+                    <div class="invalid-feedback">
+                        {{startflag?"start time is required":''}}
+                    </div>
+                    </td>
+                    <th> <label for="enddate">End Time</label></th>
+                    <td data-title="End Time"> <input type="date" class="form-control" id="enddate" #end required (change)="onchange()"
+                        [ngClass]="{'is-invalid':endflag}"
+                        />
+                    <div class="invalid-feedback">
+                        {{endflag?"end time is required":''}}
+                    </div>
+                    </td>
+                    <th></th>
+                </tr>
+                <tr *ngIf="st_end_flag">
+                    <td colspan="2" style="color:red;text-align: center">Start time must less than end time or equal</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4"><button class="btn" (click)="getvitals(start.value,end.value)">Get Vital</button></td>
+                </tr>
+            </tfoot>
+            </table>
+        </div>
+        <ng-container *ngFor="let i of vital|paginate: { itemsPerPage: 1, currentPage: p ,totalItems:totallength}">
+            <div class="p-3">
+                <label>Date</label>
+                <span>{{i.vitals_date.slice(0,10)}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="doctoruname">Time</label>
+                <span>{{i.vitals_date.slice(11,16)}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="nationalId">Blood Pressure</label>
+                <span>{{i.pressure}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="age">Pulse Rate</label>
+                <span>{{i.pulseRate}}</span>
+            </div>            
+            <div class="p-3">
+                <label class="form-lable" for="gender">Temperature</label>
+                <span>{{i.temperature}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="bloodtype">Respiratory Rate</label>
+                <span>{{i.respirationRate}}</span>
+            </div>
+            <div class="p-3">
+                <label class="form-lable" for="Email">Comments</label>
+                <span>{{i.noteDto.subject}}<br>{{i.noteDto.body}}</span>
+            </div>
+        </ng-container>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>

@@ -1,0 +1,49 @@
+main{
+    width: 0;
+    height: 0;
+}
+.container{
+    width: 100vw!important;
+    max-width: 100vw!important;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    padding: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #000000ab;
+}
+section{
+    width: 488px;
+    height: calc(100vh - 4rem);
+    background-color: white;
+    border: none;
+    margin-top: 4rem;
+    overflow-y: auto;
+}
+header{
+    position: fixed;
+    width: 500px;
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+h3{
+    line-height: 40px;
+    font-weight: 900;
+}
+button{
+    width: fit-content;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: rgba(128, 128, 128, 0.271);
+    border-radius: 50%;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

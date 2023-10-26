@@ -1,0 +1,17 @@
+.fluid-container{
+    width: 100%;
+    text-align: center;
+}
+.table-responsive{
+    margin: 1rem auto;
+    display: block;
+    width: 90%;
+    border-radius: 10px;
+    height: calc(100vh - 5.5rem);
+    overflow: auto;
+}
+.pdf{
+    cursor: pointer;
+    padding: 8px;
+    width: 10px;
+}

@@ -1,0 +1,100 @@
+<div class="container w-100">
+    <div class="row align-items-start justify-content-center">
+        <div class="col-12 py-2 px-0">
+            <header>
+                <h3>
+                   Appointment
+                </h3>
+            </header>
+            <form #appointform="ngForm" (ngSubmit)="submitappoint(appointform)" >
+                <div class="row py-2 justify-content-around  ">
+                    <div class="col-md-5 col-12">
+                        <label  [hidden]="selectflag" class="form-label">Patient Name</label>
+                        <input [hidden]="selectflag" type="text"  [disabled]="selectflag" class="form-select" id="name" list="patientname" class="form-select" required name="patientid" ngModel #patientid="ngModel"
+                        [ngClass]="{'is-invalid':((patientid.errors?.['required']&&patientid.touched)||(submitted&&patientid.errors?.['required']))}">
+                        <datalist [hidden]="selectflag" id="patientname" 
+                        [ngClass]="{'is-invalid':patientid.errors?.['required']&&patientid.touched||patientid.errors?.['required']&&appointform.submitted}">
+                            <option *ngFor="let i of patients" value="{{i.firstName}} {{i.lastName}}"> 
+                        </datalist>
+                        <div class="invalid-feedback">
+                            {{patientid.errors?.['required']&&patientid.touched||patientid.errors?.['required']&&appointform.submitted?"this is required":''}}
+                        </div>
+                        <label [hidden]="!selectflag" class="form-label">Your Name</label>
+                        <p [hidden]="!selectflag" class="form-control">{{patientname}}</p>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <label class="form-label">clinical</label>
+                        <select class="form-select" (change)="getallschedule($event)" required name="clinical" ngModel #clinical="ngModel"
+                        [ngClass]="{'is-invalid':clinical.errors?.['required']&&clinical.touched}">
+                            <option *ngFor="let i of departments" value="{{i.id}}">{{i.department_Name}}</option>
+                        </select>
+                    </div>               
+                </div>
+                <div class="row py-2 justify-content-around">
+                    <div class="col-md-5 col-12">
+                        <label class="form-label">doctor</label>
+                            <select class="form-select" [disabled]="!departmentflag"  (change)="getdoctorschedule($event)" required name="doctorid" ngModel #doctorid="ngModel"
+                            [ngClass]="{'is-invalid':((doctorid.errors?.['required']&&doctorid.touched)||(doctorid.errors?.['required']&&submitted))}">
+                                <option></option>
+                                <option *ngFor="let i of fullschedule;let j =index" value="{{j}}" >{{i.doctorName}}</option>
+                            </select>
+                            <div class="invalid-feedback">{{((doctorid.errors?.['required']&&doctorid.touched)||(doctorid.errors?.['required']&&submitted))?"this field is required":''}}</div>
+                            <div class="invalid-feedback" [ngClass]="{'show':!departmentflag}">{{(!departmentflag)?"please choose clinical":''}}</div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <div class="col-md-6 col-sm-12 ">       
+                            <mat-form-field >
+                                <input #minmaxInput matInput 
+                                required
+                                 name="appointdate"
+                                  ngModel
+                                   #appointdate="ngModel"
+                                  [min]="minDate" 
+                                  [max]="maxDate"
+                                  [disabled]="!doctorflag"
+                                  (dateChange)="getdate($event)"
+                                  [matDatepickerFilter]="weekendsDatesFilter"
+                                  [matDatepicker]="minmaxvalidation" 
+                                  placeholder="choose your date"
+                                  aria-owns="mat-datepicker-3"
+                                  
+                                  [ngClass]="{'is-invalid':((appointdate.errors?.['required']&&appointdate.touched)||(submitted&&appointdate.errors?.['required']))}"
+                                  >
+                                <mat-datepicker-toggle matSuffix [for]="minmaxvalidation" style="display:block">
+                                   </mat-datepicker-toggle>
+                                <mat-datepicker #minmaxvalidation ></mat-datepicker>
+                              </mat-form-field>
+                              <div>
+                                {{((appointdate.errors?.['required']&&appointdate.touched)||(submitted&&appointdate.errors?.['required']))?"this field is required":''}}
+                              </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row py-2 justify-content-around">
+                    <div class="col-md-5 col-12">
+                        <label class="form-label">time</label>
+                        <select  (change)="($event)" [disabled]="!doctorflag" required class="form-select" name="time" ngModel #time="ngModel"
+                        [ngClass]="{'is-invalid':((time.errors?.['required']&&time.touched)||(submitted&&time.errors?.['required']))}">
+                            <option></option>
+                            <option *ngFor="let i of  showslot;let j=index" value="{{j}}" >{{i.slotTime}}</option>
+                        </select>
+                        <div>
+                            {{((time.errors?.['required']&&time.touched)||(submitted&&time.errors?.['required']))?"this field is required":''}}
+                        </div>
+                    </div>
+                    <div class="col-5"></div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-md-11 col-12 py-2">
+                        <label class="form-label">Complain</label>
+                        <textarea class="form-control" row="120" col="90" name="complain" ngModel #complain="ngModel"></textarea>
+                    </div>
+                    <div class="col-md-11 col-12 py-2">
+                        <button id="submit-btn" type="submit">submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    

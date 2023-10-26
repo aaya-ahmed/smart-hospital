@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section{
+    margin: 3.5rem 0 0 250px;
+    background-color: #e5f1e7;
+    overflow: auto;
+    height: calc(100% - 3.5rem);
+}
+@media(max-width:800px){
+    section{
+        margin: 3.5rem 0 0 0;
+        width: 100%;
+    }
+}
