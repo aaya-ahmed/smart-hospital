@@ -18,28 +18,11 @@
     border: none;
     outline: none;
     border-radius: 5px;
-    background-color: #3F828D;
-    color: white;
+    background-color: #b5c1ab;
     font-size: medium!important;
     padding: 0.2rem 0.5rem;
     float: right;
 
-}
-
-.btn-check:focus+.btn, .btn:focus {
-    outline: 0;
-    box-shadow:none;
-}
-.btn{
-    font-size: 20px!important;
-    background-color: #3F828D;
-    padding: 0.3rem 1rem;
-    margin: 0;
-    color: white;
-}
-.btn label{
-    width:250px;
-    cursor: pointer;
 }
 .form-select{
     display: block;
@@ -64,7 +47,6 @@
     outline: 0;
     box-shadow:none;
 }
-
 .scan , .showlist{
     width:50%;
     height:20vh;
@@ -74,8 +56,9 @@
     width:80%
 }
 .showlist div{
+    height: fit-content;
+    max-height: 10rem;
     overflow-y: auto;
-    height: 68%;
 }
 .error{
     display: none;
@@ -87,7 +70,6 @@
     font-size: 0.875em!important;
     color: #dc3545;
   }
-
 .showlist p button{
     background-color: transparent;
     border: none;
@@ -96,11 +78,9 @@
 }
 .showlist h5{
     width: 100%;
-    background-color: #3F828D;
+    background-color: #b5c1ab;
     text-align: center;
     padding: 0.2rem 0;
-    color: white;
-    margin: 1.5rem 0 0 0;
 }
 .alert-dismissible{
     position: fixed;
@@ -112,8 +92,24 @@
 .successmes,.errormes{
     display: none;
 }
-
 .successshow,.errorshow{
     display: block;
     opacity: 1;
+}
+@media (max-width: 767.98px) {
+    .card-body{
+        flex-direction: column;
+    }
+    .scan select{
+        width: 100%;
+    }
+    .scan {
+        width:100%;
+        height: fit-content;
+    }
+    .showlist{
+        width:100%;
+        margin: 1.5rem 0 0 0;
+    }
+
 }

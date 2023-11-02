@@ -29,7 +29,7 @@ export class scheduleComponent implements OnInit {
     this.color_btn=false
   }
   openaddschedulepage(){
-    this.sidemanager.setControl({open:true,component:'addSchedule',data:{}})
+    this.sidemanager.setControl({open:true,component:'addSchedule',data:this.department})
   }
   
 }

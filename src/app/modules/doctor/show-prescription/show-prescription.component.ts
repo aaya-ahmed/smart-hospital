@@ -15,9 +15,10 @@ export class ShowPrescriptionComponent implements OnInit {
    doctor:any;
    showAllPrepflag:boolean=false;
   showdocPrepflag:boolean=false;
-  
-  allPatientPrescriptionsList:getPrescriptionInfo[]=[];
+  loadingstatus:boolean=true
+  PrescriptionsList:getPrescriptionInfo[]=[];
   patientDoctorPrescriptionsList:getPrescriptionInfo[]=[];
+  departments:any[]=[]
   constructor(private prescriptionService:ServicesService) { }
 
   ngOnInit(): void {
@@ -25,34 +26,29 @@ export class ShowPrescriptionComponent implements OnInit {
       this.doctor=localStorage.getItem('userInfo')
       this.doctor=JSON.parse(this.doctor)
      }
+     console.log(this.patient.patientId)
     this.prescriptionService.get('Doctor/GetDoctorPrescriptionsForPatient/'+this.patient.patientId).subscribe(
       (res:any)=>{ 
-        this.allPatientPrescriptionsList=res;
+        this.PrescriptionsList=res;
+        this.departments=res.map((p:any)=>p.department)
+        this.loadingstatus=false
        }
 
     );
-    this.prescriptionService.get('Doctor/ GetDoctorPrescriptionsForPatient/'+this.patient.patientId+'/'+this.doctor.id).subscribe(
-      (res:any)=>{
-         this.patientDoctorPrescriptionsList=res;
-      }
-    )
   }
- /* show_all_patient_prescriptions_in_pdf(){
-    let data:any=document.getElementById('allPrescrptions')
-    html2canvas(data).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      window.open(PDF.output('bloburl'))
-  });
-}*/
+  search_Prescription($event:any){
+    this.prescriptionService.get(`Prescription/GetDoctorPrescriptionsForPatient/${this.patient.patientId}/${$event.target.value}`).subscribe(
+      (res:any)=>{ 
+        this.PrescriptionsList=res;
+        this.loadingstatus=false
+       }
+
+    );
+  }
 show_all_patient_prescriptions_in_pdf(id:number){
  
   var pdf = new jsPDF("p", "mm", "a4");
-  let prescriptions:any[]=this.allPatientPrescriptionsList;
+  let prescriptions:any[]=this.PrescriptionsList;
   let prescription=prescriptions.find(n=>n.prescription.prescriptionId==id) 
   pdf.addImage('assets/logo.png', 'png', 10, 5, 20, 20);
   pdf.setFontSize(10)

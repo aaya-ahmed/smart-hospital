@@ -4,7 +4,7 @@
             <ng-container *ngSwitchCase="'patient'">
                 <form #searchform="ngForm" (ngSubmit)="search(searchform)" class="patientinformation">
                     <div class="row justify-content-evenly">
-                        <div class="col-10 col-md-3">
+                        <div class="col-10">
                             <label>patient Name</label>
                             <select class="form-select" ngModel #idpatient="ngModel" name="id" required
                             [ngClass]="{'is-invalid':idpatient.errors?.['required']&&searchform?.['submitted']}">
@@ -14,7 +14,7 @@
                                 {{(idpatient.errors?.['required']&&searchform.submitted)?"please select patient":''}}
                             </div>
                         </div>
-                        <div class="col-10 col-md-3">
+                        <div class="col-10 ">
                             <label>Date</label>
                             <input type="Date" class="form-control" ngModel #date="ngModel" name="date" />
                         </div>
@@ -27,7 +27,7 @@
             <ng-container *ngSwitchCase="'doctor'">
                 <form #searchdocform="ngForm" (ngSubmit)="searchbydoctor(searchdocform)" class="patientinformation">
                     <div class="row justify-content-evenly">
-                        <div class="col-10 col-md-3">
+                        <div class="col-10">
                             <label>Doctor Name</label>
                             <select class="form-select" ngModel #iddoctor="ngModel" name="iddoctor"  required
                              [ngClass]="{'is-invalid':iddoctor.errors?.['required']&&searchdocform?.['submitted']}">
@@ -37,7 +37,7 @@
                                 {{(iddoctor.errors?.['required']&&searchdocform.submitted)?"this is required":''}}
                             </div>
                         </div>
-                        <div class="col-10 col-md-3">
+                        <div class="col-10">
                             <label>Date</label>
                             <input type="Date" class="form-control"  name="date" ngModel #date="ngModel" />
                         </div>
@@ -47,26 +47,6 @@
                     </div>
                 </form>
             </ng-container>
-        </div>
-        <div *ngIf="flag" class="table-responsive">
-            <table class="table">
-                <thead>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th *ngIf="option=='doctor'">patient Name</th>
-                    <th>option</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let i of lablist|paginate: { itemsPerPage: 5, currentPage: p ,totalItems:totallength};let j=index">
-                       <td>{{i.testName}}</td>
-                        <td>
-                            {{i.testDate |date: 'longDate'}}
-                        </td>
-                        <td class="pdf" (click)="getTest(i.patientId,i.patientTestId)"><img src="assets/pdficon.png"/></td>
-                    </tr>
-                </tbody>
-            </table>
-            <pagination-controls style="margin:3rem 0;float: right;"(pageChange)="p = $event"></pagination-controls> 
         </div>
     </section>
     <section class="options">
@@ -87,4 +67,28 @@
             </ul>
         </div>
     </section>
+</div>
+<div *ngIf="loading&&!testflag" class="text-center">
+    <img src="../../../../assets/Spinner.svg"/>
+</div>
+<div *ngIf="!loading&&testflag" class="table-responsive">
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Date</th>
+            <th *ngIf="option=='doctor'">patient Name</th>
+            <th>option</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of lablist|paginate: { itemsPerPage: 5, currentPage: p ,totalItems:totallength};let j=index">
+               <td>{{i.testName}}</td>
+                <td>
+                    {{i.testDate |date: 'longDate'}}
+                </td>
+                <td *ngIf="option=='doctor'">{{i.patientName}}</td>
+                <td class="pdf" (click)="getTest(i.patientId,i.patientTestId)"><img src="assets/pdficon.png"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls> 
 </div>

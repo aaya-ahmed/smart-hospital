@@ -19,9 +19,10 @@ import { ShownurseComponent } from './nurse/shownurse/shownurse.component';
 import { AddemployeeComponent } from './employees/addemployee/addemployee.component';
 import { AdddepartmentComponent } from './departments/adddepartment/adddepartment.component';
 import { AddbedComponent } from './seat-beds/addbed/addbed.component';
-import { ShowScheduleComponent } from './showschadule/showschedule.component';
+import { ShowScheduleComponent } from './schadule/showschadule/showschedule.component';
 import { SetScheduleComponent } from './schadule/setschadule/setschedule.component';
 import { scheduleComponent } from './schadule/schedule.component';
+import { UpdateScheduleComponent } from './schadule/update-schedule/update-schedule.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { scheduleComponent } from './schadule/schedule.component';
     AddemployeeComponent,
     AdddepartmentComponent,
     AddbedComponent,
-    ShowScheduleComponent
+    ShowScheduleComponent,
+    UpdateScheduleComponent
   ],
   imports: [
     CommonModule,

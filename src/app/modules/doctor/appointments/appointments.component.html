@@ -1,49 +1,64 @@
-<div *ngIf="flag then mainpage;else loading"></div>
-<ng-template #mainpage>
-    <div class="container">
-        <div class="panel-body ">
-            <table class="table1">
-                    <tr>
-                        <td class="col1" >please choose Date to show your Appointments</td>
-                    </tr>
-                    <tr>
-                       <td class="col2"><input class="date-feild" type="date" min="{{today}}" (change)="getappointments($event)"/></td>
-                    </tr>
-            </table>
-        </div>
-        <div class="w-100 d-flex" style="justify-content:center;" >
-        <h3 class="px-2">Total Appointments</h3>
-        <h3>{{number_of_appointment}}</h3>
-    </div>
-        <div class="row table-responsive" >
-            <div class="col-xl-3 col-sm-6 mb-5" *ngFor="let i of appointments;let j=index">
-                <div class="rounded shadow-sm py-2 px-1">
-                    <table>
-                        <tr>
-                            <th>Time</th>
-                            <td><h5>{{i.slotTime}}</h5></td>
-                        </tr>
-                        <tr>
-                            <th>Patient Name</th>
-                            <td><h5 class="mb-0">{{i.patientName}}</h5></td>
-                        </tr>
-                        <tr>
-                            <th>Gender</th>
-                            <span class="small text-uppercase text-muted">{{i.gender}}</span>
-                        </tr>
-                        <tr>
-                            <th>Age</th>
-                            <td><span class="small text-uppercase text-muted">{{i.age}}</span></td>
-                        </tr>
-                        <tr style="text-align:center" *ngIf="flagbtn">
-                            <td colspan="2"><button (click)="gotopatient(j)" id="accept">examine</button></td>
-                        </tr>
-                    </table>
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-12 py-2">
+            <header class="d-flex justify-content-between align-items-center">
+                <h3>
+                   Appointments
+                </h3>
+                <input class="form-control" type="date" min="{{today}}" (change)="getappointments($event)"/>
+            </header>
+            <hr>
+            <div *ngIf="flag then page;else loading"></div>
+            <ng-template #loading>
+                <div class="fluid-container noitem"><img src="assets/Spinner.svg" width="50px" height="50px" /></div>
+            </ng-template>
+            <ng-template #page>
+                <div class="fluid-container">
+                    <div class="w-100 d-flex" style="justify-content:center;" >
+                        <h3 class="px-2">Total Appointments</h3>
+                        <h3>{{number_of_appointment}}</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <div class="container">
+                            <div class="row text-center">
+                                <div class="col-xl-3 col-sm-6 mb-5" *ngFor="let i of appointments;let j=index">
+                                    <div class="rounded shadow-sm p-4 patient-card">
+                                        <table class="table1">
+                                            <tr>
+                                                <th>Name</th>
+                                                <td colspan="2"><h5 class="mb-0">{{i.patientName}}</h5></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Time</th>
+                                                <td colspan="2"><span  class="small text-uppercase">{{i.slotTime}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Gender</th>
+                                                <td colspan="2"><span class="small text-uppercase">{{i.gender}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Age</th>
+                                                <td colspan="2"><span  class="small text-uppercase">{{i.age}}</span></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="p-2">
+                                                  <li class="list-inline-item "><a TITLE="Examine" (click)="gotopatient(j)"  class="social-link"><i class="fa-solid fa-heart-pulse"></i></a></li>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </ng-template>
+            <ng-template #noitem>
+                <div class="noitem">
+                    <p>NO Avaliable Data</p>
+                </div>
+            </ng-template>
         </div>
     </div>
-</ng-template>
-<ng-template #loading>
-    <div class="fluid-container loading"><img src="assets/Spinner.svg" width="50px" height="50px" /></div>
-</ng-template>
+</div>
+    

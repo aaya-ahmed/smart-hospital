@@ -1,52 +1,32 @@
 .table-responsive{
-    display: block;
+    width: 100%;
+    max-height: 300px;
     overflow-y: auto;
 }
-
-.table thead tr th{
-    background-color: rgb(59, 152, 206);
+.table-header,.table{
+    width: 90%;
+    margin: auto;
+}
+.table-header{
+    margin-top: 1rem;
+    border-radius: 10px 10px 0 0;
+    background-color: #343f6c;
     color: white;
-    padding: 0.5rem 0;
 }
-.noAppointImg{
-    width:60px;
-    height:60px;
-    margin-top: 20px;
+th,td{
+    width: 100px;
 }
-.info-col1{
-    float: right;
-    cursor: pointer;
-    color: green;
+::-webkit-scrollbar {
+    width: 0px;
 }
-.show{
-    display: block;
-}
-.alert-dismissible{
-    position: fixed;
-    width: 25%;
-    padding: 0.8rem 1rem;
-    top: 13rem;
-    left: 39%;
-    z-index: 900;
-    display: none;
-}
-.successmes,.errormes{
-    display: none;
-    position: fixed;
-    top: 50%;
-}
-.successshow,.errorshow{
-    display: block;
-}
-.appoint-title td{
-    border-bottom: none;
-    border-bottom-width:0px ;
-    font-weight: 600;
-}
-@media(max-width:970px){
-    .noAppointImg{
-        width:50px;
-        height:50px;
+
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+    .table-responsive{
+        height:30vh;
     }
+}
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
 
 }

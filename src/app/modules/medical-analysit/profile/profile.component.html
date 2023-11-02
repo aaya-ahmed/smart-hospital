@@ -1,16 +1,13 @@
 <div class="fluid-container">
-    <div class="sec-info">
+    <aside>
         <div class="photo">
             <app-profile-image [controller]="'Doctor/update'"></app-profile-image>
         </div>
-        <div class="main-info">
+        <div class="information">
             <app-profile-info [controller]="'Doctor/update'"></app-profile-info>
         </div>
-    </div>
-    <div class="main">
-        <div class="list table-responsive" >
-            <app-show-requsts></app-show-requsts>
-        </div>
-    </div>
+    </aside>
+    <main>
+        <app-show-requsts></app-show-requsts>
+    </main>
 </div>
-

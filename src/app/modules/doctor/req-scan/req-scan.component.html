@@ -1,8 +1,8 @@
-<div class="collapse" id="requestscan">
+<div class="collapse">
     <div class="card w-100 ">
         <div class="card-body">
             <div class="scan" >
-                <label for="scanslist">Scan Name</label>
+                <label for="scanslist">Scan</label>
                 <select id="scanslist" class="form-select"  (change)="add_to_scan_list($event)" required   [ngClass]="{'is-invalid':submitscanflag}">
                     <option></option>
                     <option *ngFor="let i of scanlist; let j=index" value="{{j}}">{{i.scanName}}</option>
@@ -29,4 +29,4 @@
   </div>
 <div class="alert alert-danger alert-dismissible fade errormes" role="alert" [ngClass]="{'errorshow':errorflag}">
     error!
-  </div>
+</div>

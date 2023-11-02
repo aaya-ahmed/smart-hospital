@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import {  FormControl, FormGroup, Validators } from '@angular/forms';
 import { doctors_schedule, newDocschedule } from 'src/app/models/schadule';
 import { ServicesService } from 'src/app/services/services.service';
+import { SidemanagerService } from 'src/app/services/sidemanager.service';
 
 @Component({
   selector: 'app-setschedule',
@@ -69,9 +70,13 @@ perpatienttime:new FormControl('',[Validators.required,Validators.pattern("^(00)
   check:boolean=true
   successflag:boolean=false;
   errorflag:boolean=false
-  constructor(private services:ServicesService) { }
+  constructor(private services:ServicesService,private sidemanager:SidemanagerService) { }
   ngOnInit(): void {
+    this.sidemanager.control.subscribe(res=>{
+      this.departments=res.data
+    })
   }
+
   getschedules(departmentid:any){
     let id=parseInt(departmentid.target.value)
     this.tableflag=false

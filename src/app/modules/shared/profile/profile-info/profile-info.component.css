@@ -5,10 +5,11 @@ table{
 table tr td,table tr th{
     padding: 0.5rem 0.3rem;
 }
-.info-col1{
-    float: right;
+.edit-btn{
+    color:white;
+    padding:0.2rem 0.5rem;
     cursor: pointer;
-    color: green;
+    float: right;
 }
 @media(max-width:795px){
     table tr td,table tr th{

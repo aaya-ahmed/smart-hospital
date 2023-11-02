@@ -1,24 +1,23 @@
- <div class="fluid-container">
-    <div class="sec-info">
+<div class="fluid-container">
+    <aside>
         <div class="photo">
             <app-profile-image [controller]="'Patient/update'"></app-profile-image>
         </div>
-        <div class="main-info">
+        <div class="information">
             <app-profile-info [controller]="'Patient/update'"></app-profile-info>
         </div>
-    </div>
-   <div class="main">
+    </aside>
+    <main>
         <div class="statistics">
-            <div class="row">
-                <div class="col-md-6  col-sm-12">
-                    <img class="icon" src="../assets/inpatient icon.png">
+            <div class="row justify-content-evenly m-1 mt-3 align-items-center">
+                <div class="col-lg-3 col-10 m-2">
+                    <i class="fa-calendar fa-solid fa-xl"></i>
                     <h3>Your Indoor Records</h3>
                     <span>{{numOfIndoorRec}}</span>
                 </div>
             </div>
         </div>
-        <div class="appoint table-responsive" >
-            <app-patientappointments [patient]="patient.id"></app-patientappointments>
-        </div>
-    </div>
+        <app-patientappointments [patient]="patient.id"></app-patientappointments>
+    </main>
 </div>
+

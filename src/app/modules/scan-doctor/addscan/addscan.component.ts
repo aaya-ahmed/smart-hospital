@@ -152,6 +152,7 @@ export class AddscanComponent implements OnInit {
       this.imagelist.forEach((item)=>{
         patientscan.scanImages.push({content:item.content.split(",").pop()})
       })
+      console.log(patientscan)
       this.service.post("MedicalScan/addPatientScan",patientscan).subscribe(
         res=>{
           this.cancel()
@@ -159,8 +160,7 @@ export class AddscanComponent implements OnInit {
         err=>{
           this.cancel()
         }
-      )
-      
+      )  
     }
   }
 }

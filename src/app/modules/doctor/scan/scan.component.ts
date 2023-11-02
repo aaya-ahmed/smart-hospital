@@ -12,50 +12,31 @@ export class ScanComponent implements OnInit {
   @Input("patient")patient:any
   scanlist:{Name:string}[]=[]
   //patientscan
-  scanflag:boolean=false
   patientscan:patientscanlist[]=[]
   temppatientscan:patientscanlist[]=[]
-  showscanflag:boolean=false;
-  submitscanflag:boolean=false;
   showscans:boolean=false
-  doctor:any;
   flag:number=0
   constructor(private scanservice:ServicesService) { }
   ngOnInit(): void {
-    if(localStorage.getItem('userInfo')){
-      this.doctor=localStorage.getItem('userInfo')
-      this.doctor=JSON.parse(this.doctor)
-     }
      this.scanservice.get("MedicalScan/getPatientScansByPatientId/"+parseInt(this.patient.patientId)).subscribe(
        (res:any)=>{
-         this.patientscan=res;  
-         for(let i of this.patientscan){
-          let temp=this.scanlist.find(e=>e.Name==i.scanName)
-          if(!temp){
-            this.scanlist.push({Name:i.scanName})
-          }
-
-         }  
+        if(res.length>0)
+        {
+          this.patientscan=res;  
+          this.temppatientscan=[...this.patientscan]
+          this.scanlist=res.map((p:any)=>p.scanName)
+        }
        }
      )
     }
-  search_scan(scan:any){
-    let scanname=scan.value.scan
-    if(this.flag==0){
-      this.temppatientscan=this.patientscan
-      this.patientscan=[]
-      this.flag=1
-    }
-    this.patientscan=[]
-    if(scan.valid){
-      this.showscans=true
-      for(let i of this.temppatientscan){
+  search_scan(value:any){
+    let scanname=value.target.value
+    this.temppatientscan=[]
+      for(let i of this.patientscan){
         if(i.scanName==scanname){
-          this.patientscan.push(i)
+          this.temppatientscan.push(i)
         }
       }
-    }
-
   }
   showscan(index:any){
     let pdf=new jsPDF()

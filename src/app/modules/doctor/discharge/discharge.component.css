@@ -2,7 +2,8 @@
     width:100%;
     padding: 0.5rem;
     background-color: white;
-
+    max-height: 16rem;
+    overflow-y: auto;
 }
 form{
     width:90%;
@@ -11,13 +12,16 @@ form{
 #patientdate{
     width: 30%;
 }
+textarea{
+    resize: none;
+    height: 5rem;
+}
 label{
     padding: 0.3rem 0;
 }
 .submit_btn{
     border: none;
-    background-color: rgb(100, 197, 165);
-    color: white;
+    background-color: #b5c1ab;
     padding: 0.3rem 0.4rem;
     margin-top: 0.5rem;
 }

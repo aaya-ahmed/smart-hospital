@@ -1,0 +1,50 @@
+admin				==done
+username:- aya7098
+password:- aya@7098
+
+nurse			     ==done
+username:- asmaa2345
+password:- asmaa@2345
+
+doctor	                     ===>done			
+username:esam6427
+password:esam@6427
+
+scandoctor		     ===>done
+username:fatma6799
+password:fatma@6799
+
+labdoctor                    ===>done
+username:esraa7897         
+password:esraa@7897
+ 
+patient
+username:eman7899          ==done
+password:eman@7899
+
+receptionist	          ==done
+username:aliaa457
+password:aliaa@4570
+
+/////////1///////////////
+mean 1=5.01
+standard 1=4.23
+
+mean 2=4.72
+standard 2=3.83
+
+/////////2///////////////
+mean 1=6.96
+standard 1=5.59
+
+mean 2=5.98
+standard 2=4.35
+
+/////////3///////////////
+mean 1=7.06
+standard 1=6.004
+
+mean 2=5.62
+standard 2=4.03
+
+

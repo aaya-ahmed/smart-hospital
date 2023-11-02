@@ -13,7 +13,6 @@ export class LabComponent implements OnInit {
   @Input("patient")patient:any={age: 0,causeOfAdmission: "",gender: "", indoorPatientId: 0,oralMedicalHistory: "",patientId: 0,patientName: ""}
   @Input("outpatientflag")outpatientflag:number=0
   indoorPatientRecordId:any;
-  doctor:any;
   rows2:any[]=[];
   testsList:labsList[]=[];
   patientTests:patienttestlist[]=[];
@@ -22,23 +21,18 @@ export class LabComponent implements OnInit {
   constructor(private service:ServicesService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('userInfo')){
-      this.doctor=localStorage.getItem('userInfo')
-      this.doctor=JSON.parse(this.doctor)
-     }
     this.service.get('MedicalTest/getPatientTestsByPatientId/'+parseInt(this.patient.patientId)).subscribe
     ((res:any)=>
-      {this.patientTests=res; });
-       this.service.getTestNames().subscribe(
-      res=>
       {
-        this.testsList=res
-      },
-      err=>{}
-      )
+        if(res.length>0){
+          this.patientTests=res; 
+          this.searchedTestsList=[...this.patientTests]
+          this.testsList=res.map((p:any)=>p.testName)
+        }
+      });
   }
-  search_lab(form:NgForm){
-    let testname=form.value.lab
+  search_lab(value:any){
+    let testname=value.target.value
     this.searchedTestsList=[]
     for(let i of this.patientTests){
       if(testname==i.testName){

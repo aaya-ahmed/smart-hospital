@@ -8,10 +8,10 @@
     align-items: flex-start;
 }
 .container section:nth-child(1){
-    width: 70%;
+    width: 50%;
 }
 .options{
-    width: 30%;
+    width: 50%;
     display: block;
 }
 .options>div{
@@ -22,6 +22,7 @@
     background-color: #ffffffb8;
     padding:1rem .3rem;
     margin: 1.5rem 1rem;
+    flex-direction: column;
 }
 .selectedoption{
     margin: 0 1rem;
@@ -42,7 +43,6 @@ table tr th{
 .container ul{
     width: 100%;
     list-style: none;
-    padding: 0!important;
 }
 .container ul li{
     width: 90%;
@@ -84,8 +84,32 @@ table tr th{
     padding: 0.3rem 1rem;
 }
 .table-responsive {
-    margin: 1rem 2rem;}
+    margin: 1rem 2rem;
+}
+@media(max-width:191px){
+    .container section:nth-child(1){
+        width: 50%;
+    }
+    .options{
+        width: 50%;
+        display: block;
+    }
+}
+@media(max-width:767.98px){
+    .container{
+        flex-direction: column;
+    }
+    .container section:nth-child(1){
+        width: 100%;
+        order: 2;
+    }
+    .options{
+        width: 100%;
+        order: 1;
+    }
+}
 @media (min-width: 576px){
+
 .container, .container-sm {
     max-width: 100%;
 }}

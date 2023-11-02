@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(./../node_modules/leaflet/dist/leaflet.css);
 *{
-
+box-sizing: border-box;
     overflow: hidden
 }
 html,body{
@@ -12,7 +12,8 @@ html{
     overflow: hidden
 }
 body{
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
     position:relative;
 }
 .threedot{
@@ -34,7 +35,6 @@ i{
 .success-message{
     color: green
 }
-@import "~bootstrap/dist/css/bootstrap.css";
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -119,6 +119,7 @@ button{
     align-items: center;
     gab:10px;
 }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -136,6 +137,6 @@ time, mark, audio, video {
     padding: 0;
     border: 0;
     font-size: 100%!important;
+    box-sizing: border-box;
     font: inherit;
-    vertical-align: baseline;
-}
+    vertical-align: middle;}

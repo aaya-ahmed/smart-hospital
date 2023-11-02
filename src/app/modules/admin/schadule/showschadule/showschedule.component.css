@@ -16,6 +16,7 @@
     margin: 0 auto;
     overflow-x: auto;
     margin-bottom: 10px;
+    position: relative;
 }
 .col8{
     padding-top: 12px;
@@ -154,7 +155,7 @@ select[disabled] {
     margin: 0;
     position: absolute;
     display: none;
-    top: 0px;
+    top: 2rem;
     left: 50%;
     transform: translateX(-50%);
 }

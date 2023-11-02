@@ -13,7 +13,7 @@ export class ShowRequstsComponent implements OnInit {
   requestList:getAllLabRequsts[]=[]
   inpatientrequests:getAllLabRequsts[]=[]
   outpatientrequests:getAllLabRequsts[]=[]
-  dataflag=false;
+  pagestatus:number=100;
   in_number=0
   out_number=0
   mess:string='There is No Requests'
@@ -27,11 +27,10 @@ export class ShowRequstsComponent implements OnInit {
         this.requestList=res
         if(this.requestList.length==0){
           this.in_number=0
-        this.out_number=0
-          this.dataflag=false
+          this.out_number=0
+          this.pagestatus=400
         }
         else{
-          this.dataflag=true
         for(let i of this.requestList){
           if(i.indoorPatientRecordId==null){
             this.outpatientrequests.push(i)
@@ -42,8 +41,13 @@ export class ShowRequstsComponent implements OnInit {
         }
         this.in_number=this.inpatientrequests.length
         this.out_number=this.outpatientrequests.length
+        this.pagestatus=200
       }
+    },
+    err=>{
+      this.pagestatus=400
     }
+
      );
     
   }
@@ -72,7 +76,7 @@ export class ShowRequstsComponent implements OnInit {
       }
     )
     if(this.requestList.length==0){
-      this.dataflag=false;
+      this.pagestatus=400
     }
     }
     else{
@@ -87,35 +91,35 @@ export class ShowRequstsComponent implements OnInit {
     this.route.navigateByUrl('lab doctor/testresult')
   }
   gotodelscan(request:getAllLabRequsts){
-    // let reqdate=new Date(request.createdDtm);
-    // let Difference_In_Time = this.today.getTime() - reqdate.getTime();
-    // let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    // if((Difference_In_Days)>10){
-    //   let del_id=request.id
-    // this.services.delete("MedicalScan/deleteScanRequest/"+del_id).subscribe(
-    //   res=>{
-    //     if(request.indoorPatientRecordId==null){
-    //       let index=this.outpatientrequests.findIndex(n=>n.id==del_id)
-    //     this.outpatientrequests.splice(index,1)
-    //     this.out_number=this.out_number-1
-    //     }
-    //     else{
-    //       let index=this.inpatientrequests.findIndex(n=>n.id==del_id)
-    //     this.inpatientrequests.splice(index,1)
-    //     this.in_number=this.in_number-1
-    //     }
-    //   }
-    // )
-    // if(this.requestList.length==0){
-    //   this.dataflag=false;
-    // }
-    // }
-    // else{
-    //   this.deletflag=true
-    //   setTimeout(() => {
-    //     this.deletflag=false
-    //   }, 1000);
-    // }
+    let reqdate=new Date(request.createdDtm);
+    let Difference_In_Time = this.today.getTime() - reqdate.getTime();
+    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    if((Difference_In_Days)>10){
+      let del_id=request.id
+    this.services.delete("MedicalTest​/deleteLabRequest​/"+del_id).subscribe(
+      res=>{
+        if(request.indoorPatientRecordId==null){
+          let index=this.outpatientrequests.findIndex(n=>n.id==del_id)
+        this.outpatientrequests.splice(index,1)
+        this.out_number=this.out_number-1
+        }
+        else{
+          let index=this.inpatientrequests.findIndex(n=>n.id==del_id)
+        this.inpatientrequests.splice(index,1)
+        this.in_number=this.in_number-1
+        }
+      }
+    )
+    if(this.requestList.length==0){
+      this.pagestatus=400
+    }
+    }
+    else{
+      this.deletflag=true
+      setTimeout(() => {
+        this.deletflag=false
+      }, 1000);
+    }
   }
 }
   

@@ -1,9 +1,13 @@
-<div class="fluid-container">
-    <div class="appoint table-responsive" >
-        <div *ngIf="indoorRecordflag;then recordstable;else norecords"></div>
+<div class="container" >
+    <div class="text-center" *ngIf="loadingstatus"> 
+        <img src="../../../../assets/Spinner.svg"/>
     </div>
-    <ng-template #recordstable>
-    <table class="table app-table">
+    <ng-container *ngIf="!loadingstatus">
+        <div *ngIf="indoorRecordflag;then data;else nodata"></div>
+    </ng-container>
+</div>
+<ng-template #data>
+    <table class="table table-header">
         <thead>
             <tr>
                 <th>Reserving Date</th>
@@ -12,112 +16,34 @@
                 <th>Floor Num.</th>
                 <th>Room Num.</th>
                 <th>Bed Num.</th>
-                <th>Report</th>
-                <th>Prescriptions</th>
-                <th>Tests</th>
-                <th>Scans</th>
+                <th class="last-column">Report</th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let i of indoorPatientRecords ,let j =index">
-                <td>{{i.enterDate|date:'longDate'}}</td>
-                <td>{{i.discahrgeDate|date:'longDate'}}</td>
-                <td>{{i.roomType}}</td>
-                <td>{{i.floorNumber}}</td>
-                <td>{{i.roomNumber}}</td>
-                <td>{{i.bedNumber}}</td>
-                
-                <td class="pdf"  (click)="getreportInfo(j)"><img src="assets/pdficon.png"/></td>
-                <td><button class="btn" (click)="getPrescriptionsInfo(j)">Prescriptions</button></td>
-                <td><button class="btn" (click)="getTestsInfo(j)">Tests</button></td>
-                <td><button class="btn" (click)="getscanInfo(j)">Scans</button></td>
-            </tr>
-        </tbody>
-    
     </table>
-    <br/>
-    <br/>
-    <div *ngIf="showPrescriptionsflag">
-    <div *ngIf="showPrescriptionsflag ;then prescriptiontable; else nopres"></div>
-    <ng-template #prescriptiontable>
-        <div class="table-responsive">
-            <table class="table pat-doc-table table-bordered border-primary caption-top">
-                <thead>
-                    <tr>
-                        <th class='pdf'>Prescription</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let i of prescriptions;let j=index">
-                        <td class="pdf" (click)="getPrescriptionByPrescriptionId(i.prescriptionId)"><img src="assets/pdficon.png"/></td>
-                        <td>
-                            {{i.prescription_Date |date: 'longDate'}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div *ngIf="indoorPatientRecords.length>0" class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let i of indoorPatientRecords ,let j =index">
+                    <td>{{i.enterDate|date:'longDate'}}</td>
+                    <td>{{i.discahrgeDate|date:'longDate'}}</td>
+                    <td>{{i.roomType}}</td>
+                    <td>{{i.floorNumber}}</td>
+                    <td>{{i.roomNumber}}</td>
+                    <td>{{i.bedNumber}}</td>  
+                    <td class="last-column">
+                    <button class="p-2" (click)="showReport(j)"><i class="fa-solid fa-file-pen"></i></button>
+                    <button class="p-2" (click)="showPrescriptions(j)"><i class="fa-solid fa-prescription"></i></button>
+                    <button class="p-2" (click)="showTest(j)"><i class="fa-solid fa-flask-vial"></i></button>
+                    <button class="p-2" (click)="showscan(j)"><i class="fa-solid fa-x-ray"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>
+<ng-template #nodata>
+        <div class="nodata">
+            <p>
+               no data found
+            </p>
         </div>
-    </ng-template>
-    <ng-template #nopres>
-        <img class="noreportImg" src="../assets/noreport.png">
-        <p class="noreportmess">Patient Doesn't have Prescriptions In this Record</p>
-    </ng-template>
-</div> 
-<div *ngIf="showTestsFlag; then teststable"></div>
-    <ng-template #teststable>
-       
-            <div class="table-responsive">
-                <table class="table table-bordered border-primary pat-doc-table">
-                    <thead>
-                        <tr>
-                            <td class='pdf'>Test</td>
-                            <td>Date</td>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let i of tests;let j=index">
-                            <td class="pdf" (click)="getTestId(i.patientTestId)"><img src="assets/pdficon.png"/></td>
-                            
-                            <td>
-                                
-                                {{i.testDate |date: 'longDate'}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table> 
-            </div>  
-       
-    </ng-template> 
-<div *ngIf="showScansFlag; then scanstable"></div>
-    <ng-template #scanstable>
-        <div class="table-responsive">
-            <table class="table table-bordered border-primary pat-doc-table">
-                <thead>
-                    <tr>
-                        <td class='pdf'>Scan</td>
-                        <td>Date</td>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let i of scans;let j=index">
-                        <td class="pdf" (click)="getScanId(i.patientScanId)"><img src="assets/pdficon.png"/></td>
-                        
-                        <td>
-                            
-                            {{i.scanDate |date: 'longDate'}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
-        </div>  
-   
-</ng-template> 
 </ng-template>
-<ng-template #norecords>
-    <img class="noreportImg" src="../assets/noreport.png"/>
-    <p class="noreportmess">Patient Doesn't have Indoor Records</p>
-</ng-template>
-</div>

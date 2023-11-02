@@ -1,43 +1,40 @@
-<div *ngIf="appointflag;then appointtable;else noappointimg"></div>
-<ng-template #appointtable>
-    <table class="table">
+<ng-template #deletes>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <br/>
+    <strong>Are you sure that you want to cancel your Appoinment With: </strong>
+        <pre>Doctor Name:<strong>{{deletedApp.doctorName}}</strong></pre>
+        <pre>Date:       <strong>{{deletedApp.appointmentDate|date:'mediumDate'}}</strong></pre> 
+        <pre>Time:       <strong>{{deletedApp.slotTime}}</strong></pre>
+    <button type="button" class="btn delete-btn"(click)="ensureCancelAppoint()">Sure</button>
+    <button type="button" class="btn cancel-btn"(click)="close()">Cancel</button>
+    </div>
+</ng-template>
+<div *ngIf="deleteMess; then deletes"></div>
+<table  class="table table-header">
         <thead>
-            <tr class="appoint-title"><td colspan="6">Your Appointments</td></tr>
             <tr>
-                <th>Patient Name</th>
+                <td colspan="6">Your Appointments</td>
+            </tr>
+            <tr>
                 <th>Doctor Name</th>
-                <th>Complaint</th>
                 <th>Date</th>
                 <th>Time</th>
-                <th>Option</th>
+                <th></th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let i of appointment ,let j =index">
-                <td>{{i.patientName}}</td>
-                <td>{{i.doctorName}}</td>
-                <td>{{i.complain}}</td>
-                <td>{{i.appointmentDate|date:'mediumDate'}}</td>
-                <td>{{i.slotTime}}</td>
-                <td><button class="btn canel-btn" (click)="cancelAppoinment(i,j)"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-            </tr>
-        </tbody>
-        <div *ngIf="deleteMess; then deletes"></div>
-        <ng-template #deletes>
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                <br/>
-            <strong>Are you sure that you want to cancel your Appoinment With: </strong>
-                <pre>Doctor Name:<strong>{{deletedApp.doctorName}}</strong></pre>
-                <pre>Date:       <strong>{{deletedApp.appointmentDate|date:'mediumDate'}}</strong></pre> 
-                <pre>Time:       <strong>{{deletedApp.slotTime}}</strong></pre>
-            <button type="button" class="btn delete-btn"(click)="ensureCancelAppoint()">Sure</button>
-            <button type="button" class="btn cancel-btn"(click)="close()">Cancel</button>
-            </div>
-        </ng-template>
     </table>
-    
-</ng-template>
-<ng-template #noappointimg>
-<img class="noAppointImg" src="../assets/no appoint icon.webp">
-<p>No Appointments Today</p>
-</ng-template>
+    <div *ngIf="appointflag" class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let i of appointment ,let j =index">
+                    <td>{{i.doctorName}}</td>
+                    <td>{{i.appointmentDate|date:'mediumDate'}}</td>
+                    <td>{{i.slotTime}}</td>
+                    <td><button class="btn canel-btn" (click)="cancelAppoinment(i,j)"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+            <p *ngIf="!appointflag">
+               no data found
+            </p>

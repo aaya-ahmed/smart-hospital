@@ -1,41 +1,28 @@
 .fluid-container{
-    width:80%;
-        margin: 0 auto;
-        margin-top: 1rem;
-
-}
-main{
-    background-color: #c3d3dd;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1rem;
 
 }
 header{
     width: 100%;
-text-align: center;
-background-color: #143961;
-color: white;
-border-radius: 10px 10px 0 0px;
+    text-align: center;
+    background-color: #143961;
+    color: white;
+    padding:0.5rem 0.3rem;
 }
 header h3{
-    width: 40%;
-    margin: 0 auto;
-    padding: 4px 0px;
-}
-.header {
-    background-color: #d5e3f3;
-    color: white;
     text-align: center;
-    margin: auto;
-    margin-top: 15px;
-    width: 50%;
-    position: sticky;
 }
-
-div.patientinfo {
-    border-bottom: solid;
+.table-responsive{
+    max-height: 14.6875rem;
+    overflow: auto;
 }
-
-.info {
-    color: #235c9c;
+#vital-table{
+    table-layout: fixed;
+}
+#vital-table th,#vital-table td{
+    width:9.375rem ;
 }
 #btn{
     border: none;
@@ -51,6 +38,9 @@ p{
     padding: 1rem 0;
     text-align: center;
     color: grey;
+}
+::-webkit-scrollbar{
+    width: 0px;
 }
 @media only screen and (max-width:800px) {
     #no-more-tables tbody,

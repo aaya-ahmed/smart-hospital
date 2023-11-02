@@ -1,67 +1,60 @@
-.container{
-    background-color: #ffffffc2;
-    width: 98%;
-    height: 100vh;
-    margin: 1rem auto;
+header{
+    margin: 0 auto;
 }
-.rounded{
-    background-color: white;
+header h3{
+    padding: 4px 0px;
+    font-weight: 700;
+    font-size: 1.5em!important;
 }
-.date-feild{
-    border: none;
-    background-color: transparent;
-}
-#accept,
-#reject {
-    border: none;
-    background-color: rgb(45, 148, 45);
-    padding: 5px 10px 5px 10px;
-    color: white;
-    margin: 0px 10px 0 10px;
-    border-radius: 4px;
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem!important;
+    background: white;
 }
 
-#reject {
-    background-color: rgb(170, 20, 20);
+.social-link:hover, .social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
 }
-.table-responsive {
-    margin-top: 1rem;
-    overflow: auto;
-    height: 70vh;
-    justify-content: center;
-}
-table{
-    width:60%;
-    margin-left: auto;
-    margin-right: auto;
-}
-table tr td {
-    vertical-align: middle;
-}
-table tr th{
-    width: 150px;
-}
-table thead .table-header th{
-    padding: 2rem 0rem;
-}
-.table-title{
-    text-align: right;
-    padding: 2rem 0.4rem;
-    font-size: 15px!important;
-    color: rgb(55, 158, 184);
-}
-.table-date{
-    text-align: left;
-    padding: 2rem 0;
-}
-.table1{
-    width: 100%;
+.loading{
     text-align: center;
 }
-.col1{
-    color:#1899b7;
-    padding: 0.5rem;
+.table-responsive{
+    width: 100%;
+    height:79vh;
+    overflow: auto;
+    display: block;
 }
-.row{
-    margin-top: 2rem;
+.fluid-container,.noitem{
+    width: 95%;
+    margin: 1rem auto;
+    border-radius: 1rem;
+
+}
+.table1{
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+.noitem{
+    text-align: center;
+}
+
+.noitem p{
+color: saddlebrown;
+}
+.patient-card{
+    background-color: #d3deca;
+}
+.form-control{
+    width: 10rem;
 }

@@ -1,48 +1,49 @@
 <div class="fluid-container">
-    <div class="sec-info">
+    <aside>
         <div class="photo">
             <app-profile-image [controller]="'Doctor/update'"></app-profile-image>
         </div>
-        <div class="main-info">
+        <div class="information">
             <app-profile-info [controller]="'Doctor/update'"></app-profile-info>
         </div>
-    </div>
-    <div class="main">
+    </aside>
+    <main>
         <div class="statistics">
-            <div class="row">
-                <div class="col-md-3 col-sm-12">
-                    <img class="icon" src="../assets/appoint icon.png">
+            <div class="row justify-content-evenly m-1 mt-3 align-items-center">
+                <div class="col-lg-3 col-10 m-2">
+                    <i class="fa-calendar fa-solid fa-xl"></i>
                     <h3>Appointment's Today</h3>
                     <span>{{numberDetails.numberOfTodayAppointment}}</span>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                    <img class="icon" src="../assets/appoint icon.png">
+                <div class="col-lg-3 col-10 m-2">
+                    <i class="fa-calendar fa-solid fa-xl"></i>
                     <h3>Total Appointments</h3>
                     <span>{{numberDetails.numberOfAllAppointments}}</span>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                    <img class="icon" src="../assets/inpatient icon.png">
+                <div class="col-lg-3 col-10 m-2">
+                    <i class="fa-people-arrows fa-solid fa-xl"></i>
                     <h3>Indoor Patients</h3>
                     <span>{{numberDetails.numberOfInDoorPatients}}</span>
                 </div>
             </div>
         </div>
-        <div class="appoint table-responsive" >
-            <div *ngIf="appointflag;then appointtable;else noappointimg"></div>
-        </div>
-    </div>
+        <div *ngIf="loading;then loader ;else datalist "></div>
+    </main>
 </div>
-<ng-template #appointtable>
-        <table class="table">
-            <thead>
-                <tr class="appoint-title"><td colspan="4">Today's appointments</td></tr>
-                <tr>
-                    <th>Patient Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
+<ng-template #datalist>
+    <table  class="table table-header">
+        <thead>
+            <tr class="table-title"><td colspan="4">Today's appointments</td></tr>
+            <tr>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+    </table>
+    <div *ngIf="appointment.length>0" class="table-responsive">
+        <table  class="table">
             <tbody>
                 <tr *ngFor="let i of appointment">
                     <td>{{i.patientName}}</td>
@@ -52,8 +53,10 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <p *ngIf="appointment.length==0">No Data Found</p>
 </ng-template>
-<ng-template #noappointimg>
-    <img class="noAppointImg" src="../assets/no appoint icon.webp">
-    <p>No Appointments Today</p>
+<ng-template #loader>
+    <img src="../../../../assets/Spinner.svg"/>
 </ng-template>
+

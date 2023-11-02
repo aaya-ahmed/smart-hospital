@@ -1,32 +1,33 @@
 <div class="fluid-container">
-    <div class="sec-info">
+    <aside>
         <div class="photo">
             <app-profile-image [controller]="'Nurse/update'"></app-profile-image>
         </div>
-        <div class="main-info">
+        <div class="information">
             <app-profile-info [controller]="'Nurse/update'"></app-profile-info>
         </div>
-    </div>
-    <div class="main">
-        <div class="list table-responsive" >
-            <div *ngIf="listflag;then datalist;else nodata"></div>
-        </div>
-    </div>
+    </aside>
+    <main>
+        <div *ngIf="loading;then loader ;else datalist "></div>
+    </main>
 </div>
 <ng-template #datalist>
-        <table class="table fixed_header">
-            <thead>
-                <tr class="list-title"><td colspan="5">In Patient List</td></tr>
-                <tr>
-                    <th>Patient Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Room Number</th>
-                    <th>Bed Number</th>
-                </tr>
-            </thead>
+    <table  class="table table-header">
+        <thead>
+            <tr class="table-title"><td colspan="5">In Patient List</td></tr>
+            <tr>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Room Number</th>
+                <th>Bed Number</th>
+            </tr>
+        </thead>
+    </table>
+    <div *ngIf="patientlist.length>0" class="table-responsive">
+        <table  class="table">
             <tbody>
-                <tr *ngFor="let i of list">
+                <tr *ngFor="let i of patientlist">
                     <td>{{i.firstName}}&nbsp;{{i.lastName}}</td>
                     <td>{{i.age}}</td>
                     <td>{{i.gender}}</td>
@@ -35,8 +36,10 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+        <p *ngIf="patientlist.length==0">No Data Found</p>
 </ng-template>
-<ng-template #nodata>
-    <p>No Data Found</p>
+<ng-template #loader>
+    <img src="../../../../assets/Spinner.svg"/>
 </ng-template>
 

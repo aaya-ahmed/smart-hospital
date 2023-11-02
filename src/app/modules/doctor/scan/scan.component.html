@@ -1,45 +1,32 @@
-<div class="fluid-container">
-    <div class="inner-container">
-        <div class="show-scan-row" >         
-            <div class="collapse" id="showscan" [ngClass]="{'show':!showscanflag}">
-                <div class="card w-100 ">
-                    <form #searchform="ngForm" (ngSubmit)="search_scan(searchform)">
-                        <div class="card-body card2">
-                            <div class="patien-scan-name">
-                                <label>Scan Name</label>
-                                <select class="form-select"required name="scan" #scan="ngModel" ngModel [ngClass]="{'is-invalid':scan.errors?.['required']&&scan.touched||searchform.submitted&&scan.errors?.['required']}">
-                                    <option></option>
-                                    <option *ngFor="let i of scanlist" value="{{i.Name}}">{{i.Name}}</option>
-                                </select>    
-                                <p class="error" [ngClass]="{'invalid-feedback':scan.errors?.['required']&&scan.touched||searchform.submitted&&scan.errors?.['required']}">please choose scan</p>
-                            </div>
-                            <div class="search-sec">
-                                <button type="submit" ><i class="fa fa-search mx-2" aria-hidden="true"></i></button>
-                            </div>     
-                        </div>
-                    </form>
-                    <div class="card-body" *ngIf="showscans">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>pdf</th>
-                                        <th>scan date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let i of patientscan;let j=index">
-                                        <td>{{j+1}}</td>
-                                        <td class="pdficon"><button (click)="showscan(j)"> show </button></td>
-                                        <td>{{i.scanDate|date: 'longDate'}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div>
+    <ng-container *ngIf="patientscan.length>0">
+        <div class="filter-section">
+            <label>Scan Name</label>
+            <select class="form-select" (change)="search_scan($event)">
+                <option></option>
+                <option *ngFor="let i of scanlist" value="{{i.Name}}">{{i.Name}}</option>
+            </select>    
         </div>
-    </div>
-</div> 
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>scan date</th>
+                        <th>pdf</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let scan of temppatientscan;let j=index">
+                        <td>{{scan.scanName}}</td>
+                        <td>{{scan.scanDate|date: 'longDate'}}</td>
+                        <td class="pdficon"><button (click)="showscan(j)"> <img src="../../../../assets/pdficon.png"> </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="patientscan.length==0">
+        <p class="text-danger text-center mt-4">No Items</p>
+    </ng-container>
+</div>

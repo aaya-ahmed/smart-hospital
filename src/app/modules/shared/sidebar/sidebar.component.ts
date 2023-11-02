@@ -21,7 +21,10 @@ export class SidebarComponent implements OnInit {
     if(window.innerWidth<=700){
       this.sideStateout.emit(false)
       this.sideState=false
-      console.log(this.sideState)
+    }
+    else{
+      this.sideStateout.emit(true)
+      this.sideState=true
     }
   }
   goToPage(pagename:string){

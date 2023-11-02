@@ -30,30 +30,29 @@
                                 <th>time per patient</th>
                                 <th>option</th>
                             </tr>
-                            <tr *ngFor="let j of i.scheduleObjects;let m=index">
+                            <tr [ngSwitch]="j.dayOfWork" *ngFor="let j of i.scheduleObjects;let m=index">
+                                <td *ngSwitchCase="0">sunday</td>
+                                <td *ngSwitchCase="1">monday</td>
+                                <td *ngSwitchCase="2">tuesday</td>
+                                <td *ngSwitchCase="3">wednesday</td>
+                                <td *ngSwitchCase="4">thursday</td>
+                                <td *ngSwitchCase="5">friday</td>
+                                <td *ngSwitchCase="6">saturday</td>
                                 <td>
-                                    <select [disabled]=true value="{{j.dayOfWork}}" #day>
-                                        <option value="0">sunday</option>
-                                        <option value="1">monday</option>
-                                        <option value="2">tuesday</option>
-                                        <option value="3">wednesday</option>
-                                        <option value="4">thursday</option>
-                                        <option value="5">friday</option>
-                                        <option value="6">saturday</option>
-                                    </select>
+                                    {{j.startTime}}
                                 </td>
                                 <td>
-                                    <p class="col8">{{j.startTime}}</p>
+                                    {{j.endTime}}
                                 </td>
                                 <td>
-                                    <p class="col8">{{j.endTime}}</p>
-                                </td>
-                                <td>
-                                    <p class="col8">{{j.timePerPatient}}</p>
+                                    {{j.timePerPatient}}
                                 </td>
                                 <td>
                                     <button (click)="delet(y,m)">
                                         <i class="fa-solid fa-trash" style="color:red"></i>
+                                    </button>
+                                    <button class="pl-2" >
+                                        <i class="fa-solid fa-edit" style="color:#9fa996;"></i>
                                     </button>
                                 </td>
                             </tr>
@@ -62,18 +61,18 @@
                 </tr>
             </tbody>
         </table>
-    </div> 
-    <pagination-controls *ngIf="schedules.length>0" style="margin:3rem 0;"(pageChange)="p = $event"></pagination-controls>
-    <div class="alert alert-danger mess" role="alert" [ngClass]="{'show':show}">
-        <p> you want delete this schedule</p>
-        <div class="row justify-content-center">
-            <div class="col-1">
-                <button (click)="deleteschadle()" style="color:red">yes</button>
-            </div>
-            <div class="col-1">
-                <button (click)="close()">no</button>
+        <div class="alert alert-danger mess" role="alert" [ngClass]="{'show':show}">
+            <p> you want delete this schedule</p>
+            <div class="row justify-content-center">
+                <div class="col-1">
+                    <button (click)="deleteschadle()" style="color:red">yes</button>
+                </div>
+                <div class="col-1">
+                    <button (click)="close()">no</button>
+                </div>
             </div>
         </div>
-    </div>
+    </div> 
+    <pagination-controls *ngIf="schedules.length>0" style="margin:3rem 0;"(pageChange)="p = $event"></pagination-controls>
     <div *ngIf="!loading&&schedules.length==0"  style="width:50%;text-align: center; margin:0 auto;color:red">No schedule</div>
 </div>

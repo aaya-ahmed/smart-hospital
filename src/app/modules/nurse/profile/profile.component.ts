@@ -10,29 +10,27 @@ import { SidemanagerService } from 'src/app/services/sidemanager.service';
 })
 export class ProfileComponent implements OnInit {
   loadingimg=false;
-  listnumber:number=0
-  listflag:boolean=false
+  patientlistnumber:number=0
+  loading:boolean=true
   srcimage:string="../assets/profile.png"
-  list:any[]=[]
+  patientlist:any[]=[]
   nurse:any
   imagebase64:any
   department:string=''
   constructor(private service:ServicesService,private sidehost:SidemanagerService) { }
   ngOnInit(): void {
     if(localStorage.getItem("userInfo")){
-      ///set nurse info
       this.nurse=localStorage.getItem("userInfo")
       this.nurse=JSON.parse(this.nurse)
       this.srcimage="https://smarthospital.somee.com/"+this.nurse.imageName+"?t=" + new Date().getTime()
       this.department=this.nurse.departmentName
-      /////get all in patient
       let departmentid=this.nurse.departmentId
       this.service.get("Patient/GetInDoorPatients/"+departmentid).subscribe(
         (res:any)=>{
-          this.list=res
-          if(this.list.length>0){
-            this.listflag=true;
-            this.listnumber=this.list.length
+          this.patientlist=res
+          this.loading=false;
+          if(this.patientlist.length>0){
+            this.patientlistnumber=this.patientlist.length
           }
         }
       )

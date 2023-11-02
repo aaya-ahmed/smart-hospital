@@ -4,7 +4,7 @@
             <ng-container *ngSwitchCase="'patient'">
                 <form #searchform="ngForm" (ngSubmit)="search(searchform)" class="patientinformation">
                     <div class="row justify-content-evenly">
-                        <div class="col-10 col-md-3">
+                        <div class="col-10">
                             <label>patient Name</label>
                             <select class="form-select" ngModel #idpatient="ngModel" name="id" required
                             [ngClass]="{'is-invalid':idpatient.errors?.['required']&&searchform?.['submitted']}">
@@ -14,11 +14,11 @@
                                 {{(idpatient.errors?.['required']&&searchform.submitted)?"please select patient":''}}
                             </div>
                         </div>
-                        <div class="col-10 col-md-3">
+                        <div class="col-10">
                             <label>Date</label>
                             <input type="Date" class="form-control" ngModel #date="ngModel" name="date" />
                         </div>
-                        <div class="col-10 col-md-3 my-1 my-md-0 submitbtn">
+                        <div class="col-10 my-1 submitbtn">
                             <button class="btn">search</button>
                         </div>
                     </div>
@@ -48,24 +48,6 @@
                 </form>
             </ng-container>
         </div>
-        <div *ngIf="scanflag" class="table-responsive">
-            <table class="table">
-                <thead>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th *ngIf="option=='doctor'">patient Name</th>
-                    <th>option</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let i of listscan|paginate: { itemsPerPage: 5, currentPage: p ,totalItems:totallength};let j=index">
-                        <td>{{i.scanName}}</td>
-                        <td>{{i.scanDate |date: 'longDate'}}</td>
-                        <td *ngIf="option=='doctor'">{{i.patientName}}</td>
-                        <td><button (click)="show(i)"><i class="fa-solid fa-display"></i></button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </section>
     <section class="options">
         <div>
@@ -85,4 +67,26 @@
             </ul>
         </div>
     </section>
+</div>
+<div *ngIf="loading&&!scanflag" class="text-center">
+    <img src="../../../../assets/Spinner.svg"/>
+</div>
+<div *ngIf="!loading&&scanflag" class="table-responsive">
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Date</th>
+            <th *ngIf="option=='doctor'">patient Name</th>
+            <th>option</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of listscan|paginate: { itemsPerPage: 5, currentPage: p ,totalItems:totallength};let j=index">
+                <td>{{i.scanName}}</td>
+                <td>{{i.scanDate |date: 'longDate'}}</td>
+                <td *ngIf="option=='doctor'">{{i.patientName}}</td>
+                <td><button (click)="show(i)"><i class="fa-solid fa-display"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </div>

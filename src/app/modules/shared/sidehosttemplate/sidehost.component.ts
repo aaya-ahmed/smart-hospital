@@ -32,6 +32,6 @@ export abstract class sidehosttemplate implements OnInit{
     }
     abstract loadcomponent(component:string,data:any):void;
     close(){
-      this.sidemanagerservice.setControl({open:false,component:'',data:{}})
+      this.sidemanagerservice.setControl({open:false,component:'',data:null})
     }
 }

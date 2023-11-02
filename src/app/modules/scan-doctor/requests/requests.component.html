@@ -1,26 +1,27 @@
-
-    <div class="statistics">
-        <div class="row">
-                <div class=" mt-2 col-md-5 col-sm-12">
-                    <img class="icon" src="../assets/inpatient icon.png">
-                    <h3>In patient Requests</h3>
-                    <span>{{in_number}}</span>
-                </div>
-                <div  class="mt-2 col-md-5 col-sm-12">
-                    <img class="icon" src="../assets/inpatient icon.png">
-                    <h3>Out patient Requests</h3>
-                    <span>{{out_number}}</span>
-                </div>
+<div class="statistics">
+    <div class="row justify-content-evenly m-1 mt-3 align-items-center">
+        <div class="col-lg-4 col-10 m-2">
+            <i class="fa-calendar fa-solid fa-xl"></i>
+            <h3>In patient Requests</h3>
+            <span>{{in_number}}</span>
+        </div>
+        <div class="col-lg-4 col-10 m-2">
+            <i class="fa-calendar fa-solid fa-xl"></i>
+            <h3>Out patient Requests</h3>
+            <span>{{out_number}}</span>
         </div>
     </div>
-    <div *ngIf="dataflag;then data;else nodata "></div>
-    <ng-template #data>
-       
-        <div *ngIf="out_number" class="table-responsive">
-            <table class="table">
+</div>
+<ng-container [ngSwitch]="pagestatus">
+    <div *ngSwitchCase="100">
+        <img src="../../../../assets/Spinner.svg"/>
+    </div>
+    <div *ngSwitchCase="200">
+        <ng-container *ngIf="out_number">
+            <table class="table table-header">
                 <thead>
                     <tr>
-                        <th colspan="5" style="text-align: center ;background-color:white;">Out Patient Requests</th>
+                        <th colspan="5">Out Patient Requests</th>
                     </tr>
                     <tr>
                         <th>Doctor Name</th>
@@ -30,25 +31,33 @@
                         <th>Option</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let i of outpatientrequests ">
-                        <td>{{i.doctorName}}</td>
-                        <td>{{i.patientName}}</td>
-                        <td>{{i.scanName}}</td>
-                        <td>{{i.createdDtm|date:'longDate'}}</td>
-                        <td>
-                            <button (click)="gotoaddscan(i)">add scan</button>&nbsp;&nbsp;
-                            <button (click)="gotodelscan(i)">del scan</button>
-                        </td>
-                    </tr>
-                </tbody>
             </table>
-        </div>
-        <div  *ngIf="in_number" class="table-responsive">
-            <table class="table">
+            <div  class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let i of outpatientrequests ">
+                            <td>{{i.doctorName}}</td>
+                            <td>{{i.patientName}}</td>
+                            <td>{{i.scanName}}</td>
+                            <td>{{i.createdDtm|date:'longDate'}}</td>
+                            <td>
+                                <button (click)="gotoaddscan(i)">
+                                    <i class="fa-solid fa-plus" style="color:green"></i>
+                                </button>
+                                <button (click)="gotodelscan(i)">
+                                    <i class="fa-solid fa-trash" style="color:red"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="in_number">
+            <table class="table table-header">
                 <thead>
                     <tr>
-                        <th colspan="5" style="text-align: center ;background-color:white;">In Patient Requests</th>
+                        <th colspan="5">In Patient Requests</th>
                     </tr>
                     <tr>
                         <th>Doctor Name</th>
@@ -58,32 +67,37 @@
                         <th>Option</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let i of inpatientrequests">
-                        <td>{{i.doctorName}}</td>
-                        <td>{{i.patientName}}</td>
-                        <td>{{i.scanName}}</td>
-                        <td>{{i.createdDtm|date:'longDate'}}</td>
-                        <td>
-                            <button (click)="gotoaddscan(i)">add scan</button>&nbsp;&nbsp;
-                            <button (click)="gotodelscan(i)">del scan</button>
-                        </td>
-                    </tr>
-                </tbody>
             </table>
-        </div>
+            <div  class="table-responsive">
+                <table class="table">
+                        <tbody>
+                            <tr *ngFor="let i of inpatientrequests">
+                                <td>{{i.doctorName}}</td>
+                                <td>{{i.patientName}}</td>
+                                <td>{{i.scanName}}</td>
+                                <td>{{i.createdDtm|date:'longDate'}}</td>
+                                <td>
+                                    <button (click)="gotoaddscan(i)">
+                                        <i class="fa-solid fa-plus" style="color:green"></i>
+                                    </button>
+                                    <button (click)="gotodelscan(i)">
+                                        <i class="fa-solid fa-trash" style="color:red"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </ng-container>
         <div *ngIf="deletflag">
             <div class="alert alert-danger alert-dismissible fade errormes" role="alert">
                 You can't delete this request 
             </div>
         </div>
-    </ng-template>
-    <ng-template #nodata>
-        <div class="nodata">
-            <p>
-                {{mess}}
-            </p>
-            <img src="/assets/norequest.jpg"/>
-        </div>
-        
-    </ng-template>
+    </div>
+    <div  *ngSwitchCase="400" class="nodata">
+        <p>
+           no Items
+        </p>
+    </div>
+</ng-container>

@@ -19,7 +19,7 @@
                         <div class="container">
                             <div class="row text-center">
                                 <div class="col-xl-3 col-sm-6 mb-5" *ngFor="let i of inpatient">
-                                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                                    <div class="rounded shadow-sm p-4 patient-card">
                                         <table class="table1">
                                             <tr>
                                                 <td colspan="3"><img src="{{i.image}}" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></td>
@@ -30,30 +30,31 @@
                                             </tr>
                                             <tr>
                                                 <th>Room</th>
-                                                <td colspan="2"><span  class="small text-uppercase text-muted">{{i.room_Number}}</span></td>
+                                                <td colspan="2"><span  class="small text-uppercase">{{i.room_Number}}</span></td>
                                             </tr>
                                             <tr>
                                                 <th>Bed</th>
-                                                <td colspan="2"><span class="small text-uppercase text-muted">{{i.bedNumber}}</span></td>
+                                                <td colspan="2"><span class="small text-uppercase">{{i.bedNumber}}</span></td>
                                             </tr>
                                             <tr>
                                                 <th>Age</th>
-                                                <td colspan="2"><span  class="small text-uppercase text-muted">{{i.age}}</span></td>
+                                                <td colspan="2"><span  class="small text-uppercase">{{i.age}}</span></td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                  <li class="list-inline-item"><a TITLE="Add Vital Sign" (click)="gotoaddvital(i)"  class="social-link"><i class="fa-solid fa-heart-pulse"></i></a></li>
+                                                <td class="p-2">
+                                                  <li class="list-inline-item "><a TITLE="Add Vital Sign" (click)="gotoaddvital(i)"  class="social-link"><i class="fa-solid fa-heart-pulse"></i></a></li>
                                                 </td>
-                                                <td>
+                                                <td class="p-2">
                                                     <li class="list-inline-item"><a TITLE="Show Medicine"(click)="gotoshowmedicine(i)" class="social-link"><i class="fa-solid fa-capsules"></i></a></li>                                
                                                 </td>
-                                                <td>
+                                                <td class="p-2">
                                                     <li class="list-inline-item"><a TITLE="Show Vital Sign"(click)="gotoshowvital(i)" class="social-link"><i class="fa-solid fa-heart-pulse"></i></a></li>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>  
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

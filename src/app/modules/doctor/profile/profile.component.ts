@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   appointment:any[]=[];
   image:any="../assets/profile.png"
   imagesrc:any
+  loading:boolean=true
   constructor(private service:ServicesService,private sidehost:SidemanagerService) { }
   ngOnInit(): void {
     if(localStorage.getItem("userInfo")){
@@ -28,6 +29,7 @@ export class ProfileComponent implements OnInit {
     this.service.get("Appointment/GetAppointmentsForTodayByDoctorId/"+this.doctor.id+"/"+this.todayDate).subscribe(
       (res:any)=>{
         this.appointment=res
+        this.loading=false;
         if(this.appointment.length>0){
           this.appointflag=true
         }

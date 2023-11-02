@@ -26,12 +26,12 @@
                 </div>
             </div>
             <ng-container *ngIf="!updateflag">
-                <h4 class="row">
-                    <span class="col-12">
+                <h4 class="row justify-content-center">
+                    <span class="col-11">
                         Numerical Paramters
                     </span>
                 </h4>
-                <div formArrayName="numericalParamters">
+                <div formArrayName="numericalParamters" class="labform">
                     <ng-container *ngIf="addLabGroup.controls['numericalParamters']!=null" >
                         <div class="table-responsive paramter-table" >
                             <table class="table table-striped ">
@@ -96,12 +96,12 @@
                   </div>
                 </ng-container>
             </div>
-            <h4 class="row">
-                <span class="col-12">
+            <h4 class="row mt-4 justify-content-center">
+                <span class="col-11">
                     Catogerical Paramters:
                 </span>
             </h4>
-            <div formArrayName="categoricalParamters">
+            <div formArrayName="categoricalParamters" class="labform">
                 <ng-container *ngIf="addLabGroup.controls['categoricalParamters']!=null" >
                         <div class="table-responsive paramter-table" >
                             <table class="table table-striped ">
@@ -155,26 +155,3 @@
                 </div>
             </div> 
         </form>
-        <!-- <form #formdata="ngForm" (ngSubmit)="save(formdata)">
-            <div class="p-3">
-                <label class="form-lable" for="doctorfname"> Scan Name </label>
-                <input type="text" id="scanname" name="scanname" class="form-control form-control1" 
-                required #scanname="ngModel" [(ngModel)]="scan.scanName" [disabled]="updateflag"/>
-                <div class="invalid-feedback">
-                  {{(scanname.errors?.['required']&&formdata.submitted)?"this is required":''}}
-                </div>
-            </div>
-            <div class="p-3">
-                <label class="form-lable" for="doctorfname">  Scan Charge </label>
-                <input type="number" id="scancharge" [(ngModel)]="scan.scanCharge" [min]="10" name="Charge" class="form-control form-control1" min="100" #Charge="ngModel" required ngModel />          
-                <div class="invalid-feedback">
-                  {{(Charge.errors?.['required']&&formdata.submitted)?"this is required":''}}
-                  {{(Charge.errors?.['min']&&formdata.submitted)?"min value is 10":''}}
-                </div>
-            </div>
-            <div class="p-3">
-                <div class="col-sm-3">
-                    
-                </div>
-            </div>
-        </form> -->

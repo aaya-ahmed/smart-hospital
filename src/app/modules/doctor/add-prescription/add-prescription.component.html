@@ -29,11 +29,11 @@
         <hr>
         <main>
             <form class="form" name="form"  #myForm="ngForm" (ngSubmit)="myForm.form.valid">
-                <body>
+                <div>
                 <div class="row" *ngFor="let item of prescriptionItem ;let i=index">
                     <div class="title">
                         <p>Medicine {{i+1}}</p>
-                        <div class="btn fas fa-times" (click)="deleteRow(i)"></div>
+                        <div class="fas fa-times" (click)="deleteRow(i)"></div>
                     </div>
                     <div class="col-md-4">
                         <h4>M.Name</h4>
@@ -99,8 +99,7 @@
                         <input type="text" class="form-control" [(ngModel)]="item.instructions" name="{{item.instructions}}" [ngModelOptions]="{standalone: true}" >
                     </div>
                 </div>
-                <div class="fa fa-plus btn btn-success my-4" aria-hidden="true" (click)="addRow()"></div>
-
+                <div class="fa fa-plus my-4" aria-hidden="true" (click)="addRow()"></div>
                 <div class="row dignoise" [ngClass]="{'show':flag}">
                     <div class="col-md-12">
                         <h4>Medical Diagnosis</h4>
@@ -113,7 +112,7 @@
                     </div>
                     </div>
                 </div>
-                </body>
+                </div>
                 <hr width="95%" style="border:2px solid black">
             </form>
             <form class="form" name="form" [ngClass]="{'show':flag}"  #appointForm="ngForm" (ngSubmit)="appointForm.form.valid">
@@ -150,7 +149,7 @@
                     </div>
                 <div class="row p-3 justify-content-end " >
                     <div class="col-sm-3 ">
-                        <input type="submit" value="submit" (click)="addAppointment(appointForm,myForm)" class="form-control" id="submit" />
+                        <input type="submit" value="Add" (click)="addAppointment(appointForm,myForm)" class="form-control" id="submit" />
                     </div>
                 </div>
             </form>

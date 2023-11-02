@@ -42,6 +42,6 @@ export class InPatientListComponent implements OnInit {
      )
   }
   examine(index:number){
-    this.router.navigate(['./doctor/in-patient'],{queryParams:this.inpatient[index],skipLocationChange:true})
+    this.router.navigate(['./doctor/examination'],{queryParams:this.inpatient[index],skipLocationChange:true})
   }
 }

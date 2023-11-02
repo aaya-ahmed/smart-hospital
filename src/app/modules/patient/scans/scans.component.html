@@ -2,7 +2,7 @@
     <div *ngIf="loadflag;then loading;else page" ></div>
     <!-- start page template -->
     <ng-template #page>
-        <div *ngIf="scanList.length==0" class="text-center text-danger mt-0">
+        <div *ngIf="scanList.length==0" class="text-center text-danger mt-4">
                 No Avaliable Data<br>
         </div>
         <div *ngIf="scanList.length>0" class="table-responsive">
@@ -24,8 +24,8 @@
                     </tr>
                 </tbody>
             </table>
+            <pagination-controls (pageChange)="$event"></pagination-controls>
         </div>
-        <pagination-controls (pageChange)="$event"></pagination-controls>
     </ng-template>
     <!-- end page template -->
     <!-- start loading page -->

@@ -8,12 +8,6 @@
         <div class="table-responsive" id="no-more-tables">
         <table class="table">
             <tbody>
-            <tr >
-                <th><strong>Patient Name: </strong> </th>
-                <td data-title="Patient Name:"> <input type="text" class="form-control"  value="{{patient.patientName}}" disabled/></td>
-                <th><strong>Age: </strong> </th>
-                <td data-title="Age:"> <input type="text" class="form-control" value="{{patient.age}}"  disabled/></td>
-            </tr>
             <tr class="end-table">
                 <th><label for="startdate">Start Time</label></th>
                 <td data-title="Start Time"> 
@@ -53,27 +47,23 @@
         <table id="vital-table" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Blood Pressure</th>
                     <th>Pulse Rate</th>
                     <th>Temperature</th>
                     <th>Respiratory Rate</th>
-                    <!--<th>ECG</th>-->
                     <th>Comments</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let i of vital|paginate: { itemsPerPage: 10, currentPage: p ,totalItems:totallength}">
-                    <td>{{i.vitalsignId}}</td>
                     <td>{{i.vitals_date.slice(0,10)}}</td>
                     <td>{{i.vitals_date.slice(11,16)}}</td>
                     <td>{{i.pressure}}</td>
                     <td>{{i.pulseRate}}</td>
                     <td>{{i.temperature}}</td>
                     <td>{{i.respirationRate}}</td>
-                    <!--<td>{{i.ecg}}</td>-->
                     <td>{{i.noteDto.subject}}<br>{{i.noteDto.body}}</td>
                 </tr>
             

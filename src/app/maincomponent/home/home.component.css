@@ -1,3 +1,8 @@
+.container1{
+    overflow-y: auto;
+    max-height: 100vh;
+    position: relative;
+}
 header{
     position: absolute;
     width: 100%;

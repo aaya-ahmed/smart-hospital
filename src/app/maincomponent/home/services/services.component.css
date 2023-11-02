@@ -39,10 +39,7 @@ section{
     margin: 0.5rem 1rem;
 
 }
-.Serviceitem:hover img{
-    aspect-ratio: 1 / 0.4;
 
-}
 .Serviceitem:hover p{
     color: black;
 }

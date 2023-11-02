@@ -31,10 +31,9 @@ export class ShowscanComponent implements OnInit {
   }
   id:number=0
   scanflag:boolean=false
-  flag=false;
   p: number = 1;
   totallength:any;
-  searchflag=false
+  loading=false
   constructor(private service:ServicesService,private services:ServicesService) { }
   ngOnInit(): void {
     this.service.get('Patient/getAllPatients').subscribe(
@@ -50,14 +49,16 @@ export class ShowscanComponent implements OnInit {
   }
   search(form:any){
     if(form.valid){
+      this.loading=true;
+      this.scanflag=false;
     if(form.value.date!=''){
         this.id=parseInt(form.value.id);
         let date=form.value.date
         this.services.get("MedicalScan/GetPatientPatientScansByDate/"+this.id+"/"+date).subscribe(
           (res:any)=>{
             this.listscan=res;
-            this.flag=true
               this.scanflag=true
+              this.loading=false
 
           }
          )
@@ -67,8 +68,8 @@ export class ShowscanComponent implements OnInit {
         this.services.get("MedicalScan/getPatientScansByPatientId/"+this.id).subscribe(
           (res:any)=>{
             this.listscan=res;
-            this.flag=true
-              this.scanflag=true
+            this.scanflag=true
+            this.loading=false
           }
          )
       }
@@ -76,14 +77,16 @@ export class ShowscanComponent implements OnInit {
   }
   searchbydoctor(searchform:any){
     if(searchform.valid){
+      this.scanflag=false;
+      this.loading=true
       if(searchform.value.date!=''){
        let id=parseInt(searchform.value.iddoctor)
        let PatientScanDate=searchform.value.date
         this.services.get("MedicalScan/GetDoctorPatientScansByDate/"+id+"/"+PatientScanDate).subscribe(
           (res:any)=>{
             this.listscan=res;
-            this.flag=true
-              this.scanflag=true
+            this.scanflag=true;
+            this.loading=false
           }
         )
       }
@@ -92,9 +95,8 @@ export class ShowscanComponent implements OnInit {
          this.services.get("MedicalScan/getPatientScansByDoctorId/"+id).subscribe(
            (res:any)=>{
              this.listscan=res;
-             this.flag=true
-               this.scanflag=true
-
+             this.scanflag=true;
+             this.loading=false
            }
          )
       }

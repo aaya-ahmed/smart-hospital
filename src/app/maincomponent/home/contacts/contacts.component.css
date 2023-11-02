@@ -14,7 +14,7 @@ section:nth-child(2){
     top: 20vh;
 }
 section:nth-child(1) div i{
-    line-height: 3em;
+    line-height: 2em;
 }
 section:nth-child(2) div:nth-child(1){
     background-color: #e7ede2;
@@ -39,6 +39,9 @@ h2{
 }
 /*Large devices (desktops, less than 1200px)*/
 @media (max-width: 1199.98px) {
+    :host{
+        height: 55vh;
+    }
     section:nth-child(1){
         padding:1rem 0 0 0 ;
     }
@@ -48,7 +51,7 @@ h2{
     section:nth-child(2) div:nth-child(1),
     section:nth-child(2) div:nth-child(2),
     section:nth-child(2) div:nth-child(3){
-        height: 35vh
+        height: 40vh
     }
 }
 /*Medium devices (tablets, less than 992px)*/
@@ -60,7 +63,7 @@ h2{
 /*Small devices (landscape phones, less than 768px)*/
 @media (max-width: 767.98px) {
     :host{
-        height: 125vh;
+        height: fit-content;
     }
     section:nth-child(1){
         height: 35vh!important;
@@ -76,7 +79,7 @@ h2{
     section:nth-child(2) div:nth-child(1),
     section:nth-child(2) div:nth-child(2),
     section:nth-child(2) div:nth-child(3){
-        height: 30vh
+        height: fit-content
     }
     .contact{
         position: relative;

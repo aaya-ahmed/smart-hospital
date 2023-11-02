@@ -1,0 +1,122 @@
+<div class="fluid-container">
+    <div class="examintion-information">
+        <table>
+            <tr>
+                <th><strong>Patient Name</strong></th>
+                <td class="col1">{{patient.patientName}}</td>
+            </tr>
+            <tr>
+                <th><strong>Age</strong></th>
+                <td  class="col2">{{patient.age}}</td>
+            </tr>
+            <tr>
+                <th><strong>Gender</strong></th>
+                <td  class="col3">{{patient.gender}}</td>
+               
+            </tr>
+            <tr *ngIf="patient.indoorPatientRecordId=='-1'">
+                <th><strong>Complain</strong></th>
+                <td  class="col4">{{patient.complain}}</td>
+            </tr>
+            <tr *ngIf="patient.indoorPatientRecordId!='-1'">
+                <th><strong>cause Of Admission</strong></th>
+                <td  class="col4">{{patient.causeOfAdmission}}</td>
+            </tr>
+            <tr *ngIf="patient.indoorPatientRecordId!='-1'">
+                <th><strong>oral Medical History</strong></th>
+                <td  class="col4">{{patient.oralMedicalHistory}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="options">
+        <div class="option-toggle">
+            <label for="options">{{section}}</label>
+        </div>
+        <input type="checkbox" id="options" (change)="setoptions()"/>
+        <ul id="accordion" class="accordion" [ngClass]="{'show':options,'hide':!options}">
+            <li>
+                <div class="link" (click)="changesection('Previous Reports')">
+                    <i class="fa-solid fa-file-pen"></i>
+                    Previous Reports
+                </div>
+            </li>
+            <li *ngIf="patient.indoorPatientRecordId!='-1'">
+                <div class="link" (click)="changesection('Vital Sign')"  >
+                    <i class="fa-solid fa-file-pen"></i>
+                    Vital Sign
+                </div>
+            </li>
+            <li>
+                <div class="link" (click)="changesection('Request Scan')">
+                    <i class="fa-solid fa-x-ray"></i>
+                    Reqest Scan
+                </div> 
+            </li>
+            <li>
+                <div class="link" (click)="changesection('Scans')">
+                    <i class="fa-solid fa-x-ray"></i>
+                    Show Scan
+                </div>
+            </li>
+            <li>
+                <div class="link" (click)="changesection('Request Lab')">
+                    <i class="fa-solid fa-flask-vial"></i>
+                    Request Lab
+                </div>
+            </li>
+            <li>
+                <div class="link" (click)="changesection('Labs')">
+                    <i class="fa-solid fa-flask-vial"></i>
+                    Lab
+                </div>
+            </li>
+            <li>
+                <div class="link" (click)="changesection('Prescriptions')">
+                    <i class="fa-solid fa-prescription"></i>
+                    Show Previes Prescriptions
+                </div>
+            </li>
+            <li>
+                <div class="link" (click)="changesection('Write Prescription')">
+                    <i class="fa-solid fa-prescription"></i>
+                    Write Prescription
+                </div>
+            </li>
+            <li  *ngIf="patient.indoorPatientRecordId!='-1'">
+                <div class="link" (click)="changesection('Discharge')">
+                    <i class="fa-solid fa-prescription"></i>
+                    Discharge
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="option-information" [ngSwitch]="section">
+        <ng-container *ngSwitchCase="'Previous Reports'">
+            <app-old-indoor-records [patient]="patient"></app-old-indoor-records>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Vital Sign'">
+            <app-show-vital-signs [patient]="patient"></app-show-vital-signs>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Request Scan'">
+            <app-req-scan [patient]="patient" ></app-req-scan>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Scans'">
+            <app-scan [patient]="patient" ></app-scan>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Request Lab'">
+            <app-req-lab [patient]="patient" [outpatientflag]="outpatientflag"></app-req-lab>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Labs'">
+            <app-lab [patient]="patient" [outpatientflag]="outpatientflag"></app-lab>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Prescriptions'">
+            <app-show-prescription [patient]="patient"></app-show-prescription>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Write Prescription'">
+            <app-add-prescription [patient]="patient" [outpatientflag]="outpatientflag"></app-add-prescription>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Discharge'" >
+            <app-discharge [patient]="patient"></app-discharge>
+        </ng-container>
+    </div>
+</div>

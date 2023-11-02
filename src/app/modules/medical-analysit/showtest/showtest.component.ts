@@ -21,11 +21,10 @@ export class ShowtestComponent implements OnInit {
   rows2:any[]=[];
   lablist:any[]=[]
   patientinfo:any;
-  testflag=false;
-  flag=false;
   p: number = 1;
   totallength:any;
-  searchflag=false
+  loading=false;
+  testflag=false;
   constructor(private service:ServicesService) { }
   ngOnInit(): void {
     this.service.get("Patient/getAllPatients").subscribe(
@@ -39,19 +38,18 @@ export class ShowtestComponent implements OnInit {
       }
     )
   }
-  setsearch(flag:boolean){
-    this.searchflag=flag
-    this.flag=false
-  }
   search(form:any){
     if(form.valid){
+      this.loading=true;
+      this.testflag=false;
     if(form.value.date!=''){
         let id=parseInt(form.value.id);
         let date=form.value.date
         this.service.get("MedicalTest/GetPatientPatientTestsByDate/"+id+"/"+date).subscribe(
           (res:any)=>{
             this.lablist=res;
-            this.flag=true
+            this.loading=false;
+            this.testflag=true;
           }
          )
       }
@@ -60,32 +58,25 @@ export class ShowtestComponent implements OnInit {
         this.service.get("MedicalTest/getPatientTestsByPatientId/"+id).subscribe(
           (res:any)=>{
             this.lablist=res;
-            this.flag=true
+            this.loading=false;
+            this.testflag=true;
           }
          )
       }
-    }
-    else if(form.value.id){
-    let id=parseInt(form.value.id)
-    this.service.get("MedicalTest/getPatientTestsByPatientId/"+id).subscribe(
-      (res:any)=>{
-        this.lablist=res   
-        this.totallength=this.lablist.length
-      }
-    )}
-    else{
-      this.flag=true;
     }  
   }
   searchbydoctor(searchform:any){
     if(searchform.valid){
+      this.loading=true;
+      this.testflag=false;
       if(searchform.value.date!=''){
        let id=parseInt(searchform.value.iddoctor)
        let PatientTestDate=searchform.value.date
         this.service.get("MedicalTest/GetDoctorPatientTestsByDate/"+id+"/"+PatientTestDate).subscribe(
           (res:any)=>{
             this.lablist=res;
-            this.flag=true
+            this.loading=false;
+            this.testflag=true;
           }
         )
       }
@@ -94,7 +85,8 @@ export class ShowtestComponent implements OnInit {
          this.service.get('MedicalTest/getPatientTestsByDoctorId/'+id).subscribe(
            (res:any)=>{
              this.lablist=res;
-             this.flag=true
+             this.loading=false;
+             this.testflag=true;
            }
          )
       }
@@ -184,7 +176,6 @@ export class ShowtestComponent implements OnInit {
   changesection(option:string){
     if(this.option!=option){
       this.option=option
-      this.flag=false;
     }
   }
 }

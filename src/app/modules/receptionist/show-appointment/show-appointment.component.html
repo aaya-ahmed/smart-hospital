@@ -1,45 +1,37 @@
-<div class="container">
-    <header>
-        <h3>Doctor's Appointments</h3>
-    </header>
-    <form class="row ">
-        <div class="col-6 doctor-select">
-            <label>Doctor</label>
-            <select class="form-select" (change)="getappointment($event)">
-                <option *ngFor="let i of doctors" value="{{i.id}}">{{i.firstName}}{{i.lastName}}</option>
-            </select>
-        </div>
-        <div class="col-6  doctor-select">
-            <label>Today</label>
-            <input  class="form-control" disabled type="text" value="{{today}}"/>
-        </div>
-    </form>
-    <hr>
-    <div *ngIf="loading" class="fluid-container loading d-flex justify-content-center"><img src="assets/Spinner.svg" /></div>
-
-    <div *ngIf="appointflag&&!loading" class="container">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Patient Name</th>
-                        <th>Gender</th>
-                        <th>Age</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let i of appointment;let j =index">
-                        <td>{{j+1}}</td>
-                        <td>{{i.patientName}}</td>
-                        <td>{{i.age}}</td>
-                        <td>{{i.slotTime}}</td>
-                        <td>{{i.gender}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<header class="mt-4">
+    <h3>Doctor's Appointments</h3>
+</header>
+<form class="row justify-content-center">
+    <div class="col-10 doctor-select">
+        <select class="form-select" (change)="getappointment($event)">
+            <option *ngFor="let i of doctors" value="{{i.id}}">{{i.firstName}}{{i.lastName}}</option>
+        </select>
     </div>
-    <div *ngIf="!appointflag&&!loading" class="noappoint-sec"><p>No Appointments Today</p></div>
+</form>
+<table class="table table-header">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Patient Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+</table>
+<div *ngIf="appointflag&&!loading" class="table-responsive">
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let i of appointment;let j =index">
+                <td>{{j+1}}</td>
+                <td>{{i.patientName}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.slotTime}}</td>
+                <td>{{i.gender}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+<div *ngIf="loading" class="fluid-container loading d-flex justify-content-center"><img src="assets/Spinner.svg" /></div>
+
+<p *ngIf="!appointflag&&!loading">no data found</p>

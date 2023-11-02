@@ -40,6 +40,7 @@ export class ShowScheduleComponent implements OnInit{
         this.loading=false;
         if(res.length>0){
           this.schedules=res
+          console.log(res)
           this.totallength=this.schedules.length
       }
      }
@@ -55,12 +56,10 @@ export class ShowScheduleComponent implements OnInit{
   deleteschadle(){
     this.services.delete('Schedule/DeleteSchedule/'+this.id).subscribe(
       res=>{
+        this.schedules[this.index1].scheduleObjects.splice(this.index2,1)
+        this.show=false
       },
       err=>{
-        if(err.status==200){
-          this.schedules[this.index1].scheduleObjects.splice(this.index2,1)
-          this.show=false
-        }
       }
     )
   }

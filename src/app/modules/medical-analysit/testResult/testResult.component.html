@@ -116,10 +116,13 @@
                         <button class="form-control btn"> Print </button>
                     </div>
                     <div class="col-2" *ngIf="!isrequest">
-                        <button class="form-control btn"> Add </button>
+                        <button class="form-control btn" [disabled]="issubmitted&&test.valid"> Add </button>
                     </div>
                     <div class="col-2" *ngIf="!isrequest">
-                        <button class="form-control btn bg-danger" (click)="close()"> Cancel </button>
+                        <button class="form-control btn bg-danger" [disabled]="issubmitted&&test.valid" (click)="close()"> Cancel </button>
+                    </div>
+                    <div class="col-2" *ngIf="issubmitted&&test.valid">
+                        <img src="../../../../assets/Spinner.svg"/>
                     </div>
                 </div>
             </form>

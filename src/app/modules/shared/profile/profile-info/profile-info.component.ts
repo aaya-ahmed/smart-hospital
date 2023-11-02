@@ -15,7 +15,7 @@ export class ProfileInfoComponent implements OnInit {
     if(localStorage.getItem("userInfo")){
       this.user=localStorage.getItem("userInfo")
       this.user=JSON.parse(this.user)
-      if(this.user.role=='Doctor'||'nurse')this.showdata=true
+      if(this.user.role=='Doctor'||this.user.role=='nurse')this.showdata=true
     }
   }
   openupdateprofileside(){

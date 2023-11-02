@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit,Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { all_department_info } from 'src/app/models/department';
@@ -20,7 +21,7 @@ export class AdddepartmentComponent implements OnInit {
   };
   submitted:boolean=false;
   errormessage:string=''
-  constructor(private service:ServicesService,private sidemanagerservice:SidemanagerService) { }
+  constructor(private http:HttpClient,private service:ServicesService,private sidemanagerservice:SidemanagerService) { }
 
   ngOnInit(): void {
 
@@ -73,7 +74,11 @@ export class AdddepartmentComponent implements OnInit {
       this.update(form)
     }
   }
+  changephoto(file:any){
+    
+  }
   close(){
     this.sidemanagerservice.setControl({open:false,component:'',data:{}})
   }
+
 }

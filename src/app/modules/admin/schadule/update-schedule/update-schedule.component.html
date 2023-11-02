@@ -1,0 +1,56 @@
+<form [formGroup]="updateform" (ngSubmit)="update()" class="update-class">
+    <table >
+        <tr>
+            <th>Doctor Name</th>
+            <td>
+                {{tempschedule.doctorName}}
+            </td>
+        </tr>
+        <tr>
+            <th>work day</th>
+            <td>
+                <select class="form-select updateclass"  name="dayofwork"  formControlName="dayofwork">
+                    <option value="0">sunday</option>
+                    <option value="1">monday</option>
+                    <option value="2">tuesday</option>
+                    <option value="3">wednesday</option>
+                    <option value="4">thursday</option>
+                    <option value="5">friday</option>
+                    <option value="6">saturday</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <th>startTime</th> 
+            <td>
+                 <input class="form-control updateclass" type="time" name="starttime"  formControlName="starttime" />
+                 <div class="invalid-feedback" width="10px">
+                    {{(submitted&&!timeflag)?"ensure start time less than end time":''}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>endTime</th>
+            <td>
+                <input class="form-control updateclass" type="time"   name="endtime"  formControlName="endtime" />
+            </td>
+        </tr>
+        <tr>
+            <th>timePerPatient</th>
+            <td class="table-footer">
+                <input class="form-control updateclass"  required type="text"  name="perpatienttime"  
+                formControlName="perpatienttime"
+                [ngClass]="{'invalid-feedback':updateform.controls['perpatienttime']?.touched &&updateform.controls['perpatienttime']?.invalid && updateform.controls['perpatienttime']?.errors?.['required']||submitted&& updateform.controls['perpatienttime']?.errors?.['required']}"/>
+                <div class="invalid-feedback">
+                    {{((updateform.controls['perpatienttime'].touched&&updateform.controls['perpatienttime'].hasError('required')&&updateform.controls['perpatienttime'].invalid)||(submitted&& updateform.controls['perpatienttime'].errors?.['required']))?"This field is reqired":''}}
+                </div>
+                <div class="invalid-feedback">
+                    {{((updateform.controls['perpatienttime'].touched&&updateform.controls['perpatienttime'].hasError('pattern')&&updateform.controls['perpatienttime'].invalid)||(submitted&& updateform.controls['perpatienttime'].errors?.['pattern']))?"please duration between 00:10 and 00:50":''}}
+                </div>
+            </td>
+        </tr>
+        <tr class="table-footer">
+            <td colspan="2"> <button type="submit">submit</button>
+        </tr>
+    </table>
+</form>

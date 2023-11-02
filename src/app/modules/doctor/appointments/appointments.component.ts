@@ -21,8 +21,7 @@ export class AppointmentsComponent implements OnInit {
   ngOnInit(): void {
     let day=new Date(this.date)
     this.today=`${day.getMonth()+1}-${day.getDate()}-${day.getFullYear()}`
-    let user:any=localStorage.getItem('userInfo')
-    let id=JSON.parse(user).id
+    let id=JSON.parse(localStorage.getItem('userInfo')||'').id
     this.service.get("Appointment/GetAppointmentsForTodayByDoctorId/"+id+"/"+this.today).subscribe(
     (res:any)=>{
       if(res.length>0){
@@ -56,18 +55,12 @@ export class AppointmentsComponent implements OnInit {
       indoorPatientRecordId:-1
   }
     
-    this.route.navigate(['./doctor/outpatient'],{queryParams:temp,skipLocationChange:true});
+    this.route.navigate(['./doctor/examination'],{queryParams:temp,skipLocationChange:true});
   }
   getappointments(event:any){
-    if(this.today==event.target.value){
-      this.flagbtn=true
-    }
-    else{
-      this.flagbtn=false
-    }
     this.appointments=[]
-    let user:any=localStorage.getItem('userInfo')
-    let id=JSON.parse(user).id
+    this.flag=false;
+    let id=JSON.parse(localStorage.getItem('userInfo')||'').id
     this.service.get("Appointment/GetAppointmentsForTodayByDoctorId/"+id+"/"+event.target.value).subscribe(
       (res:any)=>{
         if(res.length>0){
@@ -83,6 +76,7 @@ export class AppointmentsComponent implements OnInit {
         this.number_of_appointment=0
         this.messflag=true
       }
+      this.flag=true
         }
       )
   }
