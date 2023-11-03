@@ -33,7 +33,7 @@
                         {{receptionistUserName.touched&&receptionistUserName.hasError('pattern')?"character @ # / * etc.. not allowed":''}}
                     </div>
                 </div>
-                <div class="p-3" *ngIf="!data">
+                <div class="p-3" *ngIf="!data?.id">
                     <label class="form-lable" for="Password">Password</label>
                     <input class="form-control"  type="Password" name="Password" id="Password" formControlName="password"
                      [ngClass]="{'is-invalid':((receptionistPassword.touched&& receptionistPassword.invalid)||(submitted&&receptionistPassword.hasError('required')))}"
@@ -113,7 +113,7 @@
                     <label class="form-lable label1" for="address">address</label>
                     <input class="form-control form-control1" value="" type="text" name="address" id="address" formControlName="address"/>
                 </div>
-                <div class="p-3"  *ngIf="!data">
+                <div class="p-3"  *ngIf="!data?.id">
                     <label class="form-lable" for="image">Image</label>
                     <input type="file" id="image" class="form-control" (change)="uploadfile($event)" formControlName="image"/>
                 </div>
@@ -125,13 +125,13 @@
                         {{((Hdate.touched&&Hdate.hasError('required'))||(submitted&&Hdate.hasError('required')))?"This field is reqired":''}}
                         </div>
                 </div>
-                <div class="p-3">
+                <div class="p-3 alignitemscenter">
                     <input type="checkbox" class="is-active" [checked]="receptionistactive.value" id="active"  formControlName="isActive"/>
                     <label class="form-lable" for="active">Is Active</label>   
                 </div> 
             <div class="row p-3 justify-content-center">
                 <div class="col-sm-3">
-                    <button *ngIf="!submitted" class="btn" (click)="submit()"></button>
+                    <button *ngIf="!submitted" class="btn" (click)="submit()">submit</button>
                     <span class="error-message" *ngIf="message!=''">{{message}}</span>
                     <div *ngIf="submitted" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
                 </div>

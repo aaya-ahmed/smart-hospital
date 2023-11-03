@@ -29,7 +29,7 @@
             <div class="p-3">
                 <label for="image">Image</label>
                 <input  type="file" 
-                [(ngModel)]="data.departmentImage" (change)="changephoto($event)"
+                (change)="changephoto($event)" 
                 [ngClass]="{'is-invalid':image.errors?.['required']&&form.submitted||image.touched&&image.errors?.['required']||image.touched&&image.errors?.['minlength']}"
                 class="form-control form-control1" name="image" id="image" required ngModel #image="ngModel"/>
                 <div *ngIf="image.errors?.['required']&&form.submitted||image.touched&&image.errors?.['required']" class="invalid-feedback">

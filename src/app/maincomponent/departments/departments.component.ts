@@ -19,6 +19,7 @@ export class DepartmentsComponent implements OnInit {
     this.service.get("Departments/getAll").subscribe(
       (res:any)=>{
         this.departments=res
+        console.log(res)
         this.length=res.length
         this.loading=false
       }

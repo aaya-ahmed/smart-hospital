@@ -56,7 +56,7 @@
         box-sizing: border-box;
         overflow: scroll;
         margin: auto;
-        height: 200px!important;
+        width: 100%!important;
 }
 @media(max-width:970px){ 
     .main{

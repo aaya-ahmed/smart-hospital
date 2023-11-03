@@ -9,7 +9,7 @@ export interface all_department_info{
     departmentLocation:string,
     isActive:boolean,
     isClinical:boolean,
-    departmentImage?:any
+    Image?:any
 }
 export interface list_department{
     departmentId:number,

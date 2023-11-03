@@ -127,17 +127,11 @@ export class AdddoctorComponent implements OnInit ,OnDestroy{
     }
     this.services.post("Doctor",doctor).subscribe({
       next:res=>{
-        this.responceFlag=false;
-        this.errorMessage="wrong data"
+          this.close(res);       
       },
       error:(err:any)=>{
-        if(err.status==200){
-          this.close(err);
-        }
-        else{
-          this.responceFlag=false;
-          this.errorMessage=err.error.text
-          }
+        this.responceFlag=false;
+        this.errorMessage="wrong data"
         }
     })
   }

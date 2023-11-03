@@ -125,13 +125,11 @@ export class AddnurseComponent implements OnInit {
     }
     this.service.post("Nurse",nurse).subscribe(
       res=>{
-        this.submitted=false;
-        this.errormessage="wrong data"
+        this.close()
       },
       err=>{
-        if(err.status==200){
-          this.close()
-        }
+        this.submitted=false;
+        this.errormessage="wrong data"
       }
     )
   }
