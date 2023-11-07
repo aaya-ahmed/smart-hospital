@@ -4,8 +4,8 @@
         <div class="doctor-items" #doctoritems (mouseenter)="goleft()" (mouseleave)="reset()">
             <div class="doctoritem" *ngFor="let item of doctors">
                 <img src="{{item.imageName}}">
-                <h2>{{item.firstName}} {{item.lastName}}</h2>
-                <h4>{{item.departmentName}}</h4>
+                <h2 class="threedot">{{item.firstName}} {{item.lastName}}</h2>
+                <h4 class="threedot" title="{{item.departmentName}}">{{item.departmentName}}</h4>
                 <p title="{{item.phoneNumber}}">
                     <i class="fa-solid fa-phone"></i><span>{{item.phoneNumber}}</span>
                 </p>

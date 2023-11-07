@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
   }
   @HostListener('window:resize',['$event'])
   onwendowresize(){
-    if(window.innerWidth<=700){
+    if(window.innerWidth<=800){
       this.sideStateout.emit(false)
       this.sideState=false
     }

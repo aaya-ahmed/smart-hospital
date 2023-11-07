@@ -17,6 +17,7 @@ main{
 }
 section{
     width: 488px;
+    max-width: 100%;
     height: calc(100vh - 4rem);
     background-color: white;
     border: none;
@@ -26,6 +27,8 @@ section{
 header{
     position: fixed;
     width: 500px;
+    max-width: 100%;
+    margin: 0;
     padding-top: 1rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid black;

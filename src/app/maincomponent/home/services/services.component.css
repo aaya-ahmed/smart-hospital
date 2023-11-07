@@ -100,7 +100,7 @@ section{
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
     .Serviceitem{
-        width: 31.8rem;
-        margin: 0px 2.5%;
+        width: 23.8rem;
+        margin: 0px 1.5%;
     }
 }
