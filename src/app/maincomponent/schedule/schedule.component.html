@@ -23,14 +23,12 @@
                         <table class="table table-striped schedule-table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Doctor Name</th>
                                     <th>schedule</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let i of schedules|paginate: { itemsPerPage: 10, currentPage: p ,totalItems:totallength};let y=index">
-                                    <td class="col4">{{y+1}}</td>
                                     <td class="col4">{{i.doctorName}}</td>
                                     <td>
                                         <table class="w-100">
