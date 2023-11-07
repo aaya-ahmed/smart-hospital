@@ -73,7 +73,18 @@ export class RegComponent{
         patient.image=this.imagebase64
         patient.age=parseInt(patient.age)
         this.services.post("Patient",patient).subscribe(
-          (res:any)=>{},
+          (res:any)=>{
+            if(res!="Username already taken."){
+              this.gotologin()
+            }
+            else if(res=="Username already taken."){
+              this.message="Username already taken."
+            }
+            else{
+              this.message="error"
+            }
+            this.submitted=false
+          },
           (err:any)=>{
             if(err.status==200&&err.error.text!="Username already taken."){
               this.gotologin()
