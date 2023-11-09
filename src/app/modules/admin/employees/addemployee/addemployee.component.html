@@ -131,7 +131,7 @@
                 </div> 
             <div class="row p-3 justify-content-center">
                 <div class="col-sm-3">
-                    <button *ngIf="!submitted" class="btn" (click)="submit()">submit</button>
+                    <button [disabled]="!submitted&&receptionistInfo.invalid" class="btn" (click)="submit()">submit</button>
                     <span class="error-message" *ngIf="message!=''">{{message}}</span>
                     <div *ngIf="submitted" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
                 </div>

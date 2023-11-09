@@ -16,7 +16,7 @@ main{
     background-color: #000000ab;
 }
 section{
-    width: 488px;
+    width: 500px;
     max-width: 100%;
     height: calc(100vh - 4rem);
     background-color: white;

@@ -65,7 +65,7 @@
                 </div>
             <div class="row p-3 justify-content-end">
                 <div class="col-sm-3">
-                    <input type="submit" value="submit" class="form-control" id="submit" [disabled]="submitted"  />
+                    <input type="submit" value="submit" class="form-control" id="submit" [disabled]="!submitted&&form.invalid"  />
                 </div>
             </div>
         </form>

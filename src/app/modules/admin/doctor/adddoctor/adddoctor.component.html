@@ -183,7 +183,7 @@
             </div> 
             <div class="p-3">
                 <div class="col-sm-3">
-                    <button *ngIf="!submitted&&doctorInfo.valid" class="btn" (click)="submit()">Submit</button>
+                    <button [disabled]="!submitted&&!doctorInfo.valid" class="btn" (click)="submit()">Submit</button>
                     <span class="error-message" *ngIf="errorMessage!=''">{{errorMessage}}</span>
                     <div *ngIf="submitted&&doctorInfo.valid" class="fluid-container loading"><img src="assets/Spinner.svg" /></div>
                 </div>
