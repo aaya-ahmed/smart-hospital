@@ -1,0 +1,29 @@
+admin				
+username:- aya7098
+password:- aya@7098
+
+nurse			     
+username:- asmaa2345
+password:- asmaa@2345
+
+doctor	                     
+username:esam6427
+password:esam@6427
+
+scandoctor		     
+username:fatma6799
+password:fatma@6799
+
+labdoctor                    
+username:esraa7897         
+password:esraa@7897
+ 
+patient
+username:eman7899          
+password:eman@7899
+
+receptionist	          
+username:aliaa5674
+password:aliaa@5674
+
+
