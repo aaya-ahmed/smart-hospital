@@ -26,7 +26,7 @@ export class AllDoctorsComponent implements OnInit {
         (res:any)=>{
           this.doctors=res
           console.log(this.doctors)
-          this.doctors= this.doctors.map(p=>{if(p.imageName)return {...p,imageName:`https://localhost:7163/${p.imageName}`}; else return {...p,imageName:'../../../assets/profile.png'}})
+          this.doctors= this.doctors.map(p=>{if(p.imageName)return {...p,imageName:`https://smarthospital.somee.com/${p.imageName}`}; else return {...p,imageName:'../../../assets/profile.png'}})
           this.totallength=this.doctors.length
           this.loading=false;
           this.loadingdoctors=false;
@@ -57,7 +57,7 @@ export class AllDoctorsComponent implements OnInit {
       (res:any)=>{
         this.doctors=res
         console.log(this.doctors)
-        this.doctors= this.doctors.map(p=>{if(p.imageName)return {...p,imageName:`https://localhost:7163/${p.imageName}`}; else return {...p,imageName:'../../../assets/profile.png'}})
+        this.doctors= this.doctors.map(p=>{if(p.imageName)return {...p,imageName:`https://smarthospital.somee.com/${p.imageName}`}; else return {...p,imageName:'../../../assets/profile.png'}})
         this.totallength=this.doctors.length
         this.loadingdoctors=false;
      }

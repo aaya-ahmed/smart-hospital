@@ -27,7 +27,7 @@ export class DepartmentsComponent implements OnInit {
     this.sidehostmanager.setControl({open:true,component:"addDepartment",data:{}})
   }
   openUpdateDepartmentSide(dept:any){
-    if(dept.image)dept.Image=`https://localhost:7163/${dept.image}`;
+    if(dept.image)dept.Image=`https://smarthospital.somee.com/${dept.image}`;
     this.sidehostmanager.setControl({open:true,component:"updateDepartment",data:dept})
   }
 }

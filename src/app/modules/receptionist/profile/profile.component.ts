@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
     if(localStorage.getItem("userInfo")){
       this.receptionist=localStorage.getItem("userInfo")
       this.receptionist=JSON.parse(this.receptionist)
-      this.imagesrc="https://localhost:7163/"+this.receptionist.imageName+"?t="+new Date().getTime()
+      this.imagesrc="https://smarthospital.somee.com/"+this.receptionist.imageName+"?t="+new Date().getTime()
      }
     }
     uploadfile(file:any){
@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
             let temp=JSON.parse(localStorage.getItem('userInfo')||'')
             temp.imageName=res.image
             localStorage.setItem("Info",JSON.stringify(this.receptionist))
-            this.imagesrc="https://localhost:7163/"+this.receptionist.imageName+"?t="+new Date().getTime()
+            this.imagesrc="https://smarthospital.somee.com/"+this.receptionist.imageName+"?t="+new Date().getTime()
             this.loadingimg=false
           }
         )

@@ -16,7 +16,7 @@ export class ProfileImageComponent implements OnInit {
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('userInfo')||'');
     if(this.user.imageName&&this.user.imageName!='')
-    this.imagesrc="https://localhost:7163/"+this.user.imageName+"?t="+new Date().getTime()
+    this.imagesrc="https://smarthospital.somee.com/"+this.user.imageName+"?t="+new Date().getTime()
     else
     this.imagesrc=this.image
   }
@@ -34,7 +34,7 @@ export class ProfileImageComponent implements OnInit {
           user.imageName=res.image
           localStorage.removeItem("userInfo")
           localStorage.setItem("userInfo",JSON.stringify(user))
-         this.imagesrc="https://localhost:7163/"+res.image+"?t="+new Date().getTime()
+         this.imagesrc="https://smarthospital.somee.com/"+res.image+"?t="+new Date().getTime()
         }
       )
     });

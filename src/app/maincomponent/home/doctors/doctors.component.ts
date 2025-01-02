@@ -21,7 +21,7 @@ export class DoctorsComponent implements OnInit,AfterViewChecked,DoCheck{
     let docSubscriber=this.service.get("Doctor/GetAllDoctors").subscribe(
       (res:any)=>{
         this.doctors=res.slice(0,10);
-        this.doctors= this.doctors.map(p=>{if(p.imageName)return {...p,imageName:`https://localhost:7163/${p.imageName}`}; else return {...p,imageName:'../../../assets/profile.png'}})
+        this.doctors= this.doctors.map(p=>{if(p.imageName)return {...p,imageName:`https://smarthospital.somee.com/${p.imageName}`}; else return {...p,imageName:'../../../assets/profile.png'}})
         this.finish=true
         docSubscriber.unsubscribe()
 

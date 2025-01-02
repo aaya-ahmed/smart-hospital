@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
     if(localStorage.getItem("userInfo")){
       this.nurse=localStorage.getItem("userInfo")
       this.nurse=JSON.parse(this.nurse)
-      this.srcimage="https://localhost:7163/"+this.nurse.imageName+"?t=" + new Date().getTime()
+      this.srcimage="https://smarthospital.somee.com/"+this.nurse.imageName+"?t=" + new Date().getTime()
       this.department=this.nurse.departmentName
       let departmentid=this.nurse.departmentId
       this.service.get("Patient/GetInDoorPatients/"+departmentid).subscribe(
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
           this.nurse=res
           localStorage.removeItem("Info")
           localStorage.setItem("Info",JSON.stringify(this.nurse))
-          this.srcimage="https://localhost:7163/"+res.imageName+"?t=" + new Date().getTime()  
+          this.srcimage="https://smarthospital.somee.com/"+res.imageName+"?t=" + new Date().getTime()  
           this.loadingimg=false
           }
         )
