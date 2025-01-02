@@ -1,0 +1,18 @@
+<div>
+    <label for="app-image">
+        <img [src]="!!imageSrc?imageSrc:'assets/add_image.svg'"/>
+    </label>
+    <input  
+        type="file" 
+        hidden
+        (change)="setImage($event)" 
+        [ngClass]="{'is-invalid':image.errors?.['required']&&submitted||image.touched&&image.errors?.['required']}"
+        name="image"
+        id="app-image"
+        [required]="isRequired"
+        ngModel
+        #image="ngModel"/>
+    <div *ngIf="image.errors?.['required']&&submitted||image.touched&&image.errors?.['required']" class="invalid-feedback">
+        Please enter department image
+    </div>
+</div>

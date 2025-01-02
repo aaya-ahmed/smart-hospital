@@ -39,6 +39,7 @@ h3{
     font-weight: 900;
 }
 button{
+    margin-left: 1rem;
     width: fit-content;
     height: 40px;
     border: none;

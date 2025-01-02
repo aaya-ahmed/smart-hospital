@@ -1,166 +1,473 @@
 <div class="fluid-container">
-    <div class="row justify-content-evenly">
-        <div class="col-10 col-lg-6">
-            <label>Department</label>
-            <select class="form-select" [disabled]="departmentflag" (change)="getschedules($event)">
-                <option value="-1">select department</option>
-                <option *ngFor="let i of departments" value="{{i.id}}">{{i.department_Name}}</option>
-            </select>
-        </div>
-        <div *ngIf="doctorFlag" class="col-10 col-lg-6 doctor-list">
-            <label>Doctor</label>
-            <select class="form-select" (change)="getdoctorschedule($event)">
-                <option value="-1">select doctor</option>
-                <option *ngFor="let i of schedules ; let j=index" value="{{j}}">{{i.doctorName}}</option>
-            </select>
-        </div>
-    </div>
-    <div *ngIf="tableflag;then schedule"></div>
-</div>
-<ng-template #schedule>
-    <div *ngIf="addflag;then addschedule;else updatedschedule"></div>
-</ng-template>
-<ng-template #updatedschedule>
-    <div class="update-div">
-
-    </div>
-</ng-template>
-<ng-template #addschedule>
     <div class="schedule table-responsive">
-        <form #newschedule="ngForm" (ngSubmit)="add_to_new_schedule_list(newschedule)">
-            <div class="form">
+        <form
+          #newschedule="ngForm"
+          (ngSubmit)="add_to_new_schedule_list(newschedule)"
+        >
+          <div class="form">
             <table class="table">
-                <thead>
-                    <tr>
-                        <th>day of work</th>
-                        <th>start time</th>
-                        <th>end time</th>
-                        <th>time per patient</th>
-                        <th>Option</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngIf="addNewscheduleFlag">
-                        <td>
-                            <select class="schedule1" #day="ngModel" ngModel name="workday" class="form-select" required
-                            [ngClass]="{'invalid-feedback':day.touched &&day.invalid && day.errors?.['required']||submitted&& day.errors?.['required']}">
-                                    <option value=0>sunday</option>
-                                    <option value=1>monday</option>
-                                    <option value=2>tuesday</option>
-                                    <option value=3>wednesday</option>
-                                    <option value=4>thursday</option>
-                                    <option value=5>friday</option>
-                                    <option value=6>saturday</option>
-                            </select>
-                            <div class="invalid-feedback">
-                              {{((day.touched&&day.hasError('required')&&day.invalid)||(submitted&& day.errors?.['required']))?"This field is reqired":''}}
-                          </div>
-                        </td>
-                        <td>
-                            <input type="time" class="schedule1" value="start" #start="ngModel" ngModel name="starttime" class="form-control " required  
-                            [ngClass]="{'invalid-feedback':start.touched &&start.invalid && start.errors?.['required']
-                                        ||submitted&& start.errors?.['required']
-                                        ||submitted&&!timeflag}"/>
-                           <div class="invalid-feedback">
-                                  {{((start.touched&&start.hasError('required')&&start.invalid)||(submitted&& start.errors?.['required']))?"This field is reqired":''}}
-                          </div>
-                          <div class="invalid-feedback" width="10px">
-                              {{(submitted&&!timeflag)?"ensure start time less than end time":''}}
-                          </div>
-                          </td>
-                        <td>
-                            <input type="time" class="schedule1" (change)="resetchecktime(start,end)" value="" #end="ngModel"  ngModel name="endtime" class="form-control " required  
-                            [ngClass]="{'invalid-feedback':end.touched &&end.invalid && end.errors?.['required']
-                            ||submitted&& end.errors?.['required']
-                            ||submitted&&!timeflag}"/>
-                            <div class="invalid-feedback">
-                              {{((end.touched&&end.hasError('required')&&end.invalid)||(submitted&& end.errors?.['required']))?"This field is reqired":''}}
-                          </div>
-                          </td>
-                        <td>
-                            <input type="text" class="schedule1"  value="" #perpatient="ngModel" class="form-control " ngModel required name="perpatient" placeholder="00:00" 
-                            pattern="(^(00):([1-5]?[0-9]?)$)"  [ngClass]="{'invalid-feedback':perpatient.touched &&perpatient.invalid &&( perpatient.errors?.['required']||perpatient.errors?.['pattern'])||submitted&& perpatient.errors?.['required']}"/>
-                            <div class="invalid-feedback">
-                              {{((perpatient.touched&&perpatient.hasError('required')
-                              &&perpatient.invalid)||(submitted&& perpatient.errors?.['required']))?"This field is reqired":''}}
-                              {{((perpatient.touched&&perpatient.hasError('pattern'))||(perpatient.hasError('required')&&submitted))?"please enter per patient between 00:10 and 00:50":''}}
-                          </div>
-                          </td>
-                        <td>
-                          <button class="save_btn" type="submit" class="btn bg-success text-white">save</button>
-                        </td>
-                      </tr>
-                      <tr *ngIf="!addNewscheduleFlag">
-                      <td colspan="5"><button class="addrow" type="button" (click)="addnew()"><i class="fas fa-plus"></i></button></td>
-                      </tr>
-                    <tr *ngFor="let i of tempschedule.scheduleObjects;let j=index">
-                                <td>
-                                    <select class="time" [disabled]=true value="{{i.dayOfWork}}" >
-                                            <option value="0">sunday</option>
-                                            <option value="1">monday</option>
-                                            <option value="2">tuesday</option>
-                                            <option value="3">wednesday</option>
-                                            <option value="4">thursday</option>
-                                            <option value="5">friday</option>
-                                            <option value="6">saturday</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    {{i.startTime}}
-                                </td>
-                                <td>
-                                    {{i.endTime}}
-                               </td>
-                                <td>
-                                    {{i.timePerPatient}}
-                                </td>
-                                <td><button><i class="fa-solid fa-pen" type="button" (click)="setschedulemodified(j)" style="color: green; background-color: transparent;"></i></button>
-                                </td>
-                     </tr>
-                </tbody>
-            </table>
-        </div>
-        </form>
-    </div>
-    <div  *ngIf="scheduletableflag">
-       <div class="schedule table-responsive"> <h5>schedule List</h5>
-        <table class="table" >
-            <thead>
+              <tbody>
                 <tr>
-                    <th>Doctor Name</th>
-                    <th>Day</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Option</th>
+                  <th>Department</th>
+                  <td>
+                    <select
+                      class="form-select"
+                      [disabled]="departmentflag"
+                      (change)="getschedules($event)"
+                    >      
+                      <option value="-1">select department</option>
+                      <option *ngFor="let i of departments" value="{{ i.id }}">
+                        {{ i.department_Name }}
+                      </option>
+                    </select>
+                  </td>
                 </tr>
+                <tr>
+                  <th>Doctor</th>
+                  <td>
+                    <select
+                      class="form-select"
+                      (change)="getdoctorschedule($event)"
+                    >
+                      <option value="-1">select doctor</option>
+                      <option
+                        *ngFor="let i of schedules; let j = index"
+                        value="{{ j }}"
+                      >
+                        {{ i.doctorName }}
+                      </option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th>day of work</th>
+                  <td>
+                    <select
+                      class="schedule1"
+                      #day="ngModel"
+                      ngModel
+                      name="workday"
+                      class="form-select"
+                      required
+                      [ngClass]="{'invalid-feedback':day.touched &&day.invalid && day.errors?.['required']||submitted&& day.errors?.['required']}"
+                    >
+                      <option value="0">sunday</option>
+                      <option value="1">monday</option>
+                      <option value="2">tuesday</option>
+                      <option value="3">wednesday</option>
+                      <option value="4">thursday</option>
+                      <option value="5">friday</option>
+                      <option value="6">saturday</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      {{((day.touched&&day.hasError('required')&&day.invalid)||(submitted&& day.errors?.['required']))?"This field is reqired":''}}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>start time</th>
+                  <td>
+                    <input
+                      type="time"
+                      class="schedule1"
+                      value="start"
+                      #start="ngModel"
+                      ngModel
+                      name="starttime"
+                      class="form-control"
+                      required
+                      [ngClass]="{'invalid-feedback':start.touched &&start.invalid && start.errors?.['required']
+                                                ||submitted&& start.errors?.['required']
+                                                ||submitted&&!timeflag}"
+                    />
+                    <div class="invalid-feedback">
+                      {{((start.touched&&start.hasError('required')&&start.invalid)||(submitted&& start.errors?.['required']))?"This field is reqired":''}}
+                    </div>
+                    <div class="invalid-feedback" width="10px">
+                      {{
+                        submitted && !timeflag
+                          ? "ensure start time less than end time"
+                          : ""
+                      }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>      
+                  <th>end time</th>
+                  <td>
+                    <input
+                      type="time"
+                      class="schedule1"
+                      (change)="resetchecktime(start, end)"
+                      value=""
+                      #end="ngModel"
+                      ngModel
+                      name="endtime"
+                      class="form-control"
+                      required
+                      [ngClass]="{'invalid-feedback':end.touched &&end.invalid && end.errors?.['required']
+                                    ||submitted&& end.errors?.['required']
+                                    ||submitted&&!timeflag}"
+                    />
+                    <div class="invalid-feedback">
+                      {{((end.touched&&end.hasError('required')&&end.invalid)||(submitted&& end.errors?.['required']))?"This field is reqired":''}}
+                    </div>      
+                  </td>
+                </tr>
+                <tr>
+                  <th>time per patient</th>
+                  <td>
+                    <input
+                      type="text"
+                      class="schedule1"
+                      value=""
+                      #perpatient="ngModel"
+                      class="form-control"
+                      ngModel
+                      required
+                      name="perpatient"
+                      placeholder="00:00"
+                      pattern="(^(00):([1-5]?[0-9]?)$)"
+                      [ngClass]="{'invalid-feedback':perpatient.touched &&perpatient.invalid &&( perpatient.errors?.['required']||perpatient.errors?.['pattern'])||submitted&& perpatient.errors?.['required']}"
+                    />
+                    <div class="invalid-feedback">
+                      {{((perpatient.touched&&perpatient.hasError('required')
+                                      &&perpatient.invalid)||(submitted&& perpatient.errors?.['required']))?"This field is reqired":''}}
+                      {{
+                        (perpatient.touched && perpatient.hasError("pattern")) ||
+                        (perpatient.hasError("required") && submitted)
+                          ? "please enter per patient between 00:10 and 00:50"
+                          : ""
+                      }}
+                    </div>      
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <button
+                      class="save_btn"
+                      type="submit"
+                      class="btn bg-success text-white"
+                    >
+                      save
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="!check||errorflag" class="invalid-feedback">this schedule is not avaliable</div>
+            <table>
+              <tbody>
+                <tr *ngFor="let i of tempschedule.scheduleObjects; let j = index">
+                  <td>
+                    <select
+                      class="time"
+                      [disabled]="true"
+                      value="{{ i.dayOfWork }}"
+                    >
+                      <option value="0">sunday</option>
+                      <option value="1">monday</option>
+                      <option value="2">tuesday</option>
+                      <option value="3">wednesday</option>
+                      <option value="4">thursday</option>
+                      <option value="5">friday</option>
+                      <option value="6">saturday</option>
+                    </select>
+                  </td>
+                  <td>
+                    {{ i.startTime }}
+                  </td>
+                  <td>
+                    {{ i.endTime }}
+                  </td>
+                  <td>
+                    {{ i.timePerPatient }}
+                  </td>
+                </tr>      
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="scheduletableflag">
+        <div class="schedule table-responsive">
+          <h5>schedule List</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Doctor Name</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Option</th>
+              </tr>
             </thead>
-            <tr *ngFor="let i of allnewschedule;let j=index">
-                <td>{{doctorlist[j]}}</td>
-                <td>
-                    <select  disabled class="form-select2" value="{{i.dayOfWork}}">
-                        <option value=0>sunday</option>
-                        <option value=1>monday</option>
-                        <option value=2>tuesday</option>
-                        <option value=3>wednesday</option>
-                        <option value=4>thursday</option>
-                        <option value=5>friday</option>
-                        <option value=6>saturday</option>
+            <tr *ngFor="let i of allnewschedule; let j = index">
+              <td>{{ doctorlist[j] }}</td>
+              <td>
+                <select disabled class="form-select2" value="{{ i.dayOfWork }}">
+                  <option value="0">sunday</option>
+                  <option value="1">monday</option>
+                  <option value="2">tuesday</option>
+                  <option value="3">wednesday</option>
+                  <option value="4">thursday</option>
+                        <option value="6">saturday</option>
                 </select>
-                </td>
-                <td>{{i.startTime}}</td>
-                <td>{{i.endTime}}</td>
-                <td><button class="del_btn" (click)="deleteschedule(i)"><i class="fa-solid fa-trash" style="color:red"></i></button></td>
+              </td>
+              <td>{{ i.startTime }}</td>
+              <td>{{ i.endTime }}</td>
+              <td>
+                <button class="del_btn" (click)="deleteschedule(i)">
+                  <i class="fa-solid fa-trash" style="color: red"></i>
+                </button>
+              </td>
             </tr>
-        </table>
-        <button class="submit_btn" (click)="submitallschedule()">Save</button>   </div> 
+          </table>
+          <img src="../../../../../assets/Spinner.svg" width="50px" height="50px" *ngIf="submitFlag"/>
+          <button class="submit_btn" (click)="submitallschedule()" *ngIf="!submitFlag">Save</button>
+        </div>
+      </div>
+  </div>  
+  <!-- <ng-template #updatedschedule>
+    <div class="update-div"></div>
+  </ng-template>
+  <ng-template #addschedule>
+    <div class="schedule table-responsive">
+      <form
+        #newschedule="ngForm"
+        (ngSubmit)="add_to_new_schedule_list(newschedule)"
+      >
+        <div class="form">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Department</th>
+                <td>
+                  <select
+                    class="form-select"
+                    [disabled]="departmentflag"
+                    (change)="getschedules($event)"
+                  >
+                    <option value="-1">select department</option>
+                    <option *ngFor="let i of departments" value="{{ i.id }}">
+                      {{ i.department_Name }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Doctor</th>
+                <td>
+                  <select
+                    class="form-select"
+                    (change)="getdoctorschedule($event)"
+                  >
+                    <option value="-1">select doctor</option>
+                    <option
+                      *ngFor="let i of schedules; let j = index"
+                      value="{{ j }}"
+                    >
+                      {{ i.doctorName }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>day of work</th>
+                <td>
+                  <select
+                    class="schedule1"
+                    #day="ngModel"
+                    ngModel
+                    name="workday"
+                    class="form-select"
+                    required
+                    [ngClass]="{'invalid-feedback':day.touched &&day.invalid && day.errors?.['required']||submitted&& day.errors?.['required']}"
+                  >
+                    <option value="0">sunday</option>
+                    <option value="1">monday</option>
+                    <option value="2">tuesday</option>
+                    <option value="3">wednesday</option>
+                    <option value="4">thursday</option>
+                    <option value="5">friday</option>
+                    <option value="6">saturday</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    {{((day.touched&&day.hasError('required')&&day.invalid)||(submitted&& day.errors?.['required']))?"This field is reqired":''}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>start time</th>
+                <td>
+                  <input
+                    type="time"
+                    class="schedule1"
+                    value="start"
+                    #start="ngModel"
+                    ngModel
+                    name="starttime"
+                    class="form-control"
+                    required
+                    [ngClass]="{'invalid-feedback':start.touched &&start.invalid && start.errors?.['required']
+                                              ||submitted&& start.errors?.['required']
+                                              ||submitted&&!timeflag}"
+                  />
+                  <div class="invalid-feedback">
+                    {{((start.touched&&start.hasError('required')&&start.invalid)||(submitted&& start.errors?.['required']))?"This field is reqired":''}}
+                  </div>
+                  <div class="invalid-feedback" width="10px">
+                    {{
+                      submitted && !timeflag
+                        ? "ensure start time less than end time"
+                        : ""
+                    }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>end time</th>
+                <td>
+                  <input
+                    type="time"
+                    class="schedule1"
+                    (change)="resetchecktime(start, end)"
+                    value=""
+                    #end="ngModel"
+                    ngModel
+                    name="endtime"
+                    class="form-control"
+                    required
+                    [ngClass]="{'invalid-feedback':end.touched &&end.invalid && end.errors?.['required']
+                                  ||submitted&& end.errors?.['required']
+                                  ||submitted&&!timeflag}"
+                  />
+                  <div class="invalid-feedback">
+                    {{((end.touched&&end.hasError('required')&&end.invalid)||(submitted&& end.errors?.['required']))?"This field is reqired":''}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>time per patient</th>
+                <td>
+                  <input
+                    type="text"
+                    class="schedule1"
+                    value=""
+                    #perpatient="ngModel"
+                    class="form-control"
+                    ngModel
+                    required
+                    name="perpatient"
+                    placeholder="00:00"
+                    pattern="(^(00):([1-5]?[0-9]?)$)"
+                    [ngClass]="{'invalid-feedback':perpatient.touched &&perpatient.invalid &&( perpatient.errors?.['required']||perpatient.errors?.['pattern'])||submitted&& perpatient.errors?.['required']}"
+                  />
+                  <div class="invalid-feedback">
+                    {{((perpatient.touched&&perpatient.hasError('required')
+                                    &&perpatient.invalid)||(submitted&& perpatient.errors?.['required']))?"This field is reqired":''}}
+                    {{
+                      (perpatient.touched && perpatient.hasError("pattern")) ||
+                      (perpatient.hasError("required") && submitted)
+                        ? "please enter per patient between 00:10 and 00:50"
+                        : ""
+                    }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <button
+                    class="save_btn"
+                    type="submit"
+                    class="btn bg-success text-white"
+                  >
+                    save
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr *ngFor="let i of tempschedule.scheduleObjects; let j = index">
+                <td>
+                  <select
+                    class="time"
+                    [disabled]="true"
+                    value="{{ i.dayOfWork }}"
+                  >
+                    <option value="0">sunday</option>
+                    <option value="1">monday</option>
+                    <option value="2">tuesday</option>
+                    <option value="3">wednesday</option>
+                    <option value="4">thursday</option>
+                    <option value="5">friday</option>
+                    <option value="6">saturday</option>
+                  </select>
+                </td>
+                <td>
+                  {{ i.startTime }}
+                </td>
+                <td>
+                  {{ i.endTime }}
+                </td>
+                <td>
+                  {{ i.timePerPatient }}
+                </td>
+                <td>
+                  <button>
+                    <i
+                      class="fa-solid fa-pen"
+                      type="button"
+                      (click)="setschedulemodified(j)"
+                      style="color: green; background-color: transparent"
+                    ></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
     </div>
-</ng-template>
-<div *ngIf="!check" class="mess">
-    this schedule is not avaliable
-</div>
-<div class="successmes" [ngClass]="{'successshow':successflag}" role="alert">
-    <strong>success !</strong>
-  </div>
-<div  class="errormes"  [ngClass]="{'errorshow':errorflag}">
-    error!
-  </div>
+    <div *ngIf="scheduletableflag">
+      <div class="schedule table-responsive">
+        <h5>schedule List</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Doctor Name</th>
+              <th>Day</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Option</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let i of allnewschedule; let j = index">
+            <td>{{ doctorlist[j] }}</td>
+            <td>
+              <select disabled class="form-select2" value="{{ i.dayOfWork }}">
+                <option value="0">sunday</option>
+                <option value="1">monday</option>
+                <option value="2">tuesday</option>
+                <option value="3">wednesday</option>
+                <option value="4">thursday</option>
+                <option value="5">friday</option>
+                <option value="6">saturday</option>
+              </select>
+            </td>
+            <td>{{ i.startTime }}</td>
+            <td>{{ i.endTime }}</td>
+            <td>
+              <button class="del_btn" (click)="deleteschedule(i)">
+                <i class="fa-solid fa-trash" style="color: red"></i>
+              </button>
+            </td>
+          </tr>
+        </table>
+        <button class="submit_btn" (click)="submitallschedule()">Save</button>
+      </div>
+    </div>
+  </ng-template> -->
+  

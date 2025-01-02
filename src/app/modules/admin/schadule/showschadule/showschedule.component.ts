@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { doctors_schedule } from 'src/app/models/schadule';
+import { doctors_schedule, list_schedule } from 'src/app/models/schadule';
 import { ServicesService } from 'src/app/services/services.service';
+import { SidemanagerService } from 'src/app/services/sidemanager.service';
 
 @Component({
   selector: 'app-showschedule',
@@ -12,20 +13,18 @@ export class ShowScheduleComponent implements OnInit{
   p: number = 1;
   totallength:any
   schedules:doctors_schedule[]=[]
-  loading:boolean=true;
+  loading:boolean=false;
   @Input('departments')departments:any[]=[];
   show:boolean=false
   id:number=0
   index1:number=0
   index2:number=0
-  constructor(private services:ServicesService) { 
+  constructor(private services:ServicesService,private sideManager:SidemanagerService) { 
   }
   ngOnInit(): void {
-    this.getschedules(this.departments[0].id)
+    this.departments?.length>0&&this.getschedules(this.departments[0].id)
   }
   getschedules(departmentid:any){
-    console.log(typeof departmentid)
-    console.log(Number.isNaN(+departmentid))
     this.loading=true
     this.schedules=[]
     let id=-1
@@ -48,7 +47,7 @@ export class ShowScheduleComponent implements OnInit{
   }
   delet(index1:number,index2:number){
     this.show=true
-    this.id=this.schedules[index1].scheduleObjects[index2].scheduleId
+    this.id=(this.schedules[index1].scheduleObjects[index2] as list_schedule).scheduleId
     this.index1=index1
     this.index2=index2
 
@@ -62,6 +61,9 @@ export class ShowScheduleComponent implements OnInit{
       err=>{
       }
     )
+  }
+  updateSchedule(schedule:{id:number, name: string, schedule:number }){
+    this.sideManager.setControl({open:true,component:'updateSchedule',data:schedule})
   }
   close(){
     this.show=false

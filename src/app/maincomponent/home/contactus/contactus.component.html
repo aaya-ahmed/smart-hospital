@@ -4,22 +4,22 @@
     </div>
     <div class="col-md-6 col-11 doctors">
         <h4>Contact With Us</h4>
-        <form [formGroup]="email" (ngSubmit)="sendemail()">
+        <form [formGroup]="mail" (ngSubmit)="sendemail()">
             <div>
-                <input type="email" formControlName="from_name" class="form-control" id="email"
-                [ngClass]="{'is-invalid':((email.controls['from_name'].touched&&email.controls['from_name'].hasError('required'))||(email.controls['from_name'].touched&&email.controls['from_name'].hasError('email')))}"
-                placeholder="Email"/>
+                <input type="mail" formControlName="from_name" class="form-control" id="mail"
+                [ngClass]="{'is-invalid':((mail.controls['from_name'].touched&&mail.controls['from_name'].hasError('required'))||(mail.controls['from_name'].touched&&mail.controls['from_name'].hasError('mail')))}"
+                placeholder="email"/>
                 <input type="text" formControlName="subject" class="form-control" id="subject"
-                [ngClass]="{'is-invalid':(email.controls['subject'].touched&&email.controls['subject'].hasError('required'))}"
+                [ngClass]="{'is-invalid':(mail.controls['subject'].touched&&mail.controls['subject'].hasError('required'))}"
                 placeholder="Subject"/>
                 <textarea formControlName="message" class="form-control" id="body" 
-                [ngClass]="{'is-invalid':(email.controls['message'].touched&&email.controls['message'].hasError('required'))}"
+                [ngClass]="{'is-invalid':(mail.controls['message'].touched&&mail.controls['message'].hasError('required'))}"
                 placeholder="Message"></textarea>
             </div>
             <div class="submit-section">
-                <input type="submit" value="send" class="btn" [disabled]="loader||email.invalid"/>
-                <span *ngIf="issent==1" class="success-message">email is send</span>
-                <span *ngIf="issent==2" class="success-message">error</span>
+                <input type="submit" value="send" class="btn" [disabled]="loader||mail.invalid"/>
+                <span *ngIf="!loader&&issent==1" class="success-message">mail is send</span>
+                <span *ngIf="!loader&&issent==2" class="error-message">error</span>
 
                 <img src="../../../../assets/Spinner.svg" *ngIf="loader"/>
             </div>

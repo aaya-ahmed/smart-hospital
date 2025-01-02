@@ -1,0 +1,46 @@
+label{
+    padding: 0.5rem 0rem 0.5rem 0;
+}
+.form-select:focus,.form-control:focus{
+    box-shadow: none;
+}
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em!important;
+    color: #dc3545;
+    border-color:red ;
+}
+.update-class table tr th,.update-class table tr td{
+    padding: 0.5rem 0;
+}
+.table-footer button{
+    float: right;
+    background-color: #b5c1ab;
+    padding: 0.5rem 1rem ;
+    margin: 0 0.2rem;
+}
+.table-responsive{
+    display: block;
+    margin: 0 auto;
+    overflow: auto;
+}
+.form{
+    overflow: auto;
+}
+table{
+    table-layout: fixed;
+    width: 95%;
+    margin: 0 1rem;
+}
+.time{
+    background-color: transparent;
+    border: none;
+    appearance: none;
+}
+@media(max-width:940px) {
+    .table-responsive{
+        width: 85%;
+    }
+}

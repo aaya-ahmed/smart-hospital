@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.getItem("userInfo")){
       this.doctor=JSON.parse(localStorage.getItem("userInfo")||'')
-      this.srcimage="https://smarthospital.somee.com/"+ this.doctor.imageName+"?t="+new Date().getTime()
+      this.srcimage="https://localhost:7163/"+ this.doctor.imageName+"?t="+new Date().getTime()
      }
     }
  
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
           doctor.image=this.imagebase64
           this.service.update("Doctor/update",doctor).subscribe(
            (res:any)=>{
-             this.srcimage="https://smarthospital.somee.com/"+res.image+"?t="+new Date().getTime()
+             this.srcimage="https://localhost:7163/"+res.image+"?t="+new Date().getTime()
             }
           )
            });

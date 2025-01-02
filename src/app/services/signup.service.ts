@@ -6,7 +6,7 @@ import { signupdata } from '../models/reg';
   providedIn: 'root'
 })
 export class SignupService {
- private registpatienturl:string="https://smarthospital.somee.com/api/Patient";
+ private registpatienturl:string="https://localhost:7163/api/Patient";
  
   constructor(private http:HttpClient) { }
   addpatient(patient:signupdata){

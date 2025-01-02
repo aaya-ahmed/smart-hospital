@@ -30,7 +30,7 @@
                                 <th>time per patient</th>
                                 <th>option</th>
                             </tr>
-                            <tr [ngSwitch]="j.dayOfWork" *ngFor="let j of i.scheduleObjects;let m=index">
+                            <tr [ngSwitch]="j.dayOfWork" *ngFor="let j of i.scheduleObjects ;let m=index">
                                 <td *ngSwitchCase="0">sunday</td>
                                 <td *ngSwitchCase="1">monday</td>
                                 <td *ngSwitchCase="2">tuesday</td>
@@ -51,7 +51,7 @@
                                     <button (click)="delet(y,m)">
                                         <i class="fa-solid fa-trash" style="color:red"></i>
                                     </button>
-                                    <button class="pl-2" >
+                                    <button class="pl-2" (click)="updateSchedule({id: i.doctorId, name: i.doctorName, schedule: j.scheduleId})" >
                                         <i class="fa-solid fa-edit" style="color:#9fa996;"></i>
                                     </button>
                                 </td>

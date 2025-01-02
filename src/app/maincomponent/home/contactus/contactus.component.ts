@@ -7,7 +7,7 @@ import emailjs from '@emailjs/browser'
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent implements OnInit {
-  email:FormGroup=new FormGroup({
+  mail:FormGroup=new FormGroup({
     subject: new FormControl('',Validators.required),
     message:new FormControl('',Validators.required),
     from_name:new FormControl('',[Validators.required,Validators.email]),
@@ -20,13 +20,18 @@ export class ContactusComponent implements OnInit {
   ngOnInit(): void {
   }
   sendemail(){
-    if(this.email.valid){
+    if(this.mail.valid){
       this.loader=true;
-      emailjs.send("service_d99j9tl","template_3dtc1gf",this.email.value,'wAg78t0zNh3DqGimN').then(
+      emailjs.send("service_kadvtfh","template_66a1fpr",this.mail.value,'A_im0Pw7bhdGvjOxQ').then(
         res=>{
           this.loader=false;
           this.issent=1;
-          this.email.reset()
+          this.mail.patchValue({
+            message:'',
+            subject:'',
+            from_name:''
+          })
+          
           let timer=setTimeout(() => {
             this.issent=0
             clearTimeout(timer)
@@ -34,6 +39,11 @@ export class ContactusComponent implements OnInit {
         },
         err=>{
           this.issent=2
+          this.loader=false;
+          let timer=setTimeout(() => {
+            this.issent=0
+            clearTimeout(timer)
+          }, 2000);
         }
       );
     }

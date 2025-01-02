@@ -113,10 +113,6 @@
                     <label class="form-lable label1" for="address">address</label>
                     <input class="form-control form-control1" value="" type="text" name="address" id="address" formControlName="address"/>
                 </div>
-                <div class="p-3"  *ngIf="!data?.id">
-                    <label class="form-lable" for="image">Image</label>
-                    <input type="file" id="image" class="form-control" (change)="uploadfile($event)" formControlName="image"/>
-                </div>
                 <div class="p-3">
                     <label class="form-lable" for="hiring">Hiring Date</label>
                     <input type="date" max="{{today}}" id="hiring" class="form-control" formControlName="createdDtm"

@@ -1,6 +1,9 @@
 
 <form #form="ngForm">
     <div class="p-3">
+        <app-image [imageSrc]="data.Image" [isRequired]="true" (image)="changephoto($event)"></app-image>
+    </div>
+    <div class="p-3">
         <label for="departmentName">Name </label>
         <input  type="text"
         [(ngModel)]="data.departmentName"
@@ -24,16 +27,6 @@
                 </div>
                 <div *ngIf="location.errors?.['minlength']&&location.touched||form.submitted&&location.errors?.['minlength']" class="invalid-feedback">
                     min length is 6 char
-                </div>
-            </div>
-            <div class="p-3">
-                <label for="image">Image</label>
-                <input  type="file" 
-                (change)="changephoto($event)" 
-                [ngClass]="{'is-invalid':image.errors?.['required']&&form.submitted||image.touched&&image.errors?.['required']||image.touched&&image.errors?.['minlength']}"
-                class="form-control form-control1" name="image" id="image" required ngModel #image="ngModel"/>
-                <div *ngIf="image.errors?.['required']&&form.submitted||image.touched&&image.errors?.['required']" class="invalid-feedback">
-                    Please enter department image
                 </div>
             </div>
             <div class="py-2 px-3 alignitemscenter">

@@ -18,8 +18,6 @@ export class AdddoctorComponent implements OnInit ,OnDestroy{
   responceFlag:boolean=false;
   submitted:boolean = false;
   today=new Date().toISOString()
-  imagedoctor:string=''
-  imageclass=new imageclass();
   sideHostSubscriber:Subscription|undefined
   constructor(private fb:FormBuilder,private services:ServicesService ,private sidemanagerservice:SidemanagerService) {
     this.doctorInfo=this.fb.group({
@@ -112,17 +110,10 @@ export class AdddoctorComponent implements OnInit ,OnDestroy{
   get doctoractive(){
     return this.doctorInfo.controls['isActive']
   }
-  setdoctorimage(file:any){
-    if(file.target.files.length>0)
-    this.imageclass.getbase64(file.target.files[0]).then((res:any)=>{
-        this.imagedoctor=res.split(',').pop()
-    });
-  }
   adddoctor(){
     let doctor={
       ...this.doctorInfo.value,
       role:"Doctor",
-      image:this.imagedoctor,
       departmentId:this.departments.find(p=>p.departmentName==this.doctorDep.value)?.departmentId
     }
     this.services.post("Doctor",doctor).subscribe({
@@ -168,7 +159,6 @@ export class AdddoctorComponent implements OnInit ,OnDestroy{
     this.sidemanagerservice.setControl({open:false,component:'',data:data});
   }
   ngOnDestroy(): void {
-    console.log("D")
     this.sideHostSubscriber?.unsubscribe()
   }
 }

@@ -15,8 +15,6 @@ export class AddnurseComponent implements OnInit {
   submitted:boolean=false;
   NurseInfo:FormGroup;
   id:string='';
-  imagesource:imageclass=new imageclass();
-  imageNurse:string='';
   errormessage:string=''
   constructor(private service:ServicesService,private fp:FormBuilder,private sidehost:SidemanagerService) { 
     this.NurseInfo=this.fp.group({
@@ -120,7 +118,6 @@ export class AddnurseComponent implements OnInit {
       role:"Nurse",
       isActive:true,
       nurseNotes:'',
-      image:this.imageNurse,
       departmentId:this.departementsList.find(p=>p.departmentName==this.nurseDep.value).departmentId
     }
     this.service.post("Nurse",nurse).subscribe(
@@ -160,14 +157,6 @@ export class AddnurseComponent implements OnInit {
         this.addnurse()
       }
     }
-  }
-  setimage($event:any){
-    if($event.target.files.length>0)
-    this.imagesource.getbase64($event.target.files[0]).then(
-      (res:any)=>{
-        this.imageNurse=res.split(',').pop()
-      }
-  )
   }
   close(){
     this.sidehost.setControl({open:false,component:'',data:{}})

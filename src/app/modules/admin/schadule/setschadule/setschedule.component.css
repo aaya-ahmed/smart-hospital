@@ -74,34 +74,6 @@ table{
     left: 15%;
     display: none;
 }
-.successmes{
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #b5c1ab;
-    padding: 1rem;
-    position: fixed;
-    top: 50%;
-    border-radius: 9px;
-    left: 25%;
-    display: none;
-}
-.errormes{
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #d92323;
-    color:white;
-    padding: 1rem;
-    position: fixed;
-    top: 50%;
-    border-radius: 9px;
-    left: 25%;
-    display: none;
-}
-.successshow,.errorshow{
-    display: block;
-}
 .update-class table{
     margin: 0 auto;
 }
@@ -116,16 +88,4 @@ table{
     .table-responsive{
         width: 85%;
     }
-}
-.mess{
-    width: 50%;
-    margin: 0 auto;
-    background-color: #d92323;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    border-radius: 5px;
-    top: 35%;
-    left: 25%;
 }

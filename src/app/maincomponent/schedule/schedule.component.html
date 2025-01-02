@@ -10,9 +10,12 @@
                 <input type="checkbox" id="clinic"/>
                 <div>
                     <table class="table text-white">
-                        <tr *ngFor="let item of departments">
-                            <td class="p-2"><button [ngClass]="{'active':activeitem==item}" (click)="getschedules(item)">{{item.departmentName}}</button></td>
-                        </tr>
+                        <ng-container  *ngFor="let item of departments">
+
+                            <tr *ngIf="item.isClinical">
+                                <td class="p-2"><button [ngClass]="{'active':activeitem==item}" (click)="getschedules(item)">{{item.departmentName}}</button></td>
+                            </tr>
+                        </ng-container>
                     </table>
                 </div>
             </div>

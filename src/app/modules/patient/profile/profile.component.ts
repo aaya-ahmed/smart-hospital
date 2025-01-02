@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
     if(localStorage.getItem("userInfo")){
       this.patient=localStorage.getItem("userInfo")
       this.patient=JSON.parse(this.patient)
-      this.srcimage="https://smarthospital.somee.com/"+this.patient.imageName+"?t="+new Date().getTime()
+      this.srcimage="https://localhost:7163/"+this.patient.imageName+"?t="+new Date().getTime()
      }
     this.service.get("Patient/GetIndoorPatientRecordsByPatientId/"+this.patient.id).subscribe(
       (res:any)=>{
@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
          this.patient=res
          localStorage.removeItem("userInfo")
          localStorage.setItem("userInfo",JSON.stringify(this.patient))
-         this.srcimage="https://smarthospital.somee.com/"+this.patient.imageName+"?t="+new Date().getTime()
+         this.srcimage="https://localhost:7163/"+this.patient.imageName+"?t="+new Date().getTime()
         }
       )
          });

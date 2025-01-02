@@ -4,12 +4,9 @@
                 <div class="p-3">
                     <label class="form-lable" for="nursefname">First Name</label>
                     <input class="form-control " type="text" name="nursefname"  id="nursefname" formControlName="firstName"
-                    [ngClass]="((nursefname.touched&& nursefname.invalid)||(submitted)&& nursefname.hasError('required'))
-                    ? 'is-invalid' : '' || nursefname.hasError('pattern')
-                    ? 'is-invalid' : '' || nursefname.hasError('minlength') 
-                    ? 'is-invalid' : '' || nursefname.hasError('maxlength') 
-                    ? 'is-invalid' : '' || ((nursefname.touched || nursefname.dirty)&& !nursefname.invalid)
-                    ?  'is-valid' : '' " />
+                    [ngClass]="((nursefname.touched&& nursefname.invalid)||(submitted)&& nursefname.invalid)
+                    ? 'is-invalid'
+                    :((nursefname.touched || nursefname.dirty)&& !nursefname.invalid)?'is-valid':''" />
                     <div class="invalid-feedback">
                         {{((nursefname.touched&&nursefname.invalid&&nursefname.hasError('required'))||(submitted&& nursefname.hasError('required')))?"This field is reqired":''}}
                         {{(nursefname.touched&&nursefname.invalid&&nursefname.hasError('minlength'))?"Minimum Name length is 3":''}}
@@ -20,11 +17,8 @@
                 <div class="p-3">
                     <label class="form-lable" for="nurselname">Last Name</label>
                     <input class="form-control" type="text" name="nurselname" id="nurselname" formControlName="lastName"
-                    [ngClass]="((nurselname.touched&&nurselname.invalid)||(submitted&& nurselname.hasError('required')))
-                    ? 'is-invalid' : '' || nurselname.hasError('pattern')
-                    ? 'is-invalid' : '' || nurselname.hasError('minlength') 
-                    ? 'is-invalid' : '' || nurselname.hasError('maxlength') 
-                    ? 'is-invalid' : '' || ((nurselname.touched || nurselname.dirty)&& !nurselname.invalid)
+                    [ngClass]="(nurselname.touched&&nurselname.invalid)||(submitted&&nurselname.invalid)
+                    ? 'is-invalid' :((nurselname.touched || nurselname.dirty)&& !nurselname.invalid)
                     ?  'is-valid' : '' " />
                     <div class="invalid-feedback">
                         {{((nurselname.touched&&nurselname.invalid&&nurselname.hasError('required'))||(submitted&& nurselname.hasError('required')))?"This field is reqired":''}}
@@ -36,10 +30,8 @@
                 <div class="p-3">
                     <label class="form-lable" for="nurseuname">User Name</label>
                     <input class="form-control " type="text" name="nurseuname" id="nurseuname" formControlName="userName"  
-                     [ngClass]="((nurseUserName.touched&&nurseUserName.invalid)||(submitted&& nurseUserName.hasError('required')))
-                    ? 'is-invalid' : '' || nurseUserName.hasError('pattern')
-                    ? 'is-invalid' : '' || nurseUserName.hasError('minlength')
-                    ? 'is-invalid' : '' || ((nurseUserName.touched || nurseUserName.dirty)&& !nurseUserName.invalid)
+                     [ngClass]="(nurseUserName.touched&&nurseUserName.invalid)||(submitted&& nurseUserName.invalid)
+                    ? 'is-invalid' : ((nurseUserName.touched || nurseUserName.dirty)&& !nurseUserName.invalid)
                     ?  'is-valid' : '' " />
                     <div class="invalid-feedback">
                         {{((nurseUserName.touched&&nurseUserName.invalid&&nurseUserName.hasError('required'))||(submitted&& nurseUserName.hasError('required')))?"This field is reqired":''}}
@@ -50,12 +42,10 @@
                 <div class="p-3">
                     <label class="form-lable" for="nationalId">National Id</label>
                     <input class="form-control"  type="text" name="nationalId" id="nationalId" formControlName="nationalId" 
-                    [ngClass]="((nurseNid.touched &&nurseNid.invalid) || (submitted&& nurseNid.hasError('required')))
-                    ? 'is-invalid' : '' || nurseNid.hasError('pattern')
-                    ? 'is-invalid' : '' || nurseNid.hasError('minlength') 
-                    ? 'is-invalid' : '' || nurseNid.hasError('maxlength') 
-                    ? 'is-invalid' : '' || ((nurseNid.touched || nurseNid.dirty)&& !nurseNid.invalid)
-                    ?  'is-valid' : '' " />
+                    [ngClass]="(nurseNid.touched&&nurseNid.invalid)||(submitted&& nurseNid.invalid)
+                    ? 'is-invalid' : ((nurseNid.touched || nurseNid.dirty)&& !nurseNid.invalid)
+                    ?  'is-valid' : '' " 
+                     />
                     <div class="invalid-feedback">
                         {{((nurseNid.touched &&nurseNid.invalid&&nurseNid.hasError('required'))||(submitted&& nurseNid.hasError('required')))?"This field is reqired":''}}
                         {{nurseNid.hasError('minlength')?" Must Contain 14 number ":''}}
@@ -67,7 +57,7 @@
                     <label class="form-lable" for="gender">Gender</label>
                     <select id="gender" class="form-select" formControlName="gender" 
                     [ngClass]="((nurseGender.touched&&nurseGender.invalid) || (submitted&& nurseGender.hasError('required')))
-                        ? 'is-invalid' : '' || ((nurseGender.touched || nurseGender.dirty)&& !nurseGender.invalid)
+                        ? 'is-invalid' : ((nurseGender.touched || nurseGender.dirty)&& !nurseGender.invalid)
                         ?  'is-valid' : '' " >
                         <option disabled>-- select gender --</option>
                         <option vlaue="female">Female</option>
@@ -80,12 +70,9 @@
                 <div class="p-3">
                     <label class="form-lable" for="age">Age</label>
                     <input class="form-control" type="number" name="age" id="age" formControlName="age"
-                     [ngClass]="((nurseAge.touched&&nurseAge.invalid) ||(submitted&& nurseAge.hasError('required')))
-                        ? 'is-invalid' : '' || nurseAge.hasError('pattern')
-                        ? 'is-invalid' : '' || nurseAge.hasError('min') 
-                        ? 'is-invalid' : '' || nurseAge.hasError('max') 
-                        ? 'is-invalid' : '' || ((nurseAge.touched || nurseAge.dirty)&& !nurseAge.invalid)
-                        ?  'is-valid' : '' " />
+                     [ngClass]="(nurseAge.touched&&nurseAge.invalid)||(submitted&& nurseAge.invalid)
+                     ? 'is-invalid' : ((nurseAge.touched || nurseAge.dirty)&& !nurseAge.invalid)
+                     ?  'is-valid' : '' "/>
                     <div class="invalid-feedback">
                         {{((nurseAge.touched&&nurseAge.invalid&&nurseAge.hasError('required'))||(submitted&& nurseAge.hasError('required')))?"This field is reqired":''}}
                         {{nurseNid.hasError('min')?" Can only be between 18 and 60 year ":''}}
@@ -114,9 +101,9 @@
                 <div class="p-3">
                     <label class="form-lable" for="Email">Email</label>
                     <input class="form-control" type="email" name="Email" id="Email" formControlName="mail"
-                     [ngClass]=" nurseMail.hasError('email')
-                    ? 'is-invalid' : '' || (nurseMail.touched && !nurseMail.invalid)
-                    ? 'is-valid' : '' " />
+                     [ngClass]="(nurseMail.touched&&nurseMail.invalid)||(submitted&& nurseMail.invalid)
+                     ? 'is-invalid' : ((nurseMail.touched || nurseMail.dirty)&& !nurseMail.invalid)
+                     ?  'is-valid' : '' "/>
                     <div class="invalid-feedback">
                         {{nurseMail.hasError('email')?"Invalid Email":''}}
                     </div>
@@ -124,9 +111,9 @@
                 <div class="p-3" *ngIf="id==''">
                     <label class="form-lable" for="Password">Password</label>
                     <input class="form-control" type="Password" name="Password" id="Password" formControlName="password"  
-                    [ngClass]="(nursePassword.hasError('minlength')||nursePassword.hasError('required')&&nursePassword.touched)
-                    ? 'is-invalid' : '' || (nursePassword.touched && !nursePassword.invalid)
-                    ? 'is-valid' : '' " />
+                    [ngClass]="(nursePassword.touched&&nursePassword.invalid)||(submitted&& nursePassword.invalid)
+                    ? 'is-invalid' : ((nursePassword.touched || nursePassword.dirty)&& !nursePassword.invalid)
+                    ?  'is-valid' : '' "/>
                     <div class="invalid-feedback">
                         {{nursePassword.hasError('required')&&nursePassword.touched?"this is required":''}}
                         {{nursePassword.hasError('minlength')&&nursePassword.touched&&nursePassword.invalid?"min length is 8 chars":''}}
@@ -135,12 +122,9 @@
                 <div class="p-3">
                     <label class="form-lable" for="phone">Phone Number</label>
                     <input class="form-control" type="tel" name="phone" id="phone" formControlName="phoneNumber"
-                     [ngClass]="((nursePhone.touched&&nursePhone.invalid) ||(submitted&& nursePhone.hasError('required')))
-                        ? 'is-invalid' : '' || nursePhone.hasError('pattern')
-                        ? 'is-invalid' : '' || nursePhone.hasError('minlength') 
-                        ? 'is-invalid' : '' || nursePhone.hasError('maxlength') 
-                        ? 'is-invalid' : '' || ((nursePhone.touched || nursePhone.dirty)&& !nursePhone.invalid)
-                        ?  'is-valid' : '' " />
+                     [ngClass]="(nursePhone.touched&&nursePhone.invalid)||(submitted&& nursePhone.invalid)
+                     ? 'is-invalid' : ((nursePhone.touched || nursePhone.dirty)&& !nursePhone.invalid)
+                     ?  'is-valid' : '' "/>
                     <div class="invalid-feedback">
                         {{((nursePhone.touched&&nursePhone.invalid&&nursePhone.hasError('required'))||(submitted&& nursePhone.hasError('required')))?"This field is reqired":''}}
                         {{nursePhone.hasError('minlength')?"Must contain  11 number":''}}
@@ -152,22 +136,16 @@
                     <label class="form-lable" for="date">Hiring Date</label>
                     <input class="form-control" type="date" name="date" id="date"  formControlName="createdDtm"  
                     [ngClass]="((Hdate.touched&&Hdate.invalid) ||(submitted&& Hdate.hasError('required')))
-                    ? 'is-invalid' : '' || ((Hdate.touched || Hdate.dirty)&& !Hdate.invalid)
-                    ?  'is-valid' : '' " />
+                    ? 'is-invalid' :  'is-valid'  " />
                 <div class="invalid-feedback">
                     {{((Hdate.touched&&Hdate.invalid&&Hdate.hasError('required'))||(submitted&& Hdate.hasError('required')))?"This field is reqired":''}}
                 </div>
-                </div>
-                <div class="p-3" *ngIf="id==''">
-                    <label class="form-lable" for="Image">Profile Image</label>
-                    <input class="form-control" type="file" name="Image" id="Image" accept="image/*" (change)="setimage($event)" formControlName="image" />
                 </div>
                 <div class="p-3">
                     <label class="form-lable" for="Department">Department Name</label>
                     <select  id="Department" class="form-select" formControlName="departmentName" 
                     [ngClass]="((nurseDep.touched&&nurseDep.invalid)||(submitted&& nurseDep.hasError('required')))
-                        ? 'is-invalid' : '' || ((nurseDep.touched && nurseDep.dirty)&& !nurseDep.invalid)
-                        ?  'is-valid' : '' " >
+                        ? 'is-invalid' : 'is-valid' " >
                         <option disabled>-- select Departement Name --</option>
                         <option *ngFor="let dep of departementsList; let j=index" value="{{dep.departmentName}}">{{dep.departmentName}}</option>
                     </select>
@@ -179,7 +157,7 @@
                     <label class="form-lable" for="Degree">Degree</label>
                     <select id="Degree" class="form-select" formControlName="nurseDegree" required
                     [ngClass]="((nurseDeg.touched&&nurseDeg.invalid) ||(submitted&& nurseDeg.hasError('required')))
-                        ? 'is-invalid' : '' || ((nurseDeg.touched || nurseDeg.dirty)&& !nurseDeg.invalid)
+                        ? 'is-invalid' :  ((nurseDeg.touched || nurseDeg.dirty)&& !nurseDeg.invalid)
                         ?  'is-valid' : '' " >
                         <option disabled>-- select Nurse's Degree --</option>
                         <option value="ADN">ADN (Associate Degree in Nursing)</option>

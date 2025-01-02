@@ -27,7 +27,6 @@ export class AdddepartmentComponent implements OnInit {
   constructor(private service:ServicesService,private sidemanagerservice:SidemanagerService) { }
 
   ngOnInit(): void {
-
   }
   postdepartment(form:NgForm){
     if(form.valid){
@@ -63,13 +62,13 @@ export class AdddepartmentComponent implements OnInit {
         isActive:form.value.isActive,
         clinicalDepartment: form.value.isClinical
       }
-      console.log(dept)
       this.service.update("Departments/Update",dept).subscribe(
         res=>{
           this.close();
           },
           err=>{
-
+            this.submitted=false;
+            this.errormessage=err.error.text
           });
     }
   }
@@ -82,13 +81,14 @@ export class AdddepartmentComponent implements OnInit {
       this.postdepartment(form)
     }
   }
-  changephoto(file:any){
-    if(file.target.value[0])
-    this.imageservice.getbase64(file.target.files[0]).then(
-      (res:any)=>{
-        this.image=res.split(',').pop()
-      }
-    )
+  changephoto(image:string){
+    this.image=image;
+    // if(file.target.value[0])
+    // this.imageservice.getbase64(file.target.files[0]).then(
+    //   (res:any)=>{
+    //     this.image=res.split(',').pop()
+    //   }
+    // )
   }
   close(){
     this.sidemanagerservice.setControl({open:false,component:'',data:{}})

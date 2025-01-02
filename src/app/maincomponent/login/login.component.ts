@@ -37,11 +37,15 @@ export class LoginComponent implements OnInit {
       this.message='';
       this.service.auth_user(this.login.value).subscribe(
         (res:any)=>{
+          console.log(res)
+          this.loader=false
          if(res.status=='successful'){
           const helper = new JwtHelperService();
           const decodedToken = helper.decodeToken(res.token);
           let id= decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]
           let role=res.role.toLowerCase()
+          localStorage.setItem("userRole",role.toLowerCase());
+          localStorage.setItem("userToken",res.token);
           this.service.getinfo(role,id).subscribe(
           (res:any)=>{
             if(role.toLowerCase ()=="doctor"&&res.departmentName=="Scan"){
@@ -51,8 +55,6 @@ export class LoginComponent implements OnInit {
               role="lab doctor"
             }
             localStorage.setItem("userInfo",JSON.stringify(res));
-            localStorage.setItem("userRole",role.toLowerCase());
-            localStorage.setItem("userToken",res.token);
             localStorage.setItem("login","true")
             this.route.navigate(['/'+role.toLowerCase ()])
             this.close()
@@ -65,6 +67,7 @@ export class LoginComponent implements OnInit {
           }
         },
        (err:any)=>{
+        console.log(err)
           this.loader=false
           this.message=err.message
         }

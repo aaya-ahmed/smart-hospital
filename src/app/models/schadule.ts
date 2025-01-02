@@ -36,4 +36,11 @@ export interface allSlot{
     slotTime: string
     slotNumber: string
   }
+  export interface schedule{
+    dayOfWork:number,
+    startTime:string,
+    endTime:string,
+    timePerPatient:string,
+    id:number
+  }
   

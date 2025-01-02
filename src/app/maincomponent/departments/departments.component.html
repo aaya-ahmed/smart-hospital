@@ -9,7 +9,7 @@
                 <div class="list">
                     <div class="list-item" *ngFor="let item of departments|paginate:{itemsPerPage:10,currentPage:p,totalItems:length}">
                         <a routerLink="/alldoctors/{{item.departmentName}}">
-                            <img src="https://smarthospital.somee.com/{{item.image}}" class="department-image"/>
+                            <img src="https://localhost:7163/{{item.image}}" class="department-image"/>
                             <h3>{{item.departmentName}}</h3>
                         </a>
                     </div>

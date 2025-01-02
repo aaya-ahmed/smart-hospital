@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
       this.doctor=localStorage.getItem("userInfo")
       this.doctor=JSON.parse(this.doctor)
     }
-    this.imagesrc="https://smarthospital.somee.com/"+this.doctor.imageName+"?t="+new Date().getTime()
+    this.imagesrc="https://localhost:7163/"+this.doctor.imageName+"?t="+new Date().getTime()
     this.todayDate=`${this.today.getMonth()+1}-${this.today.getDate()}-${this.today.getFullYear()}`
     this.service.get("Appointment/GetAppointmentsForTodayByDoctorId/"+this.doctor.id+"/"+this.todayDate).subscribe(
       (res:any)=>{
@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
           this.doctor=doctor
           localStorage.removeItem("userInfo")
           localStorage.setItem("userInfo",JSON.stringify(doctor))
-         this.imagesrc="https://smarthospital.somee.com/"+res.image+"?t="+new Date().getTime()
+         this.imagesrc="https://localhost:7163/"+res.image+"?t="+new Date().getTime()
         }
       )
     });

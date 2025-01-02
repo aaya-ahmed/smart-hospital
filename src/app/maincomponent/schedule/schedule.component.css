@@ -6,6 +6,7 @@ section{
 }
 .department-div{
     background-color: #445182!important;
+    height: fit-content;
 }
 input[type="checkbox"]{
     display: none;

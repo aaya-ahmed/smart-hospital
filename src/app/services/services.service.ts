@@ -11,12 +11,12 @@ import { requestvital, showvitalnurse } from '../models/vital-sign';
   providedIn: 'root'
 })
 export class ServicesService {
-  private url:string="https://smarthospital.somee.com/api/";
+  private url:string="https://localhost:7163/api/";
   constructor(private http:HttpClient) {}
   post(controller:string,object:any){
     return this.http.post(this.url+controller,object)
   }
-  get(controller:string){
+  get(controller:string):Observable<any>{
     return this.http.get(this.url+controller)
   }
   getalldoctorswithdepartmet():Observable<alldoctors[]>{

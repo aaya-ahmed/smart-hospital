@@ -5,12 +5,13 @@ import { HeaderComponent } from './header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UpdateprofileComponent } from './profile/updateprofile/updateprofile.component';
 import { UpdatepasswordComponent } from './profile/updatepassword/updatepassword.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { sidehosttemplate } from './sidehosttemplate/sidehost.component';
 import { ProfileImageComponent } from './profile/profile-image/profile-image.component';
 import { ProfileInfoComponent } from './profile/profile-info/profile-info.component';
+import { ImageComponent } from './image/image.component';
 
 
 
@@ -22,14 +23,16 @@ import { ProfileInfoComponent } from './profile/profile-info/profile-info.compon
     UpdateprofileComponent,
     UpdatepasswordComponent,
     ProfileImageComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    ImageComponent
   ],
   imports: [
     CommonModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
-  exports:[ProfileInfoComponent,HostDirective,HeaderComponent,SidebarComponent,UpdateprofileComponent,UpdatepasswordComponent,ProfileImageComponent]
+  exports:[ProfileInfoComponent,HostDirective,HeaderComponent,SidebarComponent,UpdateprofileComponent,UpdatepasswordComponent,ProfileImageComponent,ImageComponent]
 })
 export class SharedModule { }

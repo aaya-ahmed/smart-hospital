@@ -14,7 +14,6 @@ export class AddemployeeComponent implements OnInit {
   receptionistInfo:FormGroup;
   submitted:boolean=false;
   today:string=new Date().toISOString();
-  image:string='';
   message:string='';
   imageclass=new imageclass()
   get receptionistfname(){
@@ -82,12 +81,6 @@ export class AddemployeeComponent implements OnInit {
     }
 
   }
-  uploadfile($event:any){
-    if($event.target.files.length>0)
-    this.imageclass.getbase64($event.target.files[0]).then((res:any)=>{
-        this.image=res.split(',').pop()
-    });
-  }
   updateReceptionist(){
     let receptionist={
       ...this.receptionistInfo.value,
@@ -105,12 +98,11 @@ export class AddemployeeComponent implements OnInit {
     let receptionist={
       ...this.receptionistInfo.value,
       role:"Receptionist",
-      image:this.image
     }
     this.services.post("Admin/receptionist",receptionist).subscribe(
       (res:any)=>{
         this.submitted=false;
-        this.message="wrong data";
+        this.close()
       },
       (err:any)=>{
         if(err.error.text!="Username already taken."){
